@@ -280,8 +280,25 @@ app.get('/api/connections', (req, res) => {
     agents_dir:         { ok: fs.existsSync(CLAUDE_AGENTS_DIR),      note: `${AGENT_IDS.length} agents` },
     data_dir:           { ok: fs.existsSync(DATA_DIR),               note: '' },
     session_log:        { ok: fs.existsSync(sessionLog),             note: sessionFreshHours !== null ? `${sessionFreshHours}h ago` : 'never' },
-    gmail_mcp:          { ok: false,                                  note: 'Manual setup required — see docs/mcp-gmail-setup.md' },
-    web_search:         { ok: false,                                  note: 'Test with: "Search for hotels in Orlando"' },
+    gmail_mcp:          (() => {
+      const credPath = path.join(require('os').homedir(), '.config', 'ugc-gmail', 'credentials.json');
+      const tokenPath = path.join(require('os').homedir(), '.config', 'ugc-gmail', 'token.json');
+      const hasCreds = fs.existsSync(credPath);
+      const hasToken = fs.existsSync(tokenPath);
+      if (hasCreds && hasToken) return { ok: true,  note: 'Authorized — drafts save to Gmail' };
+      if (hasCreds)             return { ok: true,  note: 'Credentials ready — open Claude Code to authorize' };
+      return                           { ok: false, note: 'credentials.json missing — see docs/mcp-gmail-setup.md' };
+    })(),
+    web_search:         (() => {
+      const settingsPath = path.join(require('os').homedir(), '.claude', 'settings.json');
+      const projSettings = path.join(ROOT, '.claude', 'settings.json');
+      const hasBrave = [settingsPath, projSettings].some(p => {
+        try { return JSON.stringify(require(p)).toLowerCase().includes('brave'); } catch { return false; }
+      });
+      const hasKey = !!(process.env.BRAVE_API_KEY || process.env.WEBSEARCH_API_KEY);
+      if (hasBrave || hasKey) return { ok: true,  note: 'Brave Search MCP configured' };
+      return                         { ok: false, note: 'Add Brave Search MCP — see docs/mcp-web-search-setup.md' };
+    })(),
     audit_logs_today:   { ok: recentReports.some(f => f.includes(new Date().toISOString().split('T')[0])), note: '' },
   });
 });
