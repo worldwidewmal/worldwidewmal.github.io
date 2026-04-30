@@ -1,4 +1,13 @@
 {
+  "mcpServers": {
+    "gmail": {
+      "command": "npx",
+      "args": ["-y", "@gongrzhe/server-gmail-autoauth-mcp"],
+      "env": {
+        "GMAIL_OAUTH_PATH": "~/.config/ugc-gmail/credentials.json"
+      }
+    }
+  },
   "hooks": {
     "Stop": [
       {

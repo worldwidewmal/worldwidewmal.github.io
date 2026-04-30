@@ -42,42 +42,33 @@ Connect worldwidewmal@gmail.com to Claude Code so that every drafted outreach em
 
 ## Step 2 — Install the Gmail MCP Server
 
-The recommended package is the official Google Workspace MCP:
-
 ```bash
-npm install -g @modelcontextprotocol/server-gmail
+npm install -g @gongrzhe/server-gmail-autoauth-mcp
 ```
 
-If that package is not yet published, use the community alternative:
-
-```bash
-npm install -g mcp-gmail
-```
-
-Check the current available packages at https://modelcontextprotocol.io/servers if you get a "package not found" error.
+This is the actively maintained Gmail MCP with auto-authentication support. It handles the OAuth token flow automatically on first use.
 
 ---
 
 ## Step 3 — Add to Claude Code MCP Settings
 
-Edit `~/.claude/settings.json` and add this block inside `"mcpServers"`:
+The project `.claude/settings.json` already includes this config. If you need to add it to your global `~/.claude/settings.json` instead, use:
 
 ```json
 {
   "mcpServers": {
     "gmail": {
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-gmail"],
+      "args": ["-y", "@gongrzhe/server-gmail-autoauth-mcp"],
       "env": {
-        "GOOGLE_CREDENTIALS_PATH": "/Users/YOUR_USERNAME/.config/ugc-gmail/credentials.json",
-        "GOOGLE_TOKEN_PATH": "/Users/YOUR_USERNAME/.config/ugc-gmail/token.json"
+        "GMAIL_OAUTH_PATH": "~/.config/ugc-gmail/credentials.json"
       }
     }
   }
 }
 ```
 
-Replace `YOUR_USERNAME` with your Mac username. Adjust if you stored the credentials elsewhere.
+Store your `credentials.json` (downloaded from Google Cloud Console) at `~/.config/ugc-gmail/credentials.json`.
 
 ---
 
