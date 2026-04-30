@@ -1,119 +1,157 @@
 # Gmail MCP Setup
 
-This document covers how to connect Gmail to Claude Code so the system can send outreach emails directly from your session.
+Connect worldwidewmal@gmail.com to Claude Code so that every drafted outreach email is saved directly into Gmail Drafts — and so the system can check Gmail Sent before drafting to prevent re-contacting anyone already emailed.
 
 ---
 
 ## What This Enables
 
-Once configured, you can ask Claude to send approved email drafts directly from your Gmail account without leaving Claude Code. The system will still present drafts for review before sending — nothing sends automatically.
+- **Save to Drafts**: Every approved outreach draft is pushed to your Gmail Drafts folder automatically. You review and send from Gmail — nothing sends without your action.
+- **Sent folder dedup**: Before each drafting session, the system checks Gmail Sent to skip any company that has already received an email from your account, even if pipeline.csv is not up to date.
+- **No auto-send**: The system never sends email on its own. All sends are manual from your Gmail inbox.
 
 ---
 
 ## Prerequisites
 
-- A Google account (the Gmail address you use for outreach)
+- Google account: worldwidewmal@gmail.com
 - Claude Code installed and this project open
-- Node.js installed (v18 or later recommended)
+- Node.js v18 or later
+- A Google Cloud project (free tier is fine)
 
 ---
 
-## Step 1 — Install the Gmail MCP Server
-
-The most widely used Gmail MCP is `mcp-gmail` or the Google Workspace MCP. Use the following approach:
-
-```bash
-npm install -g @gptscript-ai/gmail-oauth-mcp
-```
-
-Or use the official Google Workspace MCP server if available in your Claude Code MCP registry.
-
-**Check the Claude Code MCP marketplace or docs at https://docs.anthropic.com/claude-code for the current recommended Gmail MCP package**, as package names can change.
-
----
-
-## Step 2 — Create a Google OAuth App
-
-Gmail MCP requires OAuth credentials. You must create these in Google Cloud Console.
+## Step 1 — Enable the Gmail API
 
 1. Go to https://console.cloud.google.com/
-2. Create a new project (or use an existing one)
-3. Enable the **Gmail API**: APIs & Services → Enable APIs → search "Gmail API" → Enable
-4. Go to **APIs & Services → Credentials → Create Credentials → OAuth client ID**
-5. Choose **Desktop app** as the application type
-6. Name it (e.g., "worldwidewmal Claude Code")
-7. Download the `credentials.json` file
-8. Save it somewhere secure on your machine (NOT in this repo)
+2. Create a new project or select an existing one
+3. Go to **APIs & Services → Library**
+4. Search "Gmail API" → click **Enable**
+5. Go to **APIs & Services → OAuth consent screen**
+   - Choose **External** user type
+   - Fill in app name (e.g., "worldwidewmal Claude Code") and your email
+   - Add scope: `https://www.googleapis.com/auth/gmail.modify` (read + draft + send)
+   - Add yourself as a test user
+6. Go to **APIs & Services → Credentials → Create Credentials → OAuth client ID**
+   - Application type: **Desktop app**
+   - Name: "Claude Code UGC OS"
+   - Click **Create** and download `credentials.json`
+   - Store it at: `~/.config/ugc-gmail/credentials.json` (never inside this repo)
 
 ---
 
-## Step 3 — Configure Claude Code MCP
+## Step 2 — Install the Gmail MCP Server
 
-Add the Gmail MCP to your Claude Code configuration.
+The recommended package is the official Google Workspace MCP:
 
-Edit `~/.claude/settings.json` (your global Claude Code settings) and add:
+```bash
+npm install -g @modelcontextprotocol/server-gmail
+```
+
+If that package is not yet published, use the community alternative:
+
+```bash
+npm install -g mcp-gmail
+```
+
+Check the current available packages at https://modelcontextprotocol.io/servers if you get a "package not found" error.
+
+---
+
+## Step 3 — Add to Claude Code MCP Settings
+
+Edit `~/.claude/settings.json` and add this block inside `"mcpServers"`:
 
 ```json
 {
   "mcpServers": {
     "gmail": {
       "command": "npx",
-      "args": ["-y", "@your-gmail-mcp-package"],
+      "args": ["-y", "@modelcontextprotocol/server-gmail"],
       "env": {
-        "GOOGLE_CREDENTIALS_PATH": "/absolute/path/to/credentials.json",
-        "GOOGLE_TOKEN_PATH": "/absolute/path/to/token.json"
+        "GOOGLE_CREDENTIALS_PATH": "/Users/YOUR_USERNAME/.config/ugc-gmail/credentials.json",
+        "GOOGLE_TOKEN_PATH": "/Users/YOUR_USERNAME/.config/ugc-gmail/token.json"
       }
     }
   }
 }
 ```
 
-Replace `@your-gmail-mcp-package` with the actual package name and update the credential paths.
+Replace `YOUR_USERNAME` with your Mac username. Adjust if you stored the credentials elsewhere.
 
 ---
 
-## Step 4 — Authorize Claude Code
+## Step 4 — Authorize on First Use
 
-On first run, the MCP will open a browser window for OAuth authorization:
-
-1. Start Claude Code in this project
-2. Try sending a test message: "Use Gmail MCP to send a test email to [your own address] with subject 'MCP Test' and body 'Test from Claude Code.'"
-3. Complete the OAuth flow in the browser
-4. A `token.json` file is saved at the path you configured — keep this secure
-
----
-
-## Step 5 — Test the Connection
-
-Send a test email to yourself:
+Start Claude Code in this project, then type:
 
 ```
-Use the Gmail MCP to send an email:
-- To: [your email]
-- Subject: Claude Code Gmail MCP Test
-- Body: This is a test of the Gmail MCP connection from worldwidewmal's UGC OS.
+Use the Gmail MCP to check my Gmail Drafts folder and list the 3 most recent drafts.
 ```
 
-Confirm it arrives in your inbox.
+A browser window will open for Google OAuth. Sign in as worldwidewmal@gmail.com and grant the requested permissions. A `token.json` file is saved at the path you configured — keep it secure.
 
 ---
 
-## Step 6 — Outreach Send Workflow
+## Step 5 — Test Save-to-Drafts
 
-Once connected, the send workflow is:
+Test that the Drafts workflow works:
 
-1. Claude drafts the email and presents it for your review (standard in this system)
-2. You approve the draft
-3. You say: "Send the approved draft to [Company Name] via Gmail"
-4. Claude uses Gmail MCP to send and updates pipeline.csv with the send date and status change
+```
+Use Gmail MCP to create a draft email:
+- To: worldwidewmal@gmail.com
+- Subject: Claude Code Draft Test
+- Body: This is a test draft from the UGC OS system.
+```
+
+Open Gmail and verify the draft appears in your Drafts folder.
 
 ---
 
-## Security Notes
+## Step 6 — Test Sent-Folder Check
+
+Test the dedup check:
+
+```
+Use Gmail MCP to search my Gmail Sent folder for emails sent to any @celeste-hotel.com address.
+```
+
+This is the query the system runs before drafting — if a matching sent email is found, that company is skipped.
+
+---
+
+## How the Draft Workflow Operates
+
+### When the outreach-writer agent drafts an email:
+
+1. Agent drafts the email and outputs it for review
+2. Agent saves draft JSON to `data/drafts/<id>.json`
+3. Agent calls Gmail MCP to create a Gmail Draft with the same content
+4. Agent updates `pipeline.csv` status to `drafted`
+
+### Before any drafting session:
+
+1. System queries Gmail Sent: `from:worldwidewmal@gmail.com`
+2. Extracts all recipient domains from sent emails
+3. Compares against companies in the current outreach batch
+4. Any company whose domain matches a sent email is flagged — skip or confirm before drafting
+
+### When you are ready to send from Gmail:
+
+1. Open Gmail → Drafts
+2. Review each draft
+3. Click Send from Gmail directly
+4. After sending, update pipeline.csv status to `sent` and record `initial_outreach_date`
+   - You can do this in Claude Code: "Mark [Company] as sent in pipeline.csv with today's date"
+
+---
+
+## Security Rules
 
 - Never commit `credentials.json` or `token.json` to this repo
-- Add both to `.gitignore` if they are anywhere near this project directory
-- If you revoke access, delete `token.json` and re-authorize
+- Both files are in `.gitignore` — verify before any push
+- If you revoke access in Google, delete `token.json` and re-authorize
+- The OAuth token only grants access to your Gmail — no other Google services
 
 ---
 
@@ -121,7 +159,21 @@ Once connected, the send workflow is:
 
 | Issue | Fix |
 |---|---|
-| "MCP server not found" | Verify the package is installed and the settings.json path is correct |
+| "MCP server not found" | Verify the package is installed globally: `npm list -g \| grep gmail` |
 | "Invalid credentials" | Re-download `credentials.json` from Google Cloud Console |
-| "Token expired" | Delete `token.json` and re-authorize |
-| "Quota exceeded" | Google free tier has daily send limits — check Gmail API quotas in Console |
+| "Token expired" | Delete `token.json` and re-authorize in Claude Code |
+| "Quota exceeded" | Gmail API free tier allows 1B quota units/day — drafts use very few; check Google Cloud Console quotas |
+| "Access blocked: app not verified" | Add yourself as a test user in OAuth consent screen during development |
+| "Scope insufficient" | Re-authorize after adding `gmail.modify` scope in consent screen |
+
+---
+
+## MCP Not Yet Available?
+
+If you cannot get the Gmail MCP working yet, the fallback workflow is:
+1. Drafts are saved to `data/drafts/<id>.json`
+2. Open the draft file and copy the content manually into Gmail
+3. Save as a Gmail Draft from there
+4. Mark the lead as `drafted` in pipeline.csv via Claude Code
+
+The system supports both workflows — Gmail MCP saves the manual step.

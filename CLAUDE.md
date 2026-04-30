@@ -59,16 +59,41 @@ Every draft must pass all of the following before it is considered review-ready:
 
 | Element | Standard |
 |---|---|
-| Subject line | Short and specific. References the company or a real observation. No emojis. No "Quick question." No clickbait. |
-| Opening | One genuine, specific observation about this company. Must reference something real — a dish, a recent post, their visual aesthetic, a specific aspect of their experience. Generic praise fails this check. |
+| Subject line | Always "Idea for [Brand]" or "A content angle for [Brand]" — no other formats. No emojis. No "Quick question." |
+| Opening | One genuine, specific observation about this company. Must reference something real — a dish, a room, a design detail, a service, a menu item, a chef. Generic praise fails this check. |
 | Pitch body | One tailored concept — what you would create and why it fits *this* brand. Be concrete. "A 15-second Reel of the poolside happy hour golden hour" is specific. "Short-form video content" is not. |
-| CTA | One low-friction ask. "Would this be useful for your content calendar?" is correct. "Book a call" or "schedule a meeting" in email 1 is not. |
+| CTA | "happy to send over the full angle I had in mind for [Brand]" or "happy to send 2–3 tailored concepts" — no call requests in email 1. |
 | Language | Plain English. No corporate language, no buzzwords. |
 | Attachments | Never mention attachments. Never say "see attached." |
-| Links | One link maximum — the portfolio link, placed naturally. |
-| Banned phrases | "Hope this finds you well" / "I wanted to reach out" / "touch base" / "circle back" / "synergy" / "leverage" / "game-changer" / "at your earliest convenience" / "value proposition" / "disruptive" / "per my last email" |
-| Personalization | Company name plus at least one specific detail from research must appear in the draft before it is finalized. |
+| Links | One link maximum — the portfolio link https://worldwidewmal.com, placed naturally. |
+| Sign-off | Always: `Best,` then `Malachi` — never "Mal", never "Best regards", never a title. |
+| Banned phrases | "Hope this finds you well" / "I wanted to reach out" / "touch base" / "circle back" / "synergy" / "leverage" / "game-changer" / "at your earliest convenience" / "value proposition" / "disruptive" / "per my last email" / "excited to" / "I'd love to connect" |
+| Personalization | Company name plus at least one verified specific detail from research must appear before finalizing. |
 | Length | Under 150 words for initial outreach. Under 80 words for FU1. Under 60 words for FU2. |
+| Templates | Use vertical-specific templates from `routines/templates/` — luxury-hotels, vip-experiences, luxury-wellness, premium-adventure, fine-dining. |
+
+### Fine Dining as Its Own Vertical
+
+Fine dining is a distinct content vertical from hotels, wellness, or attractions. The content angle is **not** food photography — it is pace, atmosphere, service, plating, and the progression of the full dining experience. Treat it the same as a hotel research-wise: look at the room, the service level, the occasion feel, the menu structure, and what makes the dining experience feel distinct.
+
+### Contact Layers Per Company
+
+Each business may have up to 3 contact layers, each drafted separately:
+- **General** — company-level email (contact@, info@, reservations@, press@)
+- **Social Media Manager** — direct email of the named SMM, found only at official sources
+- **Marketing Manager** — direct email of the named Marketing Director/Manager, found only at official sources
+
+The daily target is **5 businesses**, not 5 emails. One business can produce up to 3 separate drafts.
+
+### Email Verification Rules
+
+Only acceptable sources for email addresses:
+- Official company website: Contact, Team, About, or Press pages
+- Official brand Facebook page: About/Contact tab
+- Official Instagram bio (linked email)
+- Public LinkedIn profile where the email is explicitly shown in text
+
+**Never construct email formats.** Do not build `firstname@company.com` even if the name and domain are known. If no confirmed email exists for a contact layer, do not create that layer — log the company with a fallback route (contact form URL, @handle, LinkedIn URL, or phone).
 
 ---
 
@@ -135,6 +160,11 @@ Every draft must pass all of the following before it is considered review-ready:
 | `data/drafts/` | Saved email draft JSON files (one per pipeline lead id) |
 | `reports/` | Auto-generated daily audit logs |
 | `reports/session-log.txt` | Auto-appended session timestamps (hook-generated) |
+| `routines/templates/luxury-hotels.md` | Initial + FU1 + FU2 email and DM templates for hotel vertical |
+| `routines/templates/vip-experiences.md` | Templates for VIP and exclusive experience vertical |
+| `routines/templates/luxury-wellness.md` | Templates for spa and wellness vertical |
+| `routines/templates/premium-adventure.md` | Templates for adventure and attraction vertical |
+| `routines/templates/fine-dining.md` | Templates for fine dining vertical |
 | `routines/daily-prompt.md` | Full daily session prompt |
 | `routines/morning-checklist.md` | Pre-session checklist |
 | `routines/evening-checklist.md` | Post-session checklist |
