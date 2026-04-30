@@ -1,0 +1,57 @@
+[
+  {
+    "org": "Visit Orlando",
+    "type": "CVB",
+    "form_url": "https://www.visitorlando.org/media/contact/press-trip-request/",
+    "geography": "Orlando, FL",
+    "date_added": "2026-04-30",
+    "submitted": false,
+    "requires_video": false,
+    "follower_minimum": null,
+    "notes": "Official Orlando CVB — press trip request form for media and digital creators; influencer campaigns run via TikTok Creator Network and global hosted press trips."
+  },
+  {
+    "org": "Experience Kissimmee",
+    "type": "DMO",
+    "form_url": "https://www.experiencekissimmee.com/media-request-form",
+    "geography": "Kissimmee, FL",
+    "date_added": "2026-04-30",
+    "submitted": false,
+    "requires_video": false,
+    "follower_minimum": null,
+    "notes": "Kissimmee CVB — dedicated media visit request form for FAM trips open to content creators; hosted creators have generated $55M+ estimated media value and 69M+ reach."
+  },
+  {
+    "org": "Visit Florida",
+    "type": "State Tourism Board",
+    "form_url": "https://www.visitfloridamedia.com/media-resources/forms/",
+    "geography": "Florida (statewide)",
+    "date_added": "2026-04-30",
+    "submitted": false,
+    "requires_video": false,
+    "follower_minimum": null,
+    "notes": "Florida's official tourism board — press trip and FAM request forms for qualified content creators and media; individual trips and group FAM tours available."
+  },
+  {
+    "org": "Brand USA",
+    "type": "National DMO",
+    "form_url": "https://www.thebrandusa.com/programs/influencer-co-op",
+    "geography": "USA (national, includes FL)",
+    "date_added": "2026-04-30",
+    "submitted": false,
+    "requires_video": false,
+    "follower_minimum": null,
+    "notes": "USA's national destination marketing org — Influencer Co-op program pairs creators with destinations; content amplified on VisitTheUSA.com and paid social (7.5MM global followers)."
+  },
+  {
+    "org": "Visit Space Coast",
+    "type": "CVB",
+    "form_url": "https://www.visitspacecoast.com/press-creator-trip-request-form/",
+    "geography": "Brevard County, FL",
+    "date_added": "2026-04-30",
+    "submitted": false,
+    "requires_video": false,
+    "follower_minimum": null,
+    "notes": "Brevard County tourism board — dedicated Press & Creator Trip Request Form; requests evaluated on reach, story angle, and timing with 4-week advance notice required."
+  }
+]

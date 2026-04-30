@@ -16,13 +16,19 @@ Your job is to run the complete daily session in order, delegate to the right ag
 2. Read `suppression-list.csv` and `data/forms-tracker.json`. Note counts.
 3. Confirm today's date. Report the pre-flight summary and proceed immediately.
 
-### Phase 2 — Form Finding
+### Phase 2 — Brand Form Finding
 Delegate to `form-finder` agent.
 - Find 5 net-new Orlando influencer/creator application forms.
 - Dedup against `data/forms-tracker.json` and `pipeline.csv`.
 - Submit any forms that do not require video uploads using worldwidewmal's info.
 - Append all to `data/forms-tracker.json` and `pipeline.csv` automatically.
-- Run `node scripts/sheets-sync.js` to sync the Forms tab in Google Sheets.
+
+### Phase 2b — Tourism Board Finding
+Delegate to `tourism-board-finder` agent.
+- Find 5 net-new Orlando-area tourism board, CVB, or DMO creator/media programs.
+- Dedup against `data/tourism-boards-tracker.json`, `data/forms-tracker.json`, and `pipeline.csv`.
+- Submit any applications that do not require video uploads using worldwidewmal's info.
+- Append all to `data/tourism-boards-tracker.json` and `pipeline.csv` automatically.
 
 ### Phase 3 — Lead Research
 Delegate to `lead-researcher` agent.

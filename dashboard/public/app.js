@@ -631,11 +631,13 @@ function switchSheetsTab(tab) {
   document.querySelectorAll('.sheets-subtab').forEach(b => b.classList.toggle('active', b.dataset.sheetsTab === tab));
   document.querySelectorAll('.sheets-pane').forEach(p => p.classList.toggle('active', p.id === `sheets-pane-${tab}`));
   if (tab === 'forms')    loadSheetsForms();
+  if (tab === 'tourism')  loadSheetsTourism();
   if (tab === 'outreach') loadSheetsOutreach();
 }
 
 async function loadSheets() {
   if (activeSheetTab === 'forms')    await loadSheetsForms();
+  if (activeSheetTab === 'tourism')  await loadSheetsTourism();
   if (activeSheetTab === 'outreach') await loadSheetsOutreach();
 }
 
@@ -656,6 +658,33 @@ async function loadSheetsForms() {
     <td class="sheet-check-cell">
       <label class="check-wrap">
         <input type="checkbox" class="sheet-check" data-tab="forms" data-key="${escapeHTML(r.form_url)}" data-field="submitted" ${r.submitted ? 'checked' : ''}/>
+        <span class="check-label ${r.submitted ? 'checked' : ''}">${r.submitted ? 'Done' : 'Pending'}</span>
+      </label>
+    </td>
+  </tr>`).join('');
+  tbody.querySelectorAll('.sheet-check').forEach(cb => {
+    cb.addEventListener('change', handleSheetToggle);
+  });
+}
+
+async function loadSheetsTourism() {
+  const rows = await api('/api/sheets/tourism-boards');
+  const tbody = document.getElementById('tourism-tbody');
+  if (!rows || !rows.length) {
+    tbody.innerHTML = '<tr><td colspan="8" class="loading">No tourism boards tracked yet. Run /find-tourism-boards to add programs.</td></tr>';
+    return;
+  }
+  tbody.innerHTML = rows.map((r, i) => `<tr>
+    <td class="dim">${i + 1}</td>
+    <td><strong>${r.org}</strong>${r.follower_minimum ? `<br><span class="dim" style="font-size:11px">Min: ${r.follower_minimum.toLocaleString()} followers</span>` : ''}</td>
+    <td><span class="badge">${r.type || 'DMO'}</span></td>
+    <td class="dim">${r.geography || '—'}</td>
+    <td class="dim">${r.date_added || '—'}</td>
+    <td><a class="form-url" href="${r.form_url}" target="_blank" title="${r.form_url}">${truncUrl(r.form_url)}</a></td>
+    <td class="dim">${r.requires_video ? '<span class="badge red">Yes</span>' : '<span class="badge green">No</span>'}</td>
+    <td class="sheet-check-cell">
+      <label class="check-wrap">
+        <input type="checkbox" class="sheet-check" data-tab="tourism" data-key="${escapeHTML(r.form_url)}" data-field="submitted" ${r.submitted ? 'checked' : ''}/>
         <span class="check-label ${r.submitted ? 'checked' : ''}">${r.submitted ? 'Done' : 'Pending'}</span>
       </label>
     </td>
@@ -713,7 +742,7 @@ async function handleSheetToggle(e) {
   const value = cb.checked;
   const label = cb.nextElementSibling;
   if (label) {
-    label.textContent = tab === 'forms' ? (value ? 'Done' : 'Pending') : '';
+    label.textContent = (tab === 'forms' || tab === 'tourism') ? (value ? 'Done' : 'Pending') : '';
     label.className = 'check-label' + (value ? ' checked' : '');
   }
   const result = await api('/api/sheets/toggle', {

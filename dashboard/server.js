@@ -16,6 +16,7 @@ const PIPELINE_CSV = path.join(ROOT, 'pipeline.csv');
 const SUPPRESSION_CSV = path.join(ROOT, 'suppression-list.csv');
 const REPORTS_DIR = path.join(ROOT, 'reports');
 const FORMS_TRACKER = path.join(DATA_DIR, 'forms-tracker.json');
+const TOURISM_TRACKER = path.join(DATA_DIR, 'tourism-boards-tracker.json');
 const SHEETS_STATE = path.join(DATA_DIR, 'sheets-state.json');
 const DRAFTS_DIR = path.join(DATA_DIR, 'drafts');
 const ROUTINES_DIR = path.join(ROOT, 'routines');
@@ -396,12 +397,31 @@ app.post('/api/sheets/toggle', (req, res) => {
   const { tab, key, field, value } = req.body;
   if (!tab || !key || !field) return res.status(400).json({ error: 'tab, key, and field required' });
   ensureDir(DATA_DIR);
-  const st = safeJSON(SHEETS_STATE, { forms: {}, outreach: {} });
+  const st = safeJSON(SHEETS_STATE, { forms: {}, outreach: {}, tourism: {} });
   if (!st[tab]) st[tab] = {};
   if (!st[tab][key]) st[tab][key] = {};
   st[tab][key][field] = value;
   fs.writeFileSync(SHEETS_STATE, JSON.stringify(st, null, 2));
   res.json({ ok: true });
+});
+
+// Sheets — Tourism Boards
+app.get('/api/sheets/tourism-boards', (req, res) => {
+  const boards = safeJSON(TOURISM_TRACKER, []);
+  const st = safeJSON(SHEETS_STATE, { forms: {}, outreach: {}, tourism: {} });
+  const rows = boards.map((b, i) => ({
+    row: i + 1,
+    org: b.org,
+    type: b.type || 'DMO',
+    geography: b.geography || 'Orlando, FL',
+    date_added: b.date_added,
+    form_url: b.form_url,
+    requires_video: b.requires_video || false,
+    follower_minimum: b.follower_minimum || null,
+    notes: b.notes || '',
+    submitted: st.tourism?.[b.form_url]?.submitted ?? b.submitted ?? false,
+  }));
+  res.json(rows);
 });
 
 // Draft viewer
