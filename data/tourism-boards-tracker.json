@@ -53,5 +53,115 @@
     "requires_video": false,
     "follower_minimum": null,
     "notes": "Brevard County tourism board — dedicated Press & Creator Trip Request Form; requests evaluated on reach, story angle, and timing with 4-week advance notice required."
+  },
+  {
+    "org": "Visit St. Pete/Clearwater (VSPC)",
+    "type": "CVB",
+    "form_url": "https://www.visitstpeteclearwater.com/influencers",
+    "geography": "Pinellas County, FL",
+    "date_added": "2026-05-01",
+    "submitted": false,
+    "requires_video": false,
+    "follower_minimum": null,
+    "notes": "May 1 find — VSPC has a dedicated Influencer Request Form for creators at visitstpeteclearwater.com/influencers. Also runs a separate Brand Ambassador volunteer program. Evaluates on follower count and engagement quality. Strong track record of hosted creator partnerships."
+  },
+  {
+    "org": "Visit Tampa Bay",
+    "type": "CVB",
+    "form_url": "https://www.visittampabay.com/media/media-visits/",
+    "geography": "Tampa Bay, FL",
+    "date_added": "2026-05-01",
+    "submitted": false,
+    "requires_video": false,
+    "follower_minimum": null,
+    "notes": "May 1 find — Visit Tampa Bay Media Visits page handles digital creator and influencer press trip requests. Case-by-case review. Submit bio and content samples. Email Info@VisitTampaBay.com. IZEA-documented influencer partnerships for local food and lifestyle creators."
+  },
+  {
+    "org": "Discover Lake County FL",
+    "type": "County Tourism Office",
+    "form_url": "https://discoverlakefl.com/contact",
+    "geography": "Lake County, FL",
+    "date_added": "2026-05-01",
+    "submitted": false,
+    "requires_video": false,
+    "follower_minimum": null,
+    "notes": "May 1 find — Lake County FL Office of Tourism; email discoverlake@lakecountyfl.gov for media creator press trip requests. Promotes #ShareMyLake creator UGC. Featured in VISIT FLORIDA media programs. Strong lakeside and outdoor recreation content angle."
+  },
+  {
+    "org": "VISIT FLORIDA Media Program",
+    "type": "State Tourism Board",
+    "form_url": "https://www.visitflorida.org/programs/public-relations/",
+    "geography": "Florida (statewide)",
+    "date_added": "2026-05-02",
+    "submitted": false,
+    "requires_video": false,
+    "follower_minimum": null,
+    "notes": "May 2 find — Distinct from visitfloridamedia.com entry; this is the VISIT FLORIDA.org PR program that coordinates group FAM tours across Florida regions. Destinations and businesses can request inclusion. Creators apply via state media program. Complementary to visitfloridamedia.com individual press trip route."
+  },
+  {
+    "org": "Destinations Florida (FADMO)",
+    "type": "State DMO Association",
+    "form_url": "https://www.fadmo.org/",
+    "geography": "Florida (statewide)",
+    "date_added": "2026-05-02",
+    "submitted": false,
+    "requires_video": false,
+    "follower_minimum": null,
+    "notes": "May 2 find — Florida Association of Destination Marketing Organizations; umbrella body connecting creators to member DMOs across Florida including multiple Orlando-region members. Contact via fadmo.org for introductions to member CVBs not yet in tracker."
+  },
+  {
+    "org": "Explore Central Florida (Visit Central Florida)",
+    "type": "Regional Tourism Board",
+    "form_url": "https://visitcentralflorida.org/",
+    "geography": "Polk County / Central FL",
+    "date_added": "2026-05-03",
+    "submitted": false,
+    "requires_video": false,
+    "follower_minimum": null,
+    "notes": "May 3 find — Visit Central Florida promotes Polk County and surrounding Central Florida region. Contact info@visitcentralflorida.org for media and creator program inquiries. Complements Orlando-area outreach with nearby destination angle (Lakeland, Winter Haven)."
+  },
+  {
+    "org": "Orlando Economic Partnership (OEP) Media",
+    "type": "Economic/Tourism Hybrid",
+    "form_url": "https://www.orlando.org/",
+    "geography": "Orlando metro, FL",
+    "date_added": "2026-05-03",
+    "submitted": false,
+    "requires_video": false,
+    "follower_minimum": null,
+    "notes": "May 3 find — Orlando Economic Partnership covers the broader metro region for media and economic storytelling. Works with Visit Orlando on destination marketing. Creator and media inquiries via orlando.org — supplementary to Visit Orlando CVB for broader metro-level coverage and brand positioning."
+  },
+  {
+    "org": "Greater Orlando Sports Commission",
+    "type": "Sports Tourism DMO",
+    "form_url": "https://www.orlandosports.org/",
+    "geography": "Orlando, FL",
+    "date_added": "2026-05-03",
+    "submitted": false,
+    "requires_video": false,
+    "follower_minimum": null,
+    "notes": "May 3 find — Orlando Sports Commission manages sports tourism and events; creator partnerships possible around major sporting events hosted in Orlando (golf, marathons, tennis). Niche but relevant for active lifestyle and sports-adjacent UGC angles."
+  },
+  {
+    "org": "Lake Nona Regional Initiative (LNRI) / Lake Nona Wave Hotel Media",
+    "type": "Development / Destination Marketing",
+    "form_url": "https://lakenona.com/media/",
+    "geography": "Lake Nona, Orlando, FL",
+    "date_added": "2026-05-03",
+    "submitted": false,
+    "requires_video": false,
+    "follower_minimum": null,
+    "notes": "May 3 find — Lake Nona is a master-planned community with its own media and creator outreach infrastructure via lakenona.com/media. Covers the Wave Hotel, BACÁN, and broader Lake Nona destination. Separate from hotel-level outreach — this is the destination marketing layer for the whole Lake Nona brand."
+  },
+  {
+    "org": "Disney Springs / WDW Media Relations",
+    "type": "Theme Park Destination DMO",
+    "form_url": "https://disneyworld.disney.go.com/events-tours/private-vip-tours/",
+    "geography": "Walt Disney World, Orlando, FL",
+    "date_added": "2026-05-03",
+    "submitted": false,
+    "requires_video": false,
+    "follower_minimum": null,
+    "notes": "May 3 find — Walt Disney World media relations handles press and creator trip requests for the broader WDW destination. Creator and media program applications managed through Disney's PR department. VIP Tours page included as destination context; actual media inquiries via Disney PR directly. Low probability but worth tracking."
   }
 ]
