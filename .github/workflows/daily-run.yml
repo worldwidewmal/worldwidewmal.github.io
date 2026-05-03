@@ -1,0 +1,48 @@
+name: Daily UGC OS Run
+
+on:
+  schedule:
+    # 11:00 UTC = 7:00 AM ET (EDT, UTC-4). Adjust to 12:00 UTC in winter (EST, UTC-5).
+    - cron: '0 11 * * *'
+  workflow_dispatch: # allow manual trigger from GitHub Actions UI
+
+permissions:
+  contents: write
+
+jobs:
+  daily-run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: |
+          npm install
+          cd dashboard && npm install
+
+      - name: Run daily UGC session
+        env:
+          ANTHROPIC_API_KEY:  ${{ secrets.ANTHROPIC_API_KEY }}
+          SHEETS_WEBHOOK_URL: ${{ secrets.SHEETS_WEBHOOK_URL }}
+        run: node scripts/daily-runner.js
+
+      - name: Commit pipeline updates
+        run: |
+          git config user.email "ugc-os-bot@worldwidewmal.com"
+          git config user.name "UGC OS Bot"
+          git add pipeline.csv data/forms-tracker.json data/tourism-boards-tracker.json reports/ || true
+          git diff --staged --quiet && echo "No changes to commit." || \
+            git commit -m "Daily run $(date +%Y-%m-%d) — automated pipeline update"
+
+      - name: Push changes
+        run: git push origin HEAD
