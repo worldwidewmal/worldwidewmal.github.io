@@ -671,7 +671,7 @@ async function loadSheetsTourism() {
   const rows = await api('/api/sheets/tourism-boards');
   const tbody = document.getElementById('tourism-tbody');
   if (!rows || !rows.length) {
-    tbody.innerHTML = '<tr><td colspan="8" class="loading">No tourism boards tracked yet. Run /find-tourism-boards to add programs.</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="9" class="loading">No tourism boards tracked yet. Run /find-tourism-boards to add programs.</td></tr>';
     return;
   }
   tbody.innerHTML = rows.map((r, i) => `<tr>
@@ -686,6 +686,12 @@ async function loadSheetsTourism() {
       <label class="check-wrap">
         <input type="checkbox" class="sheet-check" data-tab="tourism" data-key="${escapeHTML(r.form_url)}" data-field="submitted" ${r.submitted ? 'checked' : ''}/>
         <span class="check-label ${r.submitted ? 'checked' : ''}">${r.submitted ? 'Done' : 'Pending'}</span>
+      </label>
+    </td>
+    <td class="sheet-check-cell">
+      <label class="check-wrap">
+        <input type="checkbox" class="sheet-check" data-tab="tourism" data-key="${escapeHTML(r.form_url)}" data-field="selected" ${r.selected ? 'checked' : ''}/>
+        <span class="check-label ${r.selected ? 'checked' : ''}">${r.selected ? 'Yes' : '—'}</span>
       </label>
     </td>
   </tr>`).join('');
