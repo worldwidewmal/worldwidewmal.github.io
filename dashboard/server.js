@@ -374,6 +374,7 @@ app.get('/api/sheets/forms', (req, res) => {
     requires_video: f.requires_video || false,
     notes: f.notes || '',
     submitted: st.forms[f.form_url]?.submitted ?? f.submitted ?? false,
+    selected:  st.forms[f.form_url]?.selected  ?? false,
   }));
   res.json(rows);
 });

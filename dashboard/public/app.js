@@ -645,7 +645,7 @@ async function loadSheetsForms() {
   const rows = await api('/api/sheets/forms');
   const tbody = document.getElementById('forms-tbody');
   if (!rows || !rows.length) {
-    tbody.innerHTML = '<tr><td colspan="7" class="loading">No application forms tracked yet. Run /find-forms to add forms.</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="8" class="loading">No application forms tracked yet. Run /find-forms to add forms.</td></tr>';
     return;
   }
   tbody.innerHTML = rows.map((r, i) => `<tr>
@@ -659,6 +659,12 @@ async function loadSheetsForms() {
       <label class="check-wrap">
         <input type="checkbox" class="sheet-check" data-tab="forms" data-key="${escapeHTML(r.form_url)}" data-field="submitted" ${r.submitted ? 'checked' : ''}/>
         <span class="check-label ${r.submitted ? 'checked' : ''}">${r.submitted ? 'Done' : 'Pending'}</span>
+      </label>
+    </td>
+    <td class="sheet-check-cell">
+      <label class="check-wrap">
+        <input type="checkbox" class="sheet-check" data-tab="forms" data-key="${escapeHTML(r.form_url)}" data-field="selected" ${r.selected ? 'checked' : ''}/>
+        <span class="check-label ${r.selected ? 'checked' : ''}">${r.selected ? 'Yes' : '—'}</span>
       </label>
     </td>
   </tr>`).join('');
@@ -748,7 +754,13 @@ async function handleSheetToggle(e) {
   const value = cb.checked;
   const label = cb.nextElementSibling;
   if (label) {
-    label.textContent = (tab === 'forms' || tab === 'tourism') ? (value ? 'Done' : 'Pending') : '';
+    if (field === 'selected') {
+      label.textContent = value ? 'Yes' : '—';
+    } else if (tab === 'forms' || tab === 'tourism') {
+      label.textContent = value ? 'Done' : 'Pending';
+    } else {
+      label.textContent = '';
+    }
     label.className = 'check-label' + (value ? ' checked' : '');
   }
   const result = await api('/api/sheets/toggle', {

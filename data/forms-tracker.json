@@ -9,15 +9,6 @@
     "notes": "Form found — submit via browser at https://press.fourseasons.com/content/fourseasons_pressroom/en/forms/influencer.html"
   },
   {
-    "company": "Crayola Experience Orlando",
-    "form_url": "https://www.crayolaexperience.com/influencer-program",
-    "vertical": "attraction",
-    "date_added": "2026-04-25",
-    "submitted": false,
-    "requires_video": false,
-    "notes": "Form found — submit via browser at https://www.crayolaexperience.com/influencer-program"
-  },
-  {
     "company": "Vistana Signature Experiences (Sheraton Vistana Villages Orlando)",
     "form_url": "https://www.vistana.com/influencer/1000",
     "vertical": "hotel",
@@ -36,15 +27,6 @@
     "notes": "Form found — submit via browser at https://www.loewshotels.com/influencer-stay-request"
   },
   {
-    "company": "SeaWorld Orlando",
-    "form_url": "https://seaworld.com/orlando/media-room/media-ticket-requests/media-visit-request/",
-    "vertical": "attraction",
-    "date_added": "2026-04-25",
-    "submitted": false,
-    "requires_video": false,
-    "notes": "Form found — submit via browser at https://seaworld.com/orlando/media-room/media-ticket-requests/media-visit-request/"
-  },
-  {
     "company": "Evermore Orlando Resort",
     "form_url": "https://evermoreresort.com/partnerships",
     "vertical": "vacation rental/resort",
@@ -52,15 +34,6 @@
     "submitted": false,
     "requires_video": false,
     "notes": "May 1 find — dedicated creator/influencer partnerships page; actively seeking UGC creators in travel space. No video upload required based on page structure."
-  },
-  {
-    "company": "Margaritaville Resort Orlando",
-    "form_url": "https://www.margaritavilleresorts.com/margaritaville-resort-orlando/contact-us",
-    "vertical": "hotel/resort",
-    "date_added": "2026-05-01",
-    "submitted": false,
-    "requires_video": false,
-    "notes": "May 1 find — Margaritaville Resorts brand runs influencer request forms across properties; Orlando contact form is the confirmed route as Orlando-specific form not separately indexed. Other Margaritaville properties (Times Square, Palm Springs, Nassau) have dedicated forms — confirm at margaritavilleresorts.com/margaritaville-resort-orlando/ if Orlando-specific form is available."
   },
   {
     "company": "Hilton Hotels (stories.hilton.com influencer program)",
@@ -78,25 +51,7 @@
     "date_added": "2026-05-01",
     "submitted": false,
     "requires_video": false,
-    "notes": "May 1 find — Marketing team confirmed at ORLBC-Marketing@hilton.com for photography/videography/creator requests; contact form at waldorfastoriaorlando.com/contact-us/ is the public route. Use Hilton influencer portal (stories.hilton.com/influencer-inquiries) as primary approach."
-  },
-  {
-    "company": "Visit St Pete Clearwater (VSPC) Influencer Program",
-    "form_url": "https://www.visitstpeteclearwater.com/influencers",
-    "vertical": "tourism board",
-    "date_added": "2026-05-02",
-    "submitted": false,
-    "requires_video": false,
-    "notes": "May 2 find — VSPC dedicated influencer request form for creators; board works with travel and lifestyle creators to showcase St Pete and Clearwater area. Follower count and engagement evaluated on submission."
-  },
-  {
-    "company": "Universal Orlando Resort (Community Relations)",
-    "form_url": "https://www.universalorlando.com/web/en/us/universal-orlando-resort/community-relations",
-    "vertical": "attraction",
-    "date_added": "2026-05-02",
-    "submitted": false,
-    "requires_video": false,
-    "notes": "May 2 find — Universal Orlando Community Relations page is the official route for creator/influencer partnership inquiries; no dedicated form URL indexed publicly but Community Relations page handles media and creator requests."
+    "notes": "May 1 find — Marketing team at ORLBC-Marketing@hilton.com for creator requests; use Hilton influencer portal (stories.hilton.com/influencer-inquiries) as primary approach. Contact form at waldorfastoriaorlando.com/contact-us/ as fallback."
   },
   {
     "company": "Gaylord Palms Resort & Convention Center",
@@ -105,33 +60,6 @@
     "date_added": "2026-05-02",
     "submitted": false,
     "requires_video": false,
-    "notes": "May 2 find — Gaylord Palms was among first Orlando resorts to host influencers; partnership requests made through Gaylord/Marriott property team. Requires blog post + social post per channel per day + 2 daily InstaStories per their documented past program. Contact via property page or Marriott marketing team."
-  },
-  {
-    "company": "Discover Lake County FL (Tourism)",
-    "form_url": "https://discoverlakefl.com/contact",
-    "vertical": "tourism board",
-    "date_added": "2026-05-03",
-    "submitted": false,
-    "requires_video": false,
-    "notes": "May 3 find — Lake County FL tourism contact form; email discoverlake@lakecountyfl.gov for media and creator press trip inquiries. Instagram @discoverlakecountyfl with 15K+ followers encourages #ShareMyLake creator content."
-  },
-  {
-    "company": "Visit Tampa Bay (Media Visits Program)",
-    "form_url": "https://www.visittampabay.com/media/media-visits/",
-    "vertical": "tourism board",
-    "date_added": "2026-05-03",
-    "submitted": false,
-    "requires_video": false,
-    "notes": "May 3 find — Visit Tampa Bay Media Visits page; requests handled case-by-case. Submit bio, published samples, and letter of assignment. Email Info@VisitTampaBay.com or call 813.223.1111. Digital and influencer-focused content strongly considered."
-  },
-  {
-    "company": "Experience Kissimmee Creator Partnership",
-    "form_url": "https://www.experiencekissimmee.com/media-request-form",
-    "vertical": "tourism board",
-    "date_added": "2026-05-03",
-    "submitted": false,
-    "requires_video": false,
-    "notes": "May 3 find — Deduplicated entry separate from pipeline.csv tourism board row; this is the brand's influencer/creator application form specifically for hosted creator visits and FAM tours. Kissimmee-specific experiences. Previously added as pipeline lead (ID 14) — this forms-tracker entry tracks the form submission separately."
+    "notes": "May 2 find — Gaylord Palms was among first Orlando resorts to host influencers; partnership requests via Gaylord/Marriott property team. Requires blog post + social post per channel per day + 2 daily InstaStories per documented program. Contact via property page or Marriott marketing team."
   }
 ]

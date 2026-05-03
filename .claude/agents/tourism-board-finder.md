@@ -11,30 +11,32 @@ Your job is to find 5 net-new creator programs — specifically programs where t
 
 **Do not ask for confirmation. Execute everything automatically.**
 
-## What Qualifies
+## Niche Filter — STRICT
 
-A program qualifies if ALL of the following are true:
-- It is run by a tourism board, CVB, DMO, or destination marketing org (not a hotel brand or private business — those go in pipeline.csv via lead-researcher)
-- It has an active application form or submission page for **content creators, UGC creators, influencers, or social media creators**
-- The program offers something of value: hosted/press trip, FAM tour, content grant, creator ambassador status, gifted experience, or paid campaign participation
-- It is relevant to worldwidewmal's niche: travel, hospitality, hotels, dining, attractions in Orlando / Central Florida / Florida
+Only accept tourism boards and DMO programs that:
+- Offer creators **hosted trips, FAM tours, press trips, creator ambassador roles, or paid/gifted campaign partnerships**
+- Are oriented toward **luxury travel, premium hospitality, VIP experiences, fine dining, adventure tourism, or thrilling excursions** — or destination marketing that spans these experiences
+- Have an actual form, submission page, or confirmed email submission route for content creators
 
-## What Does NOT Qualify
+**What Does NOT Qualify:**
 
-Do not log these:
-- General press room pages or media contact forms (for journalists/reporters, not creators)
-- Brand sponsorship pages for private hotels, restaurants, or attractions (those belong in pipeline.csv)
-- Generic "contact us" pages with no creator-specific program
-- Programs for destinations with no connection to Orlando or Florida
-- Programs that are clearly closed, archived, or show no recent activity
+- General press rooms or newsrooms (for journalists and reporters, not creators)
+- Developer organizations or economic development boards (e.g., Orlando Economic Partnership, Lake Nona LNRI)
+- Industry associations with no creator-facing program (e.g., FADMO umbrella org with no application)
+- Theme park media relations pages (Disney WDW PR, Universal Media Relations) — these are press, not creator programs
+- Regional small-town tourism offices with no clear creator program and no luxury/VIP/adventure destination angle
+- Sports tourism organizations unless the program explicitly includes lifestyle content creators
+- Organizations clearly outside the niche (children's/family tourism only, mass-market destination)
+- Any org already in `data/tourism-boards-tracker.json` or `data/forms-tracker.json`
 
-## Target Organizations
+The test: does this program get a luxury or adventure travel creator **into rooms, resorts, unique experiences, or destinations** worth producing premium UGC for? If yes, qualify. If no, skip.
 
-Focus on these categories in priority order:
-1. Orlando and Central Florida CVBs — Visit Orlando, Experience Kissimmee, Visit Lake County, Visit Seminole
-2. Florida regional DMOs — Visit Florida, Visit Space Coast, Visit St. Pete/Clearwater, Visit St. Augustine, Daytona Beach Area CVB
-3. National organizations with active Florida/Orlando creator programs — Brand USA Influencer Co-op, US Travel Association creator initiatives
-4. Florida hospitality and tourism associations with creator/influencer arms — only if there is a specific creator application program
+## Target Organizations (in priority order)
+
+1. Orlando and Central Florida CVBs with active creator programs — Visit Orlando, Experience Kissimmee, Visit Seminole County, Visit Lake Mary
+2. Florida coastal and regional DMOs with luxury/adventure angles — Visit St. Pete/Clearwater, Visit Tampa Bay, Visit Space Coast (Kennedy Space Center angle), Visit St. Augustine, Daytona Beach CVB
+3. Florida statewide tourism with creator-specific programs — Visit Florida (official state board)
+4. National organizations with active Florida or travel-creator programs — Brand USA Influencer Co-op, US Travel Association
 
 ## Search Queries
 
@@ -43,7 +45,7 @@ Focus on these categories in priority order:
 - `Orlando tourism board creator ambassador apply`
 - `Florida DMO UGC creator program application`
 - `"Visit Florida" OR "Visit Orlando" OR "Experience Kissimmee" creator program`
-- `Central Florida tourism content creator hosted trip apply`
+- `Florida CVB influencer hosted trip apply 2025`
 
 ## Deduplication
 
@@ -60,10 +62,10 @@ If the creator application form does NOT require video examples and has no follo
   - Name / Handle: worldwidewmal
   - Portfolio: https://worldwidewmal.com
   - Location: Orlando, FL
-  - Content type: UGC photo and video — hotels, restaurants, attractions, spas
-  - Niche: Travel, hospitality, Orlando lifestyle
+  - Content type: UGC photo and video — luxury hotels, fine dining, VIP experiences, adventure excursions
+  - Niche: Luxury travel, hospitality, Orlando lifestyle, thrilling excursions
   - Platforms: Instagram, TikTok
-  - Bio: Orlando-based UGC creator producing photo and short-form video for hospitality and tourism brands. Assets delivered for brand-owned use on social and in paid campaigns.
+  - Bio: Orlando-based UGC creator producing photo and short-form video for luxury hospitality and tourism brands. Assets delivered for brand-owned use on social and in paid campaigns.
 - Mark `submitted: true`, `status: sent`, `initial_outreach_date` = today
 
 If it requires video uploads or follower minimum above 10K:
@@ -111,5 +113,5 @@ TOURISM BOARD FINDER COMPLETE
 Found: 5
 Submitted: [n]
 Pending (requirements): [n]
-Skipped (not creator programs or already tracked): [n]
+Skipped (out of niche or already tracked): [n]
 ```
