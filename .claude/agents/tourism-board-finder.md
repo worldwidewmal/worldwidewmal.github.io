@@ -31,12 +31,24 @@ Only accept tourism boards and DMO programs that:
 
 The test: does this program get a luxury or adventure travel creator **into rooms, resorts, unique experiences, or destinations** worth producing premium UGC for? If yes, qualify. If no, skip.
 
+## Geographic Requirement — STRICT
+
+All programs must be from organizations serving Orlando or within approximately 1 hour's drive of Longwood, FL. Acceptable geography:
+
+| Tier | Examples | Max drive from Longwood |
+|---|---|---|
+| Primary | Orlando, Kissimmee, Seminole County, Lake County, Osceola County, Orange County | 0–40 min |
+| Acceptable | Space Coast (Brevard), Daytona Beach / Volusia County, New Smyrna Beach | ~1 hour (east coast) |
+| Always OK | Florida statewide boards, national DMOs (Brand USA, US Travel) | N/A |
+| NOT acceptable | Tampa Bay, St. Pete/Clearwater, Jacksonville, Palm Beach, Naples, Destin, 30A | 1.5+ hours |
+
+Do NOT add CVBs for destinations more than 1 hour from Longwood, FL regardless of how strong the creator program is.
+
 ## Target Organizations (in priority order)
 
-1. Orlando and Central Florida CVBs with active creator programs — Visit Orlando, Experience Kissimmee, Visit Seminole County, Visit Lake Mary
-2. Florida coastal and regional DMOs with luxury/adventure angles — Visit St. Pete/Clearwater, Visit Tampa Bay, Visit Space Coast (Kennedy Space Center angle), Visit St. Augustine, Daytona Beach CVB
-3. Florida statewide tourism with creator-specific programs — Visit Florida (official state board)
-4. National organizations with active Florida or travel-creator programs — Brand USA Influencer Co-op, US Travel Association
+1. Orlando and Central Florida CVBs — Visit Orlando, Experience Kissimmee, Visit Seminole County, Discover Lake County FL, Visit Volusia/Daytona Beach Area CVB, Visit Space Coast
+2. Florida statewide tourism with creator-specific programs — Visit Florida (official state board)
+3. National organizations with active Florida or travel-creator programs — Brand USA Influencer Co-op, US Travel Association
 
 ## Search Queries
 

@@ -30,7 +30,7 @@
     "submitted": false,
     "requires_video": false,
     "follower_minimum": null,
-    "notes": "Florida's official tourism board — press trip and FAM request forms for qualified content creators and media; individual trips and group FAM tours available."
+    "notes": "Florida's official state tourism board — press trip and FAM request forms for qualified content creators; individual trips and group FAM tours coordinated across the state."
   },
   {
     "org": "Brand USA",
@@ -47,88 +47,44 @@
     "org": "Visit Space Coast",
     "type": "CVB",
     "form_url": "https://www.visitspacecoast.com/press-creator-trip-request-form/",
-    "geography": "Brevard County, FL",
+    "geography": "Brevard County, FL (~55 min east of Longwood)",
     "date_added": "2026-04-30",
     "submitted": false,
     "requires_video": false,
     "follower_minimum": null,
-    "notes": "Dedicated Press & Creator Trip Request Form — requests evaluated on reach, story angle, and timing with 4-week advance notice. Strong adventure/space tourism angle for thrilling content."
+    "notes": "Dedicated Press & Creator Trip Request Form — east coast within range; strong adventure/space tourism angle including Kennedy Space Center access for thrilling content."
   },
   {
-    "org": "Visit St. Pete/Clearwater (VSPC)",
+    "org": "Visit Seminole County",
     "type": "CVB",
-    "form_url": "https://www.visitstpeteclearwater.com/influencers",
-    "geography": "Pinellas County, FL",
-    "date_added": "2026-05-01",
-    "submitted": false,
-    "requires_video": false,
-    "follower_minimum": null,
-    "notes": "Dedicated Influencer Request Form with active hosted-stay program — VSPC runs paid and hosted influencer campaigns for travel creators; strong luxury Gulf Coast hotel and beach content angle."
-  },
-  {
-    "org": "Visit Tampa Bay",
-    "type": "CVB",
-    "form_url": "https://www.visittampabay.com/media/media-visits/",
-    "geography": "Tampa Bay, FL",
-    "date_added": "2026-05-01",
-    "submitted": false,
-    "requires_video": false,
-    "follower_minimum": null,
-    "notes": "Media Visits page handling digital creator and influencer press trip requests — case-by-case review; submit bio and content samples to Info@VisitTampaBay.com for coordination."
-  },
-  {
-    "org": "Discover The Palm Beaches (Palm Beach County CVB)",
-    "type": "CVB",
-    "form_url": "https://www.thepalmbeaches.com/media/visit-request/digital-influencer-visit-request",
-    "geography": "Palm Beach County, FL",
+    "form_url": "https://visitseminole.com/media/",
+    "geography": "Seminole County, FL (includes Longwood)",
     "date_added": "2026-05-04",
     "submitted": false,
     "requires_video": false,
     "follower_minimum": null,
-    "notes": "Dedicated Digital Influencer Visit Request form — offers hosted itineraries, complimentary accommodations and activities, and group FAM tour opportunities for luxury travel creators covering the Palm Beach market."
+    "notes": "Longwood is in Seminole County — this is the home-base CVB. Promotes Sanford, Lake Mary, Altamonte Springs, and Longwood. Media and creator visit requests handled via media page. Confirm direct form URL on site before submitting."
   },
   {
-    "org": "Visit Jacksonville",
-    "type": "DMO",
-    "form_url": "https://www.visitjacksonville.com/media/site-visit-request/social-media-influencer/",
-    "geography": "Jacksonville, FL",
+    "org": "Discover Lake County FL",
+    "type": "County Tourism Office",
+    "form_url": "https://discoverlakefl.com/contact",
+    "geography": "Lake County, FL (~35 min from Longwood)",
     "date_added": "2026-05-04",
     "submitted": false,
     "requires_video": false,
     "follower_minimum": null,
-    "notes": "Dedicated social media influencer and content creator site visit request form — complimentary attraction passes, hosted meals, and itinerary coordination for qualifying creators; 4-week advance notice required."
+    "notes": "Lake County FL Office of Tourism — creator and media press trip requests via discoverlake@lakecountyfl.gov or contact form. Promotes lakeside luxury and outdoor adventure experiences across Lake County."
   },
   {
-    "org": "Naples, Marco Island, Everglades CVB (Paradise Coast)",
+    "org": "Daytona Beach Area CVB",
     "type": "CVB",
-    "form_url": "https://www.paradisecoast.com/media-center/influencer-request-form",
-    "geography": "Naples / Marco Island / Everglades, FL",
-    "date_added": "2026-05-04",
-    "submitted": false,
-    "requires_video": false,
-    "follower_minimum": 10000,
-    "notes": "Influencer request form for the Paradise Coast luxury destination — hosted FAM-style visits covering the upscale Naples and Everglades corridor; strong luxury travel and adventure UGC potential with paid campaign history."
-  },
-  {
-    "org": "Destin-Fort Walton Beach CVB (Emerald Coast)",
-    "type": "CVB",
-    "form_url": "https://www.destinfwb.com/press-trip-requests/",
-    "geography": "Destin / Fort Walton Beach, FL",
+    "form_url": "https://www.daytonabeach.com/media/",
+    "geography": "Daytona Beach / Volusia County, FL (~1 hr east of Longwood)",
     "date_added": "2026-05-04",
     "submitted": false,
     "requires_video": false,
     "follower_minimum": null,
-    "notes": "Press trip request form explicitly open to qualified travel influencers — hosted itineraries, accommodations, and experiences across the Emerald Coast luxury beach corridor; 30-day lead time required."
-  },
-  {
-    "org": "Visit South Walton (30A Beaches)",
-    "type": "Regional Board",
-    "form_url": "https://www.visitsouthwalton.com/partner/content-creator-visit-request/",
-    "geography": "South Walton / 30A, FL",
-    "date_added": "2026-05-04",
-    "submitted": false,
-    "requires_video": false,
-    "follower_minimum": null,
-    "notes": "Visit South Walton's content creator visit request program — TDC runs formal hosted FAM trips and paid campaigns along the 30A luxury beach and lifestyle corridor; high-end boutique resorts and restaurants in scope."
+    "notes": "East coast within the 1-hour range — Daytona Beach Area CVB promotes coastal luxury resorts, motorsports, and adventure tourism. Creator and influencer media visits coordinated through their media team. Confirm current creator form URL at daytonabeach.com/media before submitting."
   }
 ]
