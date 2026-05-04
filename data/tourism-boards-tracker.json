@@ -41,7 +41,7 @@
     "submitted": false,
     "requires_video": false,
     "follower_minimum": null,
-    "notes": "USA's national destination marketing org — Influencer Co-op program pairs creators with destinations; content amplified on VisitTheUSA.com and paid social (7.5MM global followers)."
+    "notes": "Influencer Co-op program pairs creators with US destinations; content amplified on VisitTheUSA.com and paid social (7.5MM global followers) — strong paid collaboration track record."
   },
   {
     "org": "Visit Space Coast",
@@ -52,7 +52,7 @@
     "submitted": false,
     "requires_video": false,
     "follower_minimum": null,
-    "notes": "Brevard County tourism board — dedicated Press & Creator Trip Request Form; requests evaluated on reach, story angle, and timing with 4-week advance notice required."
+    "notes": "Dedicated Press & Creator Trip Request Form — requests evaluated on reach, story angle, and timing with 4-week advance notice. Strong adventure/space tourism angle for thrilling content."
   },
   {
     "org": "Visit St. Pete/Clearwater (VSPC)",
@@ -63,7 +63,7 @@
     "submitted": false,
     "requires_video": false,
     "follower_minimum": null,
-    "notes": "May 1 find — VSPC has a dedicated Influencer Request Form for creators at visitstpeteclearwater.com/influencers. Evaluates on follower count and engagement quality. Strong track record of hosted creator partnerships."
+    "notes": "Dedicated Influencer Request Form with active hosted-stay program — VSPC runs paid and hosted influencer campaigns for travel creators; strong luxury Gulf Coast hotel and beach content angle."
   },
   {
     "org": "Visit Tampa Bay",
@@ -74,6 +74,61 @@
     "submitted": false,
     "requires_video": false,
     "follower_minimum": null,
-    "notes": "May 1 find — Visit Tampa Bay Media Visits page handles digital creator and influencer press trip requests. Case-by-case review. Submit bio and content samples. Email Info@VisitTampaBay.com."
+    "notes": "Media Visits page handling digital creator and influencer press trip requests — case-by-case review; submit bio and content samples to Info@VisitTampaBay.com for coordination."
+  },
+  {
+    "org": "Discover The Palm Beaches (Palm Beach County CVB)",
+    "type": "CVB",
+    "form_url": "https://www.thepalmbeaches.com/media/visit-request/digital-influencer-visit-request",
+    "geography": "Palm Beach County, FL",
+    "date_added": "2026-05-04",
+    "submitted": false,
+    "requires_video": false,
+    "follower_minimum": null,
+    "notes": "Dedicated Digital Influencer Visit Request form — offers hosted itineraries, complimentary accommodations and activities, and group FAM tour opportunities for luxury travel creators covering the Palm Beach market."
+  },
+  {
+    "org": "Visit Jacksonville",
+    "type": "DMO",
+    "form_url": "https://www.visitjacksonville.com/media/site-visit-request/social-media-influencer/",
+    "geography": "Jacksonville, FL",
+    "date_added": "2026-05-04",
+    "submitted": false,
+    "requires_video": false,
+    "follower_minimum": null,
+    "notes": "Dedicated social media influencer and content creator site visit request form — complimentary attraction passes, hosted meals, and itinerary coordination for qualifying creators; 4-week advance notice required."
+  },
+  {
+    "org": "Naples, Marco Island, Everglades CVB (Paradise Coast)",
+    "type": "CVB",
+    "form_url": "https://www.paradisecoast.com/media-center/influencer-request-form",
+    "geography": "Naples / Marco Island / Everglades, FL",
+    "date_added": "2026-05-04",
+    "submitted": false,
+    "requires_video": false,
+    "follower_minimum": 10000,
+    "notes": "Influencer request form for the Paradise Coast luxury destination — hosted FAM-style visits covering the upscale Naples and Everglades corridor; strong luxury travel and adventure UGC potential with paid campaign history."
+  },
+  {
+    "org": "Destin-Fort Walton Beach CVB (Emerald Coast)",
+    "type": "CVB",
+    "form_url": "https://www.destinfwb.com/press-trip-requests/",
+    "geography": "Destin / Fort Walton Beach, FL",
+    "date_added": "2026-05-04",
+    "submitted": false,
+    "requires_video": false,
+    "follower_minimum": null,
+    "notes": "Press trip request form explicitly open to qualified travel influencers — hosted itineraries, accommodations, and experiences across the Emerald Coast luxury beach corridor; 30-day lead time required."
+  },
+  {
+    "org": "Visit South Walton (30A Beaches)",
+    "type": "Regional Board",
+    "form_url": "https://www.visitsouthwalton.com/partner/content-creator-visit-request/",
+    "geography": "South Walton / 30A, FL",
+    "date_added": "2026-05-04",
+    "submitted": false,
+    "requires_video": false,
+    "follower_minimum": null,
+    "notes": "Visit South Walton's content creator visit request program — TDC runs formal hosted FAM trips and paid campaigns along the 30A luxury beach and lifestyle corridor; high-end boutique resorts and restaurants in scope."
   }
 ]
