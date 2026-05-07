@@ -2,3 +2,4 @@ reports/session-log.txt
 node_modules/
 dashboard/node_modules/
 data/manual_actions/*.json
+data/sheets-state.json
