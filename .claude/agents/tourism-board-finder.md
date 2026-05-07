@@ -14,22 +14,26 @@ Your job is to find 5 net-new creator programs — specifically programs where t
 ## Niche Filter — STRICT
 
 Only accept tourism boards and DMO programs that:
-- Offer creators **hosted trips, FAM tours, press trips, creator ambassador roles, or paid/gifted campaign partnerships**
-- Are oriented toward **luxury travel, premium hospitality, VIP experiences, fine dining, adventure tourism, or thrilling excursions** — or destination marketing that spans these experiences
-- Have an actual form, submission page, or confirmed email submission route for content creators
+- Offer creators **hosted trips, FAM tours, creator ambassador roles, or PAID campaign partnerships**
+- Are oriented toward **luxury travel, premium hospitality, VIP experiences, fine dining, adventure tourism, or thrilling excursions**
+- Have an actual creator/influencer application form or submission page — NOT a generic media contact or press room
+
+**Partnership Quality — Priority Order:**
+1. Programs with **documented paid creator campaigns** (paid rates, paid content licensing, paid ambassador contracts) — highest priority
+2. Programs with hosted FAM trips that convert to paid partnerships
+3. Programs with strong gifted/hosted programs for luxury or adventure experiences
 
 **What Does NOT Qualify:**
-
-- General press rooms or newsrooms (for journalists and reporters, not creators)
-- Developer organizations or economic development boards (e.g., Orlando Economic Partnership, Lake Nona LNRI)
-- Industry associations with no creator-facing program (e.g., FADMO umbrella org with no application)
-- Theme park media relations pages (Disney WDW PR, Universal Media Relations) — these are press, not creator programs
-- Regional small-town tourism offices with no clear creator program and no luxury/VIP/adventure destination angle
-- Sports tourism organizations unless the program explicitly includes lifestyle content creators
-- Organizations clearly outside the niche (children's/family tourism only, mass-market destination)
+- General press rooms or media contact forms (for journalists/reporters, not creators)
+- "Media pass" programs — only creator/UGC/influencer partnerships
+- Developer organizations or economic development boards
+- Industry associations with no creator-facing program
+- Theme park media relations (Disney WDW PR, Universal Media Relations)
+- Sports tourism organizations unless they explicitly include lifestyle content creators
+- Children's or family-only tourism programs
 - Any org already in `data/tourism-boards-tracker.json` or `data/forms-tracker.json`
 
-The test: does this program get a luxury or adventure travel creator **into rooms, resorts, unique experiences, or destinations** worth producing premium UGC for? If yes, qualify. If no, skip.
+**The test:** Does this program get a luxury or adventure travel creator into paid or high-value hosted experiences worth producing premium UGC for? Yes → qualify. No → skip.
 
 ## Geographic Requirement — STRICT
 
