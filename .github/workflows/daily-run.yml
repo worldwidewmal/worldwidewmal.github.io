@@ -2,7 +2,7 @@ name: Daily UGC OS Run
 
 on:
   schedule:
-    # 11:00 UTC = 7:00 AM ET (EDT, UTC-4). Adjust to 12:00 UTC in winter (EST, UTC-5).
+    # 11:00 UTC = 7:00 AM ET (EDT, UTC-4). Change to '0 12 * * *' Nov–Mar (EST).
     - cron: '0 11 * * *'
   workflow_dispatch: # allow manual trigger from GitHub Actions UI
 
@@ -12,7 +12,7 @@ permissions:
 jobs:
   daily-run:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 60
 
     steps:
       - name: Checkout repo
@@ -25,22 +25,41 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install dependencies
-        run: |
-          npm install
-          cd dashboard && npm install
+      - name: Install Claude Code CLI
+        run: npm install -g @anthropic-ai/claude-code
 
       - name: Run daily UGC session
         env:
-          ANTHROPIC_API_KEY:  ${{ secrets.ANTHROPIC_API_KEY }}
-          SHEETS_WEBHOOK_URL: ${{ secrets.SHEETS_WEBHOOK_URL }}
-        run: node scripts/daily-runner.js
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          TODAY=$(date +%Y-%m-%d)
+          claude -p "Today is $TODAY. You are the automated daily UGC OS session for worldwidewmal. Read CLAUDE.md in this repo for all operating rules. Execute every phase below fully — do not stop early, do not ask for confirmation.
 
-      - name: Commit pipeline updates
+          PHASE 1 — LEAD RESEARCH
+          Read pipeline.csv and suppression-list.csv. Find 3-5 net-new Orlando hospitality leads (luxury hotels, fine dining, VIP experiences, spas, thrilling adventure). Verify a real email from the official company website only — never guess formats. Add each verified lead to pipeline.csv with status=verified. Leads with no confirmed email go in as status=no-email with fallback_route filled.
+
+          PHASE 2 — OUTREACH DRAFTING
+          For every lead in pipeline.csv with status=verified and no initial_outreach_date: draft an initial outreach email using the correct vertical template from routines/templates/. Save to data/drafts/[id].json as {company, contact_email, subject, body, vertical, contact_layer}. Update pipeline status to drafted.
+
+          PHASE 3 — FOLLOW-UP CHECK
+          For every lead with status=sent or fu1-sent: check if 48+ hours have passed since last contact date. If yes, draft FU1 or FU2 per the vertical template. Save to data/drafts/[id]-fu1.json or fu2.json. Update pipeline status.
+
+          PHASE 4 — FORM FINDING
+          Read data/forms-tracker.json and pipeline.csv. Find 5 net-new luxury hotel, VIP experience, or adventure brand creator/influencer application forms in Orlando. Use WebFetch to visit each URL and confirm the form is live. Add each to data/forms-tracker.json. No duplicates with tourism-boards-tracker.json.
+
+          PHASE 5 — TOURISM BOARD FINDING
+          Read data/tourism-boards-tracker.json. Find 3-5 net-new tourism board or CVB creator programs within 1-hour drive of Longwood FL (Orlando, Kissimmee, Space Coast, Daytona Beach area — NO Tampa, Jacksonville, Palm Beach, Destin). Confirm each program URL is live via WebFetch. Add each to data/tourism-boards-tracker.json. No duplicates with forms-tracker.json.
+
+          PHASE 6 — AUDIT LOG
+          Write a full audit log to reports/audit-log-$TODAY.md: date, pipeline counts by status, leads researched/added/verified, drafts written, forms found, tourism boards found, any errors or blockers, top 3 priorities for next session." \
+            --allowedTools "Read,Write,Edit,Bash,WebFetch" \
+            --dangerouslySkipPermissions
+
+      - name: Commit all updates
         run: |
           git config user.email "ugc-os-bot@worldwidewmal.com"
           git config user.name "UGC OS Bot"
-          git add pipeline.csv data/forms-tracker.json data/tourism-boards-tracker.json reports/ || true
+          git add pipeline.csv data/ reports/ || true
           git diff --staged --quiet && echo "No changes to commit." || \
             git commit -m "Daily run $(date +%Y-%m-%d) — automated pipeline update"
 
