@@ -8,7 +8,7 @@
     "submitted": false,
     "requires_video": false,
     "follower_minimum": null,
-    "notes": "Official Orlando CVB — press trip request form for media and digital creators; influencer campaigns run via TikTok Creator Network and global hosted press trips."
+    "notes": "Official Orlando CVB \u2014 press trip request form for media and digital creators; influencer campaigns run via TikTok Creator Network and global hosted press trips."
   },
   {
     "org": "Experience Kissimmee",
@@ -19,7 +19,7 @@
     "submitted": false,
     "requires_video": false,
     "follower_minimum": null,
-    "notes": "Kissimmee CVB — dedicated media visit request form for FAM trips open to content creators; hosted creators have generated $55M+ estimated media value and 69M+ reach."
+    "notes": "Kissimmee CVB \u2014 dedicated media visit request form for FAM trips open to content creators; hosted creators have generated $55M+ estimated media value and 69M+ reach."
   },
   {
     "org": "Visit Florida",
@@ -30,7 +30,7 @@
     "submitted": false,
     "requires_video": false,
     "follower_minimum": null,
-    "notes": "Florida's official state tourism board — press trip and FAM request forms for qualified content creators; individual trips and group FAM tours coordinated across the state."
+    "notes": "Florida's official state tourism board \u2014 press trip and FAM request forms for qualified content creators; individual trips and group FAM tours coordinated across the state."
   },
   {
     "org": "Brand USA",
@@ -41,7 +41,7 @@
     "submitted": false,
     "requires_video": false,
     "follower_minimum": null,
-    "notes": "Influencer Co-op program pairs creators with US destinations; content amplified on VisitTheUSA.com and paid social (7.5MM global followers) — strong paid collaboration track record."
+    "notes": "Influencer Co-op program pairs creators with US destinations; content amplified on VisitTheUSA.com and paid social (7.5MM global followers) \u2014 strong paid collaboration track record."
   },
   {
     "org": "Visit Space Coast",
@@ -52,7 +52,7 @@
     "submitted": false,
     "requires_video": false,
     "follower_minimum": null,
-    "notes": "Dedicated Press & Creator Trip Request Form — east coast within range; strong adventure/space tourism angle including Kennedy Space Center access for thrilling content."
+    "notes": "Dedicated Press & Creator Trip Request Form \u2014 east coast within range; strong adventure/space tourism angle including Kennedy Space Center access for thrilling content."
   },
   {
     "org": "Visit Seminole County",
@@ -63,7 +63,7 @@
     "submitted": false,
     "requires_video": false,
     "follower_minimum": null,
-    "notes": "Longwood is in Seminole County — this is the home-base CVB. Promotes Sanford, Lake Mary, Altamonte Springs, and Longwood. Media and creator visit requests handled via media page. Confirm direct form URL on site before submitting."
+    "notes": "Longwood is in Seminole County \u2014 this is the home-base CVB. Promotes Sanford, Lake Mary, Altamonte Springs, and Longwood. Media and creator visit requests handled via media page. Confirm direct form URL on site before submitting."
   },
   {
     "org": "Discover Lake County FL",
@@ -74,7 +74,7 @@
     "submitted": false,
     "requires_video": false,
     "follower_minimum": null,
-    "notes": "Lake County FL Office of Tourism — creator and media press trip requests via discoverlake@lakecountyfl.gov or contact form. Promotes lakeside luxury and outdoor adventure experiences across Lake County."
+    "notes": "Lake County FL Office of Tourism \u2014 creator and media press trip requests via discoverlake@lakecountyfl.gov or contact form. Promotes lakeside luxury and outdoor adventure experiences across Lake County."
   },
   {
     "org": "Daytona Beach Area CVB",
@@ -85,6 +85,39 @@
     "submitted": false,
     "requires_video": false,
     "follower_minimum": null,
-    "notes": "East coast within the 1-hour range — Daytona Beach Area CVB promotes coastal luxury resorts, motorsports, and adventure tourism. Creator and influencer media visits coordinated through their media team. Confirm current creator form URL at daytonabeach.com/media before submitting."
+    "notes": "East coast within the 1-hour range \u2014 Daytona Beach Area CVB promotes coastal luxury resorts, motorsports, and adventure tourism. Creator and influencer media visits coordinated through their media team. Confirm current creator form URL at daytonabeach.com/media before submitting."
+  },
+  {
+    "org": "Visit New Smyrna Beach",
+    "type": "CVB",
+    "form_url": "https://www.visitnsbfl.com/media",
+    "geography": "New Smyrna Beach, Volusia County, FL (~55 min from Longwood \u2014 coastal)",
+    "date_added": "2026-05-05",
+    "submitted": false,
+    "requires_video": false,
+    "follower_minimum": null,
+    "notes": "Lonely Planet's Best in Florida destination 2025 \u2014 media page coordinates hosted creator visits covering beach, surf culture, and boutique dining; contact via visitnsbfl.com/contact-us for itinerary coordination."
+  },
+  {
+    "org": "Visit Central Florida (Polk County Tourism)",
+    "type": "CVB",
+    "form_url": "https://visitcentralflorida.org/media-professionals/",
+    "geography": "Polk County (Lakeland / Winter Haven), FL (~50 min from Longwood)",
+    "date_added": "2026-05-06",
+    "submitted": false,
+    "requires_video": false,
+    "follower_minimum": null,
+    "notes": "Polk County DMO offers hosted FAM trips for the Central Florida corridor between Tampa and Orlando \u2014 boutique nature, gardens, and culinary experiences; contact info@visitcentralflorida.org."
+  },
+  {
+    "org": "Visit West Volusia (West Volusia Tourism Advertising Authority)",
+    "type": "DMO",
+    "form_url": "https://www.visitwestvolusia.com/",
+    "geography": "DeLand / Orange City / Deltona, Volusia County, FL (~35 min from Longwood)",
+    "date_added": "2026-05-07",
+    "submitted": false,
+    "requires_video": false,
+    "follower_minimum": null,
+    "notes": "West Volusia DMO covers spring-fed river adventures and Blue Spring State Park manatee season \u2014 hosted media trips in partnership with VISIT FLORIDA; no standalone form, initiate via direct contact through visitwestvolusia.com."
   }
 ]
