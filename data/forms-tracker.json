@@ -61,5 +61,14 @@
     "submitted": false,
     "requires_video": false,
     "notes": "Four Seasons' dedicated UGC creator portal — separate from the press influencer form, specifically targets short-form and UGC creators with hosted stays and paid content deals. Orlando property eligible."
+  },
+  {
+    "company": "Margaritaville Resort Orlando",
+    "form_url": "https://www.margaritavilleresorts.com/margaritaville-resort-orlando/influencer-request-form",
+    "vertical": "resort",
+    "date_added": "2026-05-07",
+    "submitted": false,
+    "requires_video": false,
+    "notes": "Property-specific influencer request form (Kissimmee, FL) — Margaritaville uses a consistent /influencer-request-form path across all 5+ properties. Trade/hosted program; compensation details negotiated per stay. Ideal for resort lifestyle and pool-scene UGC."
   }
 ]

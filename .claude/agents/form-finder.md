@@ -61,9 +61,27 @@ Before logging any form:
 3. Read `suppression-list.csv` — if the company is suppressed, skip it
 4. Never add the same company twice regardless of URL variation
 
+## URL Verification Protocol — REQUIRED BEFORE LOGGING
+
+Hospitality sites use bot protection that returns HTTP 403 to automated fetchers. Use this two-step process:
+
+**Step 1 — Try WebFetch:**
+Attempt `WebFetch` on the form URL. If it loads and shows a creator/influencer application form → confirmed, proceed.
+
+**Step 2 — If WebFetch returns 403, fall back to WebSearch:**
+Run these searches to confirm the URL is indexed and is a creator-specific page (not a generic contact or media page):
+- `site:[domain.com] [path-keyword] influencer OR creator OR UGC`
+- `"[full URL]"` exact URL search
+
+Accept the entry if Google's search results show:
+- The exact URL (or URL pattern match) with a page title confirming it's a creator/influencer form (e.g., "Influencer Request Form", "Creator Partnerships", "UGC Creator Portal")
+- NOT just a generic media page, press room, or contact page title
+
+If neither WebFetch nor WebSearch can confirm the URL leads to an influencer/creator-specific form — **skip the entry entirely.** Do not add unverified URLs.
+
 ## For Each Form Found
 
-1. Visit the form URL and confirm it is live and does not require video uploads
+1. Verify the form URL using the protocol above before logging
 2. If the form does NOT require video examples → submit it immediately using:
    - Name / Handle: worldwidewmal
    - Portfolio: https://worldwidewmal.com

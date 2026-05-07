@@ -53,6 +53,22 @@ Before logging any entry:
 3. Read `pipeline.csv` — skip if org appears by name or domain
 4. Skip any org that is a private brand (hotel, restaurant, spa) — those belong in pipeline.csv
 
+## URL Verification Protocol — REQUIRED BEFORE LOGGING
+
+CVB and DMO sites use bot protection that returns HTTP 403 to automated fetchers. Use this two-step process:
+
+**Step 1 — Try WebFetch:**
+Attempt `WebFetch` on the form URL. If it loads and shows a creator/influencer application form → confirmed, proceed.
+
+**Step 2 — If WebFetch returns 403, fall back to WebSearch:**
+Run these searches to confirm the URL is indexed and is a creator-specific page (not a generic media page):
+- `site:[domain.com] [path-keyword] influencer OR creator`
+- `"[full URL]"` exact URL search
+
+Accept the entry if Google's results show the URL with a title confirming it's a creator/influencer form (e.g., "Influencer Request Form", "Creator Trip Request", "Content Creator Application"). Reject if the title shows a generic media hub, press room, or newsroom.
+
+If neither WebFetch nor WebSearch can confirm the URL — **skip the entry.** Do not add unverified URLs.
+
 ## Submission
 
 If the creator application form does NOT require video examples and has no follower minimum above 10K:
