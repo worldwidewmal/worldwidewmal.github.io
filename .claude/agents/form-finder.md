@@ -32,6 +32,17 @@ A "form" in this context means:
 5. Short-term rental brands — Villatel-style curated resort properties
 6. Event venues — rooftops, garden venues, skyline views
 
+## Direct Form URL Requirement — MANDATORY
+
+The `form_url` logged to `data/forms-tracker.json` MUST be a direct link to the application form itself — NOT:
+- A media page (e.g., `/press-room`, `/media`, `/newsroom`)
+- A homepage or overview page
+- A general contact page (`/contact-us`, `/contact`)
+- A press kit or brand guidelines page
+- Any page where the user must then navigate further to find the form
+
+**Test before logging:** Open the URL. If it shows the form or the application fields directly, it qualifies. If it shows a media hub, press page, or requires additional clicks to reach the actual form, it does NOT qualify. Find the deeper direct URL or skip the entry.
+
 ## Search Strategy
 
 Use web search with these query patterns:

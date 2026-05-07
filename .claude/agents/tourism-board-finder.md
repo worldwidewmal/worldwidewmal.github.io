@@ -69,6 +69,16 @@ If the creator application form does NOT require video examples and has no follo
 If it requires video uploads or follower minimum above 10K:
 - Log as pending: `submitted: false`, note the requirement
 
+## Direct Form URL Requirement — MANDATORY
+
+The `form_url` logged to `data/tourism-boards-tracker.json` MUST be a direct link to the creator/influencer application form itself — NOT:
+- A generic media page (`/media`, `/press`, `/newsroom`, `/media-resources`)
+- A homepage or overview page
+- A generic contact page (`/contact`, `/contact-us`)
+- A media professionals hub or press room that requires further navigation
+
+**Test before logging:** Open the URL. If it shows an actual creator/influencer application form or a FAM trip request form with fillable fields, it qualifies. If it shows a media hub or press page requiring additional clicks, it does NOT qualify. Find the deeper direct URL or skip the entry entirely.
+
 ## File Updates
 
 Append each to `data/tourism-boards-tracker.json`:
