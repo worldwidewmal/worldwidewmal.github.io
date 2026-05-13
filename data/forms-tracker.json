@@ -45,24 +45,6 @@
     "notes": "Hilton's official influencer accommodation request form — covers Signia by Hilton Orlando, Conrad Orlando, Waldorf Astoria Orlando, and all Hilton-family properties. Requests reviewed within 2 weeks of preferred stay."
   },
   {
-    "company": "Waldorf Astoria Orlando",
-    "form_url": "https://www.waldorfastoriaorlando.com/contact-us/",
-    "vertical": "hotel",
-    "date_added": "2026-05-01",
-    "submitted": false,
-    "requires_video": false,
-    "notes": "Creator inquiries via ORLBC-Marketing@hilton.com; contact form at waldorfastoriaorlando.com/contact-us/ as public route. Use Hilton influencer portal (stories.hilton.com/influencer-inquiries) as primary approach — this is a direct property-level backup."
-  },
-  {
-    "company": "Gaylord Palms Resort & Convention Center",
-    "form_url": "https://www.marriott.com/en-us/hotels/mcogp-gaylord-palms-resort-and-convention-center/overview/",
-    "vertical": "hotel/resort",
-    "date_added": "2026-05-02",
-    "submitted": false,
-    "requires_video": false,
-    "notes": "Gaylord Palms was among the first Orlando resorts to run a structured influencer program — partnership requests via Marriott property team. Requires social coverage per day plus InstaStories per documented program. Strong luxury resort UGC opportunity."
-  },
-  {
     "company": "Omni Hotels & Resorts (Omni Orlando Resort at ChampionsGate)",
     "form_url": "https://www.omnihotels.com/forms/influencer",
     "vertical": "hotel",
@@ -79,5 +61,14 @@
     "submitted": false,
     "requires_video": false,
     "notes": "Four Seasons' dedicated UGC creator portal — separate from the press influencer form, specifically targets short-form and UGC creators with hosted stays and paid content deals. Orlando property eligible."
+  },
+  {
+    "company": "Margaritaville Resort Orlando",
+    "form_url": "https://www.margaritavilleresorts.com/margaritaville-resort-orlando/influencer-request-form",
+    "vertical": "resort",
+    "date_added": "2026-05-07",
+    "submitted": false,
+    "requires_video": false,
+    "notes": "Property-specific influencer request form (Kissimmee, FL) — Margaritaville uses a consistent /influencer-request-form path across all 5+ properties. Trade/hosted program; compensation details negotiated per stay. Ideal for resort lifestyle and pool-scene UGC."
   }
 ]
