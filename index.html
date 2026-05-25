@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
 <title>worldwidewmal &mdash; Custom Travel Plans</title>
 <meta name="description" content="Creator-built travel plans. Real routes, real budgets, 25+ countries of firsthand experience."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -38,6 +38,21 @@ svg{display:inline-block;vertical-align:middle;flex-shrink:0}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
 .sk{display:inline-block;width:60px;height:.85em;background:linear-gradient(90deg,rgba(201,160,86,.06) 25%,rgba(201,160,86,.14) 50%,rgba(201,160,86,.06) 75%);background-size:200% 100%;animation:sk 1.4s infinite;border-radius:3px;vertical-align:middle}
 @keyframes sk{from{background-position:200% 0}to{background-position:-200% 0}}
+
+/* ── GLOBAL COSMETIC CLEANUP ────────────────────────────── */
+#snav-tog,#snav-panel,#snav-ov{display:none!important}
+nav{left:0!important}
+#hero{padding-left:64px}
+.btn,.mc-btn,.ugc-price-cta,.ugc-submit,.stk-btn{min-height:44px}
+.mc-btn,.ugc-price-cta{width:100%}
+.pc:hover{transform:perspective(900px) translateY(-2px)!important}
+@media(max-width:768px){
+  .pc:hover,.ugc-who-card:hover,.ugc-portfolio-card:hover{transform:none!important}
+  .btn,.mc-btn,.ugc-price-cta,.ugc-submit{width:100%}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
 
 /* ── MODAL ─────────────────────────────────────────────── */
 #modal-overlay{position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.72);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;padding:24px;;transition:opacity .3s}
@@ -528,7 +543,8 @@ nav{left:38px!important}
 /* MOBILE LANDSCAPE / LARGE PHONE ≤640px */
 @media(max-width:640px){
   nav{left:32px;padding:10px 12px 10px 10px}
-  .nlinks{display:none}
+  .nlinks{display:flex;flex-wrap:wrap;gap:8px}
+  .nlinks a:not(.npill){display:none}
   #snav-tog{top:12px;width:30px;height:30px}
   #hero{padding:0 16px 64px 46px}
   #wyg,#compare,#plan,#who,#countries,#lead,#close,#after,#faq{padding:48px 16px 48px 46px}
@@ -964,6 +980,90 @@ nav{left:38px!important}
 .rv-pre.on{opacity:1;transform:none}
 .sr-pre{opacity:0;transform:translateX(-14px)}
 .sr-pre.on{opacity:1;transform:none}
+
+/* =========================================================
+   RESPONSIVE — phone / tablet / notch-safe
+   ========================================================= */
+
+/* iPhone notch / Dynamic Island */
+@supports (padding: max(0px)) {
+  body { padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right); }
+  nav { padding-left: max(16px, env(safe-area-inset-left)) !important; padding-right: max(16px, env(safe-area-inset-right)) !important; }
+}
+
+/* ---- iPad / large tablets (≤1024px) ---- */
+@media (max-width: 1024px) {
+  #snav-tog { display: none !important; }
+  nav { left: 0 !important; padding-left: 20px !important; padding-right: 20px !important; }
+  #hero { padding-left: 24px !important; padding-right: 24px !important; }
+  section, .section-inner { padding-left: 24px !important; padding-right: 24px !important; }
+  #trust { grid-template-columns: 1fr !important; gap: 32px !important; }
+  #countries { grid-template-columns: repeat(2, 1fr) !important; }
+  .pkg-grid, .pricing-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  #proof { grid-template-columns: repeat(2, 1fr) !important; }
+  #contact { grid-template-columns: 1fr !important; }
+  .frow { grid-template-columns: 1fr !important; }
+}
+
+/* ---- Phones (≤640px) ---- */
+@media (max-width: 640px) {
+  html, body { overflow-x: hidden !important; }
+
+  nav {
+    left: 0 !important;
+    padding: 0 16px !important;
+    height: 56px !important;
+    flex-wrap: nowrap !important;
+    gap: 8px !important;
+  }
+  .nav-logo { font-size: 1rem !important; }
+  .nav-pill { font-size: .7rem !important; padding: 6px 12px !important; }
+
+  #hero {
+    padding: 80px 16px 48px !important;
+    min-height: 80vh !important;
+  }
+  #hero h1 { font-size: clamp(2rem, 8vw, 3rem) !important; line-height: 1.15 !important; }
+  #hero p  { font-size: .95rem !important; }
+
+  section { padding-left: 16px !important; padding-right: 16px !important; }
+
+  #wyg, #gallery, #trips { padding: 64px 16px !important; }
+
+  #proof { grid-template-columns: 1fr !important; gap: 16px !important; }
+
+  #trust { grid-template-columns: 1fr !important; gap: 24px !important; }
+
+  #countries { grid-template-columns: repeat(2, 1fr) !important; gap: 8px !important; }
+
+  .pkg-grid, .pricing-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
+
+  .frow { grid-template-columns: 1fr !important; gap: 24px !important; }
+
+  #contact { grid-template-columns: 1fr !important; gap: 24px !important; }
+
+  #plan h2 { font-size: clamp(1.6rem, 6vw, 2.2rem) !important; }
+
+  footer { padding: 32px 16px !important; flex-direction: column !important; align-items: flex-start !important; gap: 12px !important; }
+  .footer-links { flex-wrap: wrap !important; gap: 8px !important; }
+}
+
+/* ---- Small phones (≤400px) ---- */
+@media (max-width: 400px) {
+  #hero h1 { font-size: 1.8rem !important; }
+  .nav-pill { display: none !important; }
+  nav .nav-logo { flex: 1; }
+}
+
+/* Touch devices — disable hover transforms that break layout */
+@media (hover: none) {
+  .pkg-card:hover, .proof-card:hover, .trust-card:hover { transform: none !important; }
+}
+
+/* Prevent iOS zoom on input focus */
+@media (max-width: 640px) {
+  input, textarea, select { font-size: 16px !important; }
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script src="https://js.stripe.com/v3/" defer></script>
@@ -1070,7 +1170,7 @@ N NAV -->
     <a href="#trust">About</a>
     <a href="#countries">Travels</a>
     <a href="#contact" class="npill">Get In Touch</a>
-    <a href="#" onclick="openUGC();return false;" class="npill" style="margin-left:8px;text-decoration:none;">UGC For Brands</a>
+    <a href="#" onclick="openUGC();return false;" class="npill" style="margin-left:8px;text-decoration:none;">&#8592; Brand Work</a>
   </div>
 </nav>
 
@@ -1084,7 +1184,7 @@ N NAV -->
     <div class="hts">
       <span class="hts-i">Plans from $59</span>
       <span class="hts-i">Delivered within 2&ndash;7 days</span>
-      <span class="hts-i live" id="hcred">46.5K on TikTok</span>
+      <span class="hts-i live" id="hcred">48K+ on TikTok</span>
       <span class="hts-i">No guesswork. No wasted hours.</span>
     </div>
     <div class="hcta">
@@ -1166,114 +1266,6 @@ N NAV -->
 </section>
 
 <!-- PLAN PREVIEW -->
-<section id="preview">
-  <div class="prev-g">
-    <div class="rv">
-      <p class="sec-tag L">What a plan looks like</p>
-      <h2 class="sh">What gets built<br><i>for your trip.</i></h2>
-      <p>Every plan follows the same structure &mdash; so you know exactly what you&rsquo;re getting &mdash; but personalized to your destination, dates, budget, and travel style.</p>
-      <div class="pouts">
-        <div class="po"><div class="po-ic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg></div><div><strong>Save 8&ndash;12 hours of research</strong>Everything you&rsquo;d spend days figuring out &mdash; already done.</div></div>
-        <div class="po"><div class="po-ic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div><div><strong>Avoid tourist trap planning</strong>Picks from someone who&rsquo;s been there recently, not a recycled blog post.</div></div>
-        <div class="po"><div class="po-ic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div><div><strong>Revisions until it fits</strong>Dates changed, budget shifted &mdash; revisions are included in every tier.</div></div>
-        <div class="po"><div class="po-ic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><polyline points="22,12 16,12 14,15 10,15 8,12 2,12"/><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg></div><div><strong>Delivered to your inbox</strong>Your plan arrives by email within your tier&rsquo;s delivery window after purchase.</div></div>
-      </div>
-      <div style="margin-top:22px"><button class="btn btn-g" id="prev-buy-btn" onclick="openModal()">Get Your Plan</button></div>
-    </div>
-    <div class="rv d1">
-      <div class="pdoc">
-        <div class="pd-bar"></div>
-        <div class="pd-hdr">
-          <div class="pd-ey">Italy &nbsp;&middot;&nbsp; Example Plan</div>
-          <div class="pd-tt">Rome &mdash; 5 Days</div>
-          <div class="pd-chips"><span class="pd-chip">5 Nights</span><span class="pd-chip">Solo / Couple</span><span class="pd-chip">Mid-range</span><span class="pd-chip">First-time visitor</span></div>
-        </div>
-        <div class="pd-body">
-          <div class="pd-day"><div class="pd-dn">Day 1</div><div><div class="pd-dt">Arrival &middot; Trastevere</div><div class="pd-dd">Best area for first-timers. Dinner at Da Enzo al 29 &mdash; book ahead. Skip Centro Storico Airbnbs.</div><div class="pd-tags"><span class="pd-tag">Arrival</span><span class="pd-tag">Trastevere</span></div></div></div>
-          <div class="pd-day"><div class="pd-dn">Day 2</div><div><div class="pd-dt">Vatican &amp; Prati</div><div class="pd-dd">Book skip-line 3+ days ahead. Use side entrance for Sistine. Lunch in Prati, not near St. Peter&rsquo;s Square.</div><div class="pd-tags"><span class="pd-tag">Vatican</span><span class="pd-tag">Pre-book required</span></div></div></div>
-          <div class="pd-day"><div class="pd-dn">Day 3</div><div><div class="pd-dt">Ancient Rome</div><div class="pd-dd">One ticket: Forum, Palatine Hill, Colosseum. Start at 8AM. Gelato at Fatamorgana, not the tourist shops.</div><div class="pd-tags"><span class="pd-tag">Colosseum</span><span class="pd-tag">Early start</span></div></div></div>
-          <div class="pd-day"><div class="pd-dn">Day 4</div><div><div class="pd-dt">Day Trip &middot; Ostia Antica</div><div class="pd-dd">35 min by train, &euro;4. Half the tourists, twice the experience of the usual day trips.</div><div class="pd-tags"><span class="pd-tag">Day trip</span><span class="pd-tag">Low crowds</span></div></div></div>
-          <div class="pd-day"><div class="pd-dn">Day 5</div><div><div class="pd-dt">Hidden Rome</div><div class="pd-dd">Aventine Hill keyhole (free). Testaccio Market breakfast. Coffee at Sant&rsquo;Eustachio il Caff&egrave; &mdash; best espresso in the city.</div><div class="pd-tags"><span class="pd-tag">Hidden gems</span><span class="pd-tag">Free spots</span></div></div></div>
-        </div>
-        <div class="pd-bgt">
-          <div class="pd-bl">Budget Breakdown &mdash; 5 Days</div>
-          <div class="pd-br"><span>Accommodation (Trastevere)</span><span>&euro;70&ndash;90/night</span></div>
-          <div class="pd-br"><span>Vatican + skip-line</span><span>&euro;27</span></div>
-          <div class="pd-br"><span>Colosseum/Forum combo</span><span>&euro;16</span></div>
-          <div class="pd-br"><span>Transport (metro + day trip)</span><span>~&euro;20</span></div>
-          <div class="pd-br"><span>Food (mix of trattorias + market)</span><span>&euro;25&ndash;40/day</span></div>
-          <div class="pd-br tot"><span>Estimated total (excl. flights)</span><span>&euro;500&ndash;650</span></div>
-        </div>
-        <div class="pd-cta">
-          <p class="pd-note">This is an <strong>example of the Signature Plan structure.</strong> Your plan is built around your destination, dates, and budget.</p>
-          <button class="btn btn-g" id="pdoc-btn" style="width:100%;justify-content:center;font-size:.71rem;padding:11px" onclick="openModal()">Get Your Custom Plan</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- WHO THIS IS FOR -->
-<section id="who">
-  <div class="rv">
-    <p class="sec-tag L">Who this is for</p>
-    <h2 class="sh">Is this<br><i>for you?</i></h2>
-  </div>
-  <div class="who-g rv d1">
-    <div class="who-c y"><div class="who-ic y"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><polyline points="20,6 9,17 4,12"/></svg></div><div><div class="who-t">First-time visitors</div><div class="who-d">Going somewhere new and want a real framework, not a highlight reel.</div></div></div>
-    <div class="who-c y"><div class="who-ic y"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><polyline points="20,6 9,17 4,12"/></svg></div><div><div class="who-t">Solo travelers</div><div class="who-d">Want structure and confidence without a rigid tour. Build your own pace around a real plan.</div></div></div>
-    <div class="who-c y"><div class="who-ic y"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><polyline points="20,6 9,17 4,12"/></svg></div><div><div class="who-t">Couples &amp; groups</div><div class="who-d">Too many opinions, not enough time. One organized plan everyone can actually follow.</div></div></div>
-    <div class="who-c y"><div class="who-ic y"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><polyline points="20,6 9,17 4,12"/></svg></div><div><div class="who-t">Budget-conscious travelers</div><div class="who-d">Know the actual cost before you arrive. Both budget and mid-range options in every plan.</div></div></div>
-    <div class="who-c"><div class="who-ic n"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="8" y1="12" x2="16" y2="12"/></svg></div><div><div class="who-t" style="color:var(--sub)">Travelers preferring pure spontaneity</div><div class="who-d">The free TikTok content is great for inspiration. The Plan is for people who want execution.</div></div></div>
-    <div class="who-c"><div class="who-ic n"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="8" y1="12" x2="16" y2="12"/></svg></div><div><div class="who-t" style="color:var(--sub)">Destinations outside covered countries</div><div class="who-d">Covered countries are in the Travels section. Anything outside that list will be flagged before payment.</div></div></div>
-  </div>
-</section>
-
-<!-- AFTER PURCHASE -->
-<section id="after">
-  <div class="after-in rv">
-    <p class="sec-tag">What happens after you buy</p>
-    <h2 class="sh">Here&rsquo;s exactly what<br>happens <i>after you buy.</i></h2>
-  </div>
-  <div class="after-steps rv d1">
-    <div class="as"><div class="as-n">01</div><div class="as-ic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><polyline points="22,12 16,12 14,15 10,15 8,12 2,12"/><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg></div><div class="as-t">Plan delivered by email</div><div class="as-d">Your plan arrives at the inbox used at checkout. Starter: 3&ndash;5 days. Signature: 3&ndash;5 days. Concierge: 2&ndash;3 days.</div></div>
-    <div class="as"><div class="as-n">02</div><div class="as-ic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div><div class="as-t">One organized document</div><div class="as-d">Day-by-day itinerary, budget, neighborhood picks, and booking links in one place, optimized for mobile use.</div></div>
-    <div class="as"><div class="as-n">03</div><div class="as-ic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></div><div class="as-t">Request revisions</div><div class="as-d">Reply to the delivery email with changes. Processed within 48 hours. Revisions included per tier.</div></div>
-  </div>
-</section>
-
-<!-- FREE vs THE PLAN -->
-<section id="compare">
-  <div class="rv">
-    <p class="sec-tag L">Why buy instead of free content</p>
-    <h2 class="sh">Most people spend 8&ndash;12 hours planning.<br><i>You don&rsquo;t have to.</i></h2>
-  </div>
-  <div class="cmp-g rv d1">
-    <div class="cmp-col">
-      <div class="cmp-h">Researching it yourself</div>
-      <div class="cmp-rows">
-        <div class="cmp-row"><div class="cmp-ic n"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg></div><div><strong>8&ndash;12 hours minimum</strong>YouTube, blogs, Reddit, TikTok saves &mdash; scattered and often contradictory.</div></div>
-        <div class="cmp-row"><div class="cmp-ic n"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></div><div><strong>Missed spots and poor timing</strong>The best spots rarely show up. The tourist traps always do.</div></div>
-        <div class="cmp-row"><div class="cmp-ic n"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></div><div><strong>Wasted money on bad decisions</strong>Outdated recommendations, overpriced spots, and no context for what actually fits your trip.</div></div>
-        <div class="cmp-row"><div class="cmp-ic n"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="5" cy="6" r="2"/><circle cx="19" cy="18" r="2"/><path d="M5 8v3a2 2 0 0 0 2 2h10a2 2 0 0 1 2 2v1"/><path d="M19 6h-6.5A2.5 2.5 0 0 0 10 8.5V9"/></svg></div><div><strong>Stress you carry the whole trip</strong>Even after all that research, you still land wondering if you&rsquo;re doing it right.</div></div>
-      </div>
-    </div>
-    <div class="cmp-col plan">
-      <div class="cmp-h gold">The Plan</div>
-      <div class="cmp-rows">
-        <div class="cmp-row"><div class="cmp-ic y"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><polyline points="22,12 16,12 14,15 10,15 8,12 2,12"/><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg></div><div><strong>Everything mapped</strong>Your complete trip, organized and sequenced. Nothing to figure out.</div></div>
-        <div class="cmp-row"><div class="cmp-ic y"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><polyline points="20,6 9,17 4,12"/></svg></div><div><strong>Personally vetted picks</strong>Every recommendation was visited recently. No sponsored lists, no filler.</div></div>
-        <div class="cmp-row"><div class="cmp-ic y"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div><div><strong>Current as of recent trips</strong>Built from firsthand experience &mdash; not a blog post from three years ago.</div></div>
-        <div class="cmp-row"><div class="cmp-ic y"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div><div><strong>One organized document</strong>Day-by-day, budget, booking links &mdash; all in one place, ready to use.</div></div>
-      </div>
-    </div>
-  </div>
-  <div style="text-align:center;margin-top:28px" class="rv">
-    <button class="btn btn-g" id="cmp-btn" onclick="openModal()">Get Your Custom Plan</button>
-    <p style="margin-top:9px;font-size:.71rem;color:var(--sub)">Plans from $59 &middot; Delivered within 2&ndash;7 days</p>
-  </div>
-</section>
-
 <!-- PRICING -->
 <section id="plan">
   <div class="plan-hdr rv">
@@ -1284,60 +1276,54 @@ N NAV -->
   <div class="pcards">
     <div class="pc rv">
       <span class="pc-bdg bg-d">Starter</span>
-      <div class="pc-type">Starter Plan</div>
-      <div class="pc-for"><strong>Best for:</strong> Short trips and first-timers who need a clear starting point</div>
-      <div class="pc-tagline">"I just need help getting organized."</div>
-      <div class="pc-pr"><div class="pc-price"><sup>$</sup>59</div><span class="pc-was">$79</span><span class="pc-save">Save $20</span></div>
-      <div class="pc-del">3&ndash;5 day delivery &middot; 1 revision</div>
-      <div class="pc-launch">Intro pricing &mdash; price may increase with demand</div>
+      <div class="pc-type">1 Day Trip</div>
+      <div class="pc-for"><strong>Best for:</strong> Day trips, layovers, or one full day in a city</div>
+      <div class="pc-pr"><div class="pc-price"><sup>$</sup>59</div></div>
       <ul class="pc-list">
-        <li><span class="ic iy"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20,6 9,17 4,12"/></svg></span>1-day or single-location itinerary</li>
-        <li><span class="ic iy"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20,6 9,17 4,12"/></svg></span>Exact route, timing, and key spots</li>
-        <li><span class="ic iy"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20,6 9,17 4,12"/></svg></span>Optimized to maximize one full day</li>
-        <li><span class="ic iy"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20,6 9,17 4,12"/></svg></span>Perfect for layovers or short stays &middot; 1 revision</li>
-        <li class="dim"><span class="ic"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></span><span>Full multi-day itinerary</span></li>
-        <li class="dim"><span class="ic"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></span><span>Restaurant picks + booking links</span></li>
-        <li class="dim"><span class="ic"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></span><span>Backup &amp; weather options</span></li>
+        <li><span class="ic iy"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20,6 9,17 4,12"/></svg></span>1-day route</li>
+        <li><span class="ic iy"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20,6 9,17 4,12"/></svg></span>Best area to start from</li>
+        <li><span class="ic iy"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20,6 9,17 4,12"/></svg></span>Main stops in order</li>
+        <li><span class="ic iy"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20,6 9,17 4,12"/></svg></span>Food and activity ideas</li>
+        <li><span class="ic iy"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20,6 9,17 4,12"/></svg></span>Transport notes</li>
+        <li><span class="ic iy"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20,6 9,17 4,12"/></svg></span>Budget estimate</li>
+        <li><span class="ic iy"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20,6 9,17 4,12"/></svg></span>1 revision</li>
       </ul>
-      <p style="font-size:.72rem;color:rgba(201,160,86,.7);font-style:italic;text-align:center;margin:0 0 10px;line-height:1.5">After you book, I'll send a quick 2-minute form to customize your entire plan to you.</p><div class="avail-badge" style="font-size:.62rem;letter-spacing:.06em;margin-bottom:8px;text-align:center;"></div><button class="pc-cta co" onclick="wwCart('starter')">Plan My Day Trip</button>
+      <button class="pc-cta co" onclick="wwCart('starter')">Plan My Day</button>
     </div>
     <div class="pc feat rv d1">
       <span class="pc-bdg bg-g">Most Popular</span>
-      <div class="pc-type">Core Plan</div>
-      <div class="pc-for"><strong>Best for:</strong> Most travelers who want a full, structured day-by-day plan</div>
-      <div class="pc-tagline">"I want a real personalized itinerary."</div>
-      <div class="pc-pr"><div class="pc-price"><sup>$</sup>89</div><span class="pc-was">$119</span><span class="pc-save">Save $30</span></div>
-      <div class="pc-del">3&ndash;5 day delivery &middot; 2 revisions</div>
-      <div class="pc-launch">Intro pricing &mdash; price may increase with demand</div>
+      <div class="pc-type">2-3 Day Trip</div>
+      <div class="pc-for"><strong>Best for:</strong> Weekend trips or short getaways where you want each day mapped out clearly</div>
+      <div class="pc-pr"><div class="pc-price"><sup>$</sup>89</div></div>
       <ul class="pc-list">
-        <li><span class="ic iy"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20,6 9,17 4,12"/></svg></span>Complete 2&ndash;3 day itinerary</li>
-        <li><span class="ic iy"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20,6 9,17 4,12"/></svg></span>Daily flow, timing &amp; optimized routing</li>
-        <li><span class="ic iy"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20,6 9,17 4,12"/></svg></span>Restaurant &amp; activity picks with booking links</li>
-        <li><span class="ic iy"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20,6 9,17 4,12"/></svg></span>Neighborhood guidance + budget breakdown</li>
-        <li><span class="ic iy"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20,6 9,17 4,12"/></svg></span>Designed to eliminate all guesswork &middot; 2 revisions</li>
-        <li class="dim"><span class="ic"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></span><span>Backup &amp; weather plans</span></li>
-        <li class="dim"><span class="ic"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></span><span>Pre-trip DM check-in</span></li>
+        <li><span class="ic iy"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20,6 9,17 4,12"/></svg></span>Full 2-3 day itinerary</li>
+        <li><span class="ic iy"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20,6 9,17 4,12"/></svg></span>Daily route flow</li>
+        <li><span class="ic iy"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20,6 9,17 4,12"/></svg></span>Stay area suggestions</li>
+        <li><span class="ic iy"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20,6 9,17 4,12"/></svg></span>Restaurant and activity picks</li>
+        <li><span class="ic iy"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20,6 9,17 4,12"/></svg></span>Booking links</li>
+        <li><span class="ic iy"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20,6 9,17 4,12"/></svg></span>Transport between stops</li>
+        <li><span class="ic iy"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20,6 9,17 4,12"/></svg></span>Budget breakdown</li>
+        <li><span class="ic iy"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20,6 9,17 4,12"/></svg></span>2 revisions</li>
       </ul>
-      <p style="font-size:.72rem;color:rgba(201,160,86,.7);font-style:italic;text-align:center;margin:0 0 10px;line-height:1.5">After you book, I'll send a quick 2-minute form to customize your entire plan to you.</p><div class="avail-badge" style="font-size:.62rem;letter-spacing:.06em;margin-bottom:8px;text-align:center;"></div><button class="pc-cta cg" onclick="wwCart('core')">Build My Trip</button>
+      <button class="pc-cta cg" onclick="wwCart('core')">Plan My 2-3 Day Trip</button>
     </div>
     <div class="pc rv d2">
-      <span class="pc-bdg bg-p">Stress-Free Travel</span>
-      <div class="pc-type">Concierge Plan</div>
-      <div class="pc-for"><strong>Best for:</strong> Complex trips, groups, or travelers who want zero guesswork</div>
-      <div class="pc-tagline">"I don&rsquo;t want to second-guess anything."</div>
-      <div class="pc-pr"><div class="pc-price"><sup>$</sup>129</div><span class="pc-was">$149</span><span class="pc-save">Save $20</span></div>
-      <div class="pc-del">2&ndash;3 day delivery &middot; 3 revisions</div>
-      <div class="pc-launch">Intro pricing &mdash; price may increase with demand</div>
-      <div class="pc-hook">Priority turnaround &middot; Backup plans &middot; Most personalized</div>
+      <span class="pc-bdg bg-p">Most Complete</span>
+      <div class="pc-type">4+ Day Trip</div>
+      <div class="pc-for"><strong>Best for:</strong> Longer trips, group trips, multi-city travel, or trips with more moving parts</div>
+      <div class="pc-pr"><div class="pc-price"><sup>$</sup>129</div></div>
       <ul class="pc-list">
-        <li><span class="ic iy"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20,6 9,17 4,12"/></svg></span>Full trip planning &mdash; 4+ days or multi-city</li>
-        <li><span class="ic iy"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20,6 9,17 4,12"/></svg></span>Personalized structure based on your preferences</li>
-        <li><span class="ic iy"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20,6 9,17 4,12"/></svg></span>All booking links, transport &amp; packing notes</li>
-        <li><span class="ic iy"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20,6 9,17 4,12"/></svg></span>Priority support + pre-trip DM check-in</li>
-        <li><span class="ic iy"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20,6 9,17 4,12"/></svg></span>Backup plans for weather &amp; sold-out spots</li>
-        <li><span class="ic iy"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20,6 9,17 4,12"/></svg></span>Built to remove all planning from your plate &middot; 3 revisions</li>
+        <li><span class="ic iy"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20,6 9,17 4,12"/></svg></span>Everything in Core</li>
+        <li><span class="ic iy"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20,6 9,17 4,12"/></svg></span>Full 4+ day itinerary</li>
+        <li><span class="ic iy"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20,6 9,17 4,12"/></svg></span>Multi-day route structure</li>
+        <li><span class="ic iy"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20,6 9,17 4,12"/></svg></span>Stay area guidance</li>
+        <li><span class="ic iy"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20,6 9,17 4,12"/></svg></span>Transport between cities or areas</li>
+        <li><span class="ic iy"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20,6 9,17 4,12"/></svg></span>Backup plans</li>
+        <li><span class="ic iy"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20,6 9,17 4,12"/></svg></span>Packing and prep notes</li>
+        <li><span class="ic iy"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20,6 9,17 4,12"/></svg></span>Priority turnaround</li>
+        <li><span class="ic iy"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20,6 9,17 4,12"/></svg></span>3 revisions</li>
       </ul>
-      <p style="font-size:.72rem;color:rgba(201,160,86,.7);font-style:italic;text-align:center;margin:0 0 10px;line-height:1.5">After you book, I'll send a quick 2-minute form to customize your entire plan to you.</p><div class="avail-badge" style="font-size:.62rem;letter-spacing:.06em;margin-bottom:8px;text-align:center;"></div><button class="pc-cta co" onclick="wwCart('concierge')">Plan My Full Trip</button>
+      <button class="pc-cta co" onclick="wwCart('concierge')">Plan My 4+ Day Trip</button>
     </div>
   </div>
   <div class="plan-trust rv">
@@ -1372,6 +1358,20 @@ N NAV -->
       <a href="https://www.instagram.com/malachi.mh/" target="_blank" class="soc s-ig"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg> Instagram</a>
       <a href="#" onclick="window.location.href='ma'+'ilto:worldwidewmal@gmail.com?subject=Travel%20Plan%20Inquiry';return false;" class="soc s-em" onclick="var u=navigator.userAgent;if(/Android/i.test(u)){window.open('https://mail.google.com/mail/?view=cm&to=worldwidewmal@gmail.com&su=Travel%20Plan%20Inquiry','_blank')}else{window.location.href='mailto:worldwidewmal@gmail.com?subject=Travel%20Plan%20Inquiry'}" href="javascript:void(0)"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> Email</a>
     </div>
+  </div>
+</section>
+
+
+<!-- AFTER PURCHASE -->
+<section id="after">
+  <div class="after-in rv">
+    <p class="sec-tag">What happens after you buy</p>
+    <h2 class="sh">Here&rsquo;s exactly what<br>happens <i>after you buy.</i></h2>
+  </div>
+  <div class="after-steps rv d1">
+    <div class="as"><div class="as-n">01</div><div class="as-ic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><polyline points="22,12 16,12 14,15 10,15 8,12 2,12"/><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg></div><div class="as-t">Plan delivered by email</div><div class="as-d">Your plan arrives at the inbox used at checkout. Starter: 3&ndash;5 days. Signature: 3&ndash;5 days. Concierge: 2&ndash;3 days.</div></div>
+    <div class="as"><div class="as-n">02</div><div class="as-ic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div><div class="as-t">One organized document</div><div class="as-d">Day-by-day itinerary, budget, neighborhood picks, and booking links in one place, optimized for mobile use.</div></div>
+    <div class="as"><div class="as-n">03</div><div class="as-ic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></div><div class="as-t">Request revisions</div><div class="as-d">Reply to the delivery email with changes. Processed within 48 hours. Revisions included per tier.</div></div>
   </div>
 </section>
 
@@ -1936,8 +1936,7 @@ function showWaitlistModal(tier, nextWeek) {
     + '<div style="height:3px;background:linear-gradient(90deg,#f59e0b,#c9a056)"></div>'
     + '<div style="padding:20px 20px 8px;display:flex;align-items:center;justify-content:space-between;">'
     +   '<div style="font-family:Georgia,serif;font-size:1.1rem;font-weight:200;color:#faf8f4">This week is <em style="color:#f59e0b">sold out.</em></div>'
-    +   '<button onclick="closeWaitlistModal()" style="width:28px;height:28px;border-radius:50%;border:1px solid rgba(255,255,255,.1);background:transparent;color:#6b6260;cursor:pointer;font-size:1rem;">&#x2715;</button>
-      <button id="ww-gpay-btn" type="button" style="display:none;align-items:center;gap:12px;width:100%;padding:12px 15px;background:#1c1a24;border:1px solid rgba(66,133,244,.3);border-radius:10px;margin-bottom:8px;box-sizing:border-box;cursor:pointer;transition:border-color .2s;text-align:left"><div style="width:34px;height:34px;border-radius:7px;background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:800;font-size:.7rem;color:#4285F4">G</div><div style="flex:1"><div style="font-size:.8rem;font-weight:600;color:#faf8f4">Google Pay</div><div style="font-size:.63rem;color:#6b6260">Pay with your Google account</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#4285f4" stroke-width="2.2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></button>'
+    +   '<button onclick="closeWaitlistModal()" style="width:28px;height:28px;border-radius:50%;border:1px solid rgba(255,255,255,.1);background:transparent;color:#6b6260;cursor:pointer;font-size:1rem;">&#x2715;</button>'
     + '</div>'
     + '<div style="padding:0 20px 14px;">'
     +   '<div style="background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.2);border-radius:8px;padding:12px 14px;font-size:.78rem;color:rgba(234,229,220,.8);line-height:1.6;">'
@@ -2237,8 +2236,8 @@ document.addEventListener('DOMContentLoaded',function(){
   /* Follower count */
   function fmtN(n){ return n>=1e6?(n/1e6).toFixed(1).replace(/\.0$/,'')+'M':n>=1e3?(n/1e3).toFixed(1).replace(/\.0$/,'')+'K':String(n); }
   function countUp(e,t){ if(!e) return; var s=Date.now(); (function tick(){ var p=Math.min((Date.now()-s)/1200,1),ease=1-Math.pow(1-p,3); e.textContent=fmtN(Math.round(ease*t)); if(p<1) requestAnimationFrame(tick); else e.textContent=fmtN(t); })(); }
-  countUp(el('pf-f'),46500);
-  var hc=el('hcred'); if(hc) hc.textContent='46.5K on TikTok';
+  countUp(el('pf-f'),48000);
+  var hc=el('hcred'); if(hc) hc.textContent='48K+ on TikTok';
 
   /* Toasts */
   var SP=['Someone in <strong style="color:#c9a056">London</strong> just got the Core Plan','Someone in <strong style="color:#c9a056">New York</strong> just got the Concierge Plan','Someone in <strong style="color:#c9a056">Toronto</strong> just got the Starter Plan','Someone in <strong style="color:#c9a056">LA</strong> just got the Core Plan'];
@@ -2292,7 +2291,7 @@ document.addEventListener('DOMContentLoaded',function(){
 </script>
 
 <!-- ══ UGC PAGE STARTS HERE ══════════════════════════════════════════════ -->
-<div id="ugc-page" style="display:none">
+<div id="ugc-page">
 
 <style>
 /* UGC PAGE STYLES */
@@ -2303,21 +2302,16 @@ document.addEventListener('DOMContentLoaded',function(){
 .ugc-back:hover{color:#c9a056}
 
 /* HERO */
-.ugc-hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;background:#08080a}
-.ugc-hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#0d0b0f 0%,#1a1520 50%,#0d0b0f 100%)}
-.ugc-hero-overlay{position:absolute;inset:0;background:rgba(8,8,10,.55)}
-.ugc-hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,160,86,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,160,86,.04) 1px,transparent 1px);background-size:60px 60px;animation:gridMove 20s linear infinite}
-@keyframes gridMove{0%{background-position:0 0}100%{background-position:60px 60px}}
-.ugc-hero-content{position:relative;z-index:2;max-width:820px;padding:0 24px}
-.ugc-tag{display:inline-block;font-size:.62rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#c9a056;background:rgba(201,160,86,.08);border:1px solid rgba(201,160,86,.2);padding:4px 14px;border-radius:100px;margin-bottom:24px}
-.ugc-h1{font-family:Georgia,serif;font-size:clamp(2rem,5.5vw,3.6rem);font-weight:400;line-height:1.12;color:#faf8f4;margin-bottom:20px}
-.ugc-h1 em{color:#c9a056;font-style:italic}
-.ugc-sub{font-size:clamp(.9rem,2vw,1.05rem);color:rgba(234,229,220,.65);line-height:1.7;max-width:580px;margin:0 auto 36px}
-.ugc-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.ugc-btn-primary{padding:13px 28px;background:#c9a056;color:#08080a;border:none;border-radius:100px;font-family:inherit;font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background .2s,transform .15s;text-decoration:none}
-.ugc-btn-primary:hover{background:#e8c47a;transform:translateY(-1px)}
-.ugc-btn-outline{padding:13px 28px;background:transparent;color:#faf8f4;border:1px solid rgba(255,255,255,.2);border-radius:100px;font-family:inherit;font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:border-color .2s;text-decoration:none}
-.ugc-btn-outline:hover{border-color:#c9a056;color:#c9a056}
+.ugc-hero{padding:80px 52px 68px;background:var(--bg);border-bottom:1px solid var(--b1)}
+.ugc-hero-content{max-width:1080px;margin:0 auto}
+.ugc-hero-text{max-width:780px}
+.ugc-h1{font-family:var(--ff);font-size:clamp(2.4rem,5vw,4.2rem);font-weight:200;line-height:1.08;color:var(--cream);margin-bottom:18px}
+.ugc-hero-sub{font-size:1rem;line-height:1.7;color:var(--sub);max-width:620px;margin-bottom:28px}
+.ugc-proof-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px}
+.ugc-proof-card{padding:16px 18px;border:1px solid var(--b2);border-radius:8px;background:rgba(255,255,255,.02)}
+.ugc-proof-num{font-family:var(--ff);font-size:1.8rem;font-weight:200;color:var(--gold);line-height:1;margin-bottom:4px}
+.ugc-proof-label{font-size:.72rem;color:var(--sub);line-height:1.3}
+.ugc-hero-cta{display:flex;gap:10px;flex-wrap:wrap}
 
 /* TRUST STRIP */
 .ugc-trust{background:#0d0c10;border-top:1px solid rgba(201,160,86,.08);border-bottom:1px solid rgba(201,160,86,.08);padding:18px 24px;overflow:hidden}
@@ -2327,7 +2321,17 @@ document.addEventListener('DOMContentLoaded',function(){
 
 /* SECTIONS */
 .ugc-section{padding:88px 52px;border-bottom:1px solid rgba(255,255,255,.05);max-width:1100px;margin:0 auto}
-@media(max-width:768px){.ugc-section{padding:60px 20px}}
+@media(max-width:768px){
+  .ugc-section{padding:60px 20px}
+  .ugc-hero{padding:64px 24px 52px}
+  .ugc-h1{font-size:2rem;margin-bottom:14px}
+  .ugc-hero-sub{font-size:.92rem;margin-bottom:24px}
+  .ugc-proof-cards{grid-template-columns:repeat(2,1fr);gap:10px}
+  .ugc-proof-num{font-size:1.5rem}
+  .ugc-proof-label{font-size:.68rem}
+  .ugc-hero-cta{flex-direction:column}
+  .ugc-hero-cta .btn{width:100%;justify-content:center}
+}
 .ugc-sec-tag{font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(201,160,86,.6);margin-bottom:10px}
 .ugc-h2{font-family:Georgia,serif;font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:400;color:#faf8f4;margin-bottom:16px;line-height:1.2}
 .ugc-h2 em{color:#c9a056;font-style:italic}
@@ -2339,60 +2343,53 @@ document.addEventListener('DOMContentLoaded',function(){
 .ugc-pull-quote{font-family:Georgia,serif;font-size:clamp(1.5rem,3vw,2rem);font-weight:400;line-height:1.35;color:#faf8f4;font-style:italic;border-left:2px solid #c9a056;padding-left:28px}
 
 /* WHO CARDS */
-.ugc-who-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:40px}
-@media(max-width:768px){.ugc-who-grid{grid-template-columns:1fr}}
+.ugc-who-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:40px}
+@media(max-width:968px){.ugc-who-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.ugc-who-grid{grid-template-columns:1fr}}
 .ugc-who-card{background:#0f0e12;border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:22px 20px;transition:border-color .2s}
 .ugc-who-card:hover{border-color:rgba(201,160,86,.3)}
-.ugc-who-card:last-child:nth-child(3n-1){grid-column:2}
-@media(max-width:768px){.ugc-who-card:last-child:nth-child(3n-1){grid-column:1}}
 .ugc-who-title{font-size:.78rem;font-weight:700;letter-spacing:.06em;color:#faf8f4;margin-bottom:8px}
 .ugc-who-desc{font-size:.75rem;color:rgba(234,229,220,.55);line-height:1.6}
 
 /* PORTFOLIO TABS */
-/* PORTFOLIO CAROUSEL */
-.pf-carousel-wrap{position:relative;margin-top:0}
-.pf-carousel{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:8px;cursor:grab;scroll-behavior:smooth}
-.pf-carousel:active{cursor:grabbing}
-.pf-carousel::-webkit-scrollbar{height:3px}
-.pf-carousel::-webkit-scrollbar-track{background:rgba(255,255,255,.04);border-radius:2px}
-.pf-carousel::-webkit-scrollbar-thumb{background:rgba(201,160,86,.35);border-radius:2px}
-.pf-card{flex:0 0 300px;scroll-snap-align:start;border-radius:12px;overflow:hidden;background:#0f0e12;border:1px solid rgba(255,255,255,.07);transition:border-color .2s,transform .2s;position:relative}
-.pf-card:hover{border-color:rgba(201,160,86,.35);transform:translateY(-2px)}
-.pf-video-wrap{position:relative;aspect-ratio:9/16;background:#111;overflow:hidden}
-.pf-video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
-.pf-video-thumb{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;cursor:pointer;background:#0d0c10;transition:opacity .3s;overflow:hidden}
-.pf-video-thumb.hidden{opacity:0;pointer-events:none}
-.pf-thumb-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .35s}
-.pf-card:hover .pf-thumb-img{transform:scale(1.04)}
-.pf-thumb-emoji{font-size:3rem;position:absolute;opacity:.25}
-.pf-thumb-grad{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.1) 0%,transparent 35%,rgba(8,7,10,.75) 100%)}
-.pf-play-btn{width:56px;height:56px;border-radius:50%;background:rgba(201,160,86,.92);display:flex;align-items:center;justify-content:center;transition:transform .2s,background .2s;box-shadow:0 4px 24px rgba(0,0,0,.6);position:relative;z-index:2}
-.pf-card:hover .pf-play-btn{transform:scale(1.1);background:#c9a056}
-.pf-info{padding:14px 16px}
-.pf-label{font-size:.76rem;font-weight:600;color:#faf8f4;margin-bottom:4px}
-.pf-desc{font-size:.65rem;color:rgba(201,160,86,.7);letter-spacing:.04em;line-height:1.5}
-.pf-watch-hint{font-size:.58rem;color:#4a4747;margin-top:5px;letter-spacing:.06em;text-transform:uppercase}
-.pf-carousel-nav{display:flex;align-items:center;justify-content:space-between;margin-top:20px}
-.pf-nav-dots{display:flex;gap:6px;align-items:center}
-.pf-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.15);transition:all .25s;cursor:pointer;border:none;padding:0}
-.pf-dot.active{background:#c9a056;width:20px;border-radius:3px}
-.pf-nav-arrows{display:flex;gap:8px}
-.pf-arrow{width:36px;height:36px;border-radius:50%;border:1px solid rgba(201,160,86,.25);background:transparent;color:#c9a056;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;font-size:1rem}
-.pf-arrow:hover{background:rgba(201,160,86,.1);border-color:rgba(201,160,86,.5)}
-.pf-arrow:disabled{opacity:.25;cursor:default}
-.pf-loading{padding:60px;text-align:center;color:#6b6260;font-size:.78rem;width:100%}
-@media(max-width:640px){.pf-card{flex:0 0 220px}}
+.ugc-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:28px;border-bottom:1px solid rgba(255,255,255,.07);padding-bottom:12px}
+.ugc-tab{padding:8px 18px;background:transparent;border:1px solid transparent;border-radius:100px;font-family:inherit;font-size:.68rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:#6b6260;cursor:pointer;transition:all .18s}
+.ugc-tab.active{background:rgba(201,160,86,.1);border-color:rgba(201,160,86,.3);color:#c9a056}
+.ugc-tab-content{display:none}
+.ugc-tab-content.active{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:640px){.ugc-tab-content.active{grid-template-columns:1fr 1fr}}
 
 /* REEL CARDS */
-/* legacy ugc-reel kept for compat */
-.ugc-reel{display:none}
+.ugc-reel{border-radius:10px;overflow:hidden;background:#0f0e12;border:1px solid rgba(255,255,255,.07);cursor:pointer;transition:transform .2s,border-color .2s;text-decoration:none;display:block}
+.ugc-reel:hover{transform:translateY(-3px);border-color:rgba(201,160,86,.3)}
+.ugc-reel-thumb{position:relative;aspect-ratio:9/16;background:#1a1820;overflow:hidden}
+.ugc-reel-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.ugc-reel:hover .ugc-reel-thumb img{transform:scale(1.04)}
+.ugc-reel-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(8,8,10,.3)}
+.ugc-reel-play svg{opacity:.85;transition:opacity .2s;filter:drop-shadow(0 2px 8px rgba(0,0,0,.5))}
+.ugc-reel:hover .ugc-reel-play svg{opacity:1}
+.ugc-reel-badge{position:absolute;top:8px;right:8px;background:rgba(201,160,86,.9);color:#08080a;font-size:.52rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:100px}
+.ugc-reel-info{padding:12px 14px}
+.ugc-reel-label{font-size:.72rem;font-weight:600;color:#faf8f4;margin-bottom:3px}
+.ugc-reel-format{font-size:.62rem;color:rgba(201,160,86,.7);letter-spacing:.06em;text-transform:uppercase}
+.ugc-reel-ig{font-size:.58rem;color:#6b6260;margin-top:4px}
 
 /* DELIVERABLES */
-.ugc-del-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:40px}
+.ugc-del-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:40px}
 @media(max-width:768px){.ugc-del-grid{grid-template-columns:1fr}}
 .ugc-del-card{background:#0f0e12;border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:22px 20px}
 .ugc-del-title{font-size:.78rem;font-weight:700;color:#c9a056;margin-bottom:8px;letter-spacing:.04em}
 .ugc-del-desc{font-size:.75rem;color:rgba(234,229,220,.55);line-height:1.65}
+
+/* PORTFOLIO */
+.ugc-portfolio-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:40px}
+@media(max-width:768px){.ugc-portfolio-grid{grid-template-columns:1fr}}
+.ugc-portfolio-card{background:#0f0e12;border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:24px 20px;transition:border-color .2s}
+.ugc-portfolio-card:hover{border-color:rgba(201,160,86,.3)}
+.ugc-portfolio-title{font-size:.85rem;font-weight:700;color:#faf8f4;margin-bottom:8px;letter-spacing:.04em}
+.ugc-portfolio-desc{font-size:.76rem;color:rgba(234,229,220,.6);line-height:1.65}
+.ugc-proof-block{margin-top:44px;padding:24px;background:#0f0e12;border:1px solid rgba(201,160,86,.15);border-radius:10px}
+.ugc-proof-title{font-size:.75rem;font-weight:700;color:#c9a056;margin-bottom:8px;letter-spacing:.06em;text-transform:uppercase}
 
 /* PRICING */
 .ugc-price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:40px}
@@ -2400,10 +2397,11 @@ document.addEventListener('DOMContentLoaded',function(){
 .ugc-price-card{background:#0f0e12;border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:28px 22px;position:relative;transition:border-color .2s}
 .ugc-price-card.featured{border-color:rgba(201,160,86,.4);background:rgba(201,160,86,.04)}
 .ugc-price-card.featured::before{content:'MOST POPULAR';position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:#c9a056;color:#08080a;font-size:.52rem;font-weight:800;letter-spacing:.12em;padding:3px 12px;border-radius:0 0 8px 8px}
-.ugc-price-tier{font-size:.6rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#c9a056;margin-bottom:8px}
+.ugc-price-tier{font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#c9a056;margin-bottom:8px}
 .ugc-price-amount{font-family:Georgia,serif;font-size:2.2rem;font-weight:400;color:#faf8f4;margin-bottom:4px}
 .ugc-price-amount span{font-size:1rem;color:#6b6260}
 .ugc-price-desc{font-size:.72rem;color:#6b6260;line-height:1.5;margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,.07)}
+.ugc-price-for{font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(201,160,86,.7);margin-bottom:6px;margin-top:12px}
 .ugc-price-features{list-style:none;margin-bottom:22px}
 .ugc-price-features li{font-size:.74rem;color:rgba(234,229,220,.7);padding:5px 0;display:flex;align-items:center;gap:8px}
 .ugc-price-features li::before{content:'✓';color:#c9a056;font-weight:700;flex-shrink:0}
@@ -2412,6 +2410,15 @@ document.addEventListener('DOMContentLoaded',function(){
 .ugc-price-card:not(.featured) .ugc-price-cta{background:transparent;color:#c9a056;border:1px solid rgba(201,160,86,.35)}
 .ugc-addons{text-align:center;font-size:.72rem;color:#6b6260;margin-top:18px;line-height:1.8}
 .ugc-addons strong{color:rgba(234,229,220,.6)}
+
+/* ADD-ONS GRID */
+.ugc-addons-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:40px}
+@media(max-width:968px){.ugc-addons-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:640px){.ugc-addons-grid{grid-template-columns:repeat(2,1fr)}}
+.ugc-addon-card{background:#0f0e12;border:1px solid rgba(255,255,255,.07);border-radius:8px;padding:18px 16px;text-align:center}
+.ugc-addon-title{font-size:.7rem;font-weight:700;color:#faf8f4;margin-bottom:8px}
+.ugc-addon-price{font-family:Georgia,serif;font-size:1.3rem;color:#c9a056;margin-bottom:8px}
+.ugc-addon-desc{font-size:.68rem;color:#6b6260;line-height:1.5}
 
 /* PROCESS */
 .ugc-process{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:44px;position:relative}
@@ -2467,8 +2474,63 @@ document.addEventListener('DOMContentLoaded',function(){
 .ugc-form-success{display:none;text-align:center;padding:28px;background:rgba(42,107,69,.1);border:1px solid rgba(42,107,69,.3);border-radius:10px;color:#6fcf97;font-size:.88rem}
 
 /* FOOTER */
-.ugc-footer{text-align:center;padding:28px;font-size:.65rem;color:#4a4848;letter-spacing:.06em}
+.ugc-footer{text-align:center;padding:0;font-size:.65rem;color:#4a4848;letter-spacing:.06em;background:#08080a;border-top:1px solid rgba(255,255,255,.05)}
 .ugc-footer a{color:#c9a056;text-decoration:none}
+.ugc-footer a:hover{color:#e8c47a}
+@media(max-width:768px){
+  .ugc-footer > div:first-child{grid-template-columns:1fr!important;gap:32px}
+}
+
+/* =========================================================
+   UGC PAGE — RESPONSIVE
+   ========================================================= */
+@media (max-width: 1024px) {
+  .ugc-nav { padding: 0 20px !important; }
+  .ugc-hero { padding: 100px 24px 60px !important; }
+  .ugc-section { padding: 60px 24px !important; }
+  .ugc-grid, .ugc-pricing-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .ugc-contact-grid { grid-template-columns: 1fr !important; }
+}
+
+@media (max-width: 640px) {
+  .ugc-nav {
+    padding: 0 16px !important;
+    height: 60px !important;
+    flex-wrap: nowrap !important;
+    gap: 8px !important;
+  }
+  .ugc-nav-logo { font-size: .95rem !important; }
+  .ugc-nav-travel, .ugc-back { font-size: .7rem !important; padding: 6px 12px !important; }
+
+  .ugc-hero { padding: 90px 16px 48px !important; min-height: 80svh !important; }
+  .ugc-hero h1 { font-size: clamp(2rem, 8vw, 3rem) !important; line-height: 1.15 !important; }
+  .ugc-hero p  { font-size: .95rem !important; }
+  .ugc-hero-cta { flex-direction: column !important; gap: 12px !important; align-items: flex-start !important; }
+  .ugc-cta-primary, .ugc-cta-secondary { width: 100% !important; text-align: center !important; }
+
+  .ugc-section { padding: 48px 16px !important; }
+  .ugc-section h2 { font-size: clamp(1.6rem, 6vw, 2.2rem) !important; }
+
+  .ugc-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
+  .ugc-pricing-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
+  .ugc-contact-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .ugc-portfolio-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 8px !important; }
+  .ugc-process-steps { flex-direction: column !important; gap: 24px !important; }
+
+  .ugc-footer { padding: 32px 16px !important; flex-direction: column !important; align-items: flex-start !important; gap: 16px !important; }
+  .ugc-footer-links { flex-wrap: wrap !important; gap: 8px !important; }
+
+  input, textarea, select { font-size: 16px !important; }
+}
+
+@media (max-width: 400px) {
+  .ugc-hero h1 { font-size: 1.8rem !important; }
+  .ugc-nav-travel { display: none !important; }
+}
+
+@media (hover: none) {
+  .ugc-card:hover, .ugc-pricing-card:hover, .ugc-portfolio-item:hover { transform: none !important; }
+}
 </style>
 
 <!-- NAV -->
@@ -2478,22 +2540,44 @@ document.addEventListener('DOMContentLoaded',function(){
     <a href="#ugc-portfolio" class="ugc-back" style="text-decoration:none">Portfolio</a>
     <a href="#ugc-pricing" class="ugc-back" style="text-decoration:none">Pricing</a>
     <a href="#ugc-contact" class="ugc-back" onclick="" style="text-decoration:none">Contact</a>
-    <button class="ugc-back" onclick="closeUGC()">← Back to Site</button>
+    <button class="ugc-nav-travel" onclick="closeUGC()" style="padding:7px 18px;border:1px solid #c9a056;color:#c9a056;border-radius:100px;background:transparent;cursor:pointer;font-family:inherit;font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;transition:all .2s" onmouseover="this.style.background='#c9a056';this.style.color='#09080a'" onmouseout="this.style.background='transparent';this.style.color='#c9a056'">Travel Plans &#8594;</button>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="ugc-hero">
-  <div class="ugc-hero-bg"></div>
-  <div class="ugc-hero-grid"></div>
-  <div class="ugc-hero-overlay"></div>
   <div class="ugc-hero-content">
-    <div class="ugc-tag">UGC Creator — Travel & Luxury</div>
-    <h1 class="ugc-h1">Luxury Travel UGC For Hotels, Tours, <em>And Experience Brands</em></h1>
-    <p class="ugc-sub">Short-form video content built for ads, booking pages, and social — filmed on location across luxury stays, private experiences, and adventure excursions.</p>
-    <div class="ugc-btns">
-      <a href="#ugc-contact" class="ugc-btn-primary" onclick="document.getElementById('ugc-contact').scrollIntoView({behavior:'smooth'});return false;">Request a Quote</a>
-      <a href="#ugc-portfolio" class="ugc-btn-outline">View Work</a>
+    <div class="ugc-hero-text">
+      <div class="hey">
+        <div class="hel"></div>
+        <div class="het">Brand Partnerships</div>
+      </div>
+      <h1 class="ugc-h1">Travel UGC That Makes Experiences Feel Bookable</h1>
+      <p class="ugc-hero-sub">I create cinematic, experience-led short-form content for hotels, tours, restaurants, wellness brands, and travel experiences that want content that feels natural, not like an ad.</p>
+      
+      <div class="ugc-proof-cards">
+        <div class="ugc-proof-card">
+          <div class="ugc-proof-num">48K+</div>
+          <div class="ugc-proof-label">TikTok community</div>
+        </div>
+        <div class="ugc-proof-card">
+          <div class="ugc-proof-num">6.5K+</div>
+          <div class="ugc-proof-label">Instagram audience</div>
+        </div>
+        <div class="ugc-proof-card">
+          <div class="ugc-proof-num">25+</div>
+          <div class="ugc-proof-label">countries traveled</div>
+        </div>
+        <div class="ugc-proof-card">
+          <div class="ugc-proof-num">1M+</div>
+          <div class="ugc-proof-label">video reach</div>
+        </div>
+      </div>
+
+      <div class="ugc-hero-cta">
+        <button class="btn btn-g" onclick="document.getElementById('ugc-pricing').scrollIntoView({behavior:'smooth'})">Request UGC Package</button>
+        <button class="btn btn-o" onclick="document.getElementById('ugc-portfolio').scrollIntoView({behavior:'smooth'})">View Past Work</button>
+      </div>
     </div>
   </div>
 </section>
@@ -2515,136 +2599,54 @@ document.addEventListener('DOMContentLoaded',function(){
   </div>
 </div>
 
-<!-- PORTFOLIO -->
-<div id="ugc-portfolio" style="padding:88px 52px;border-bottom:1px solid rgba(255,255,255,.05)">
-<div style="max-width:1160px;margin:0 auto">
-  <p class="ugc-sec-tag">Portfolio</p>
-  <h2 class="ugc-h2">Content Built For <em>Conversion, Not Just Views</em></h2>
-  <p class="ugc-p" style="margin-bottom:32px">Hook-first edits optimized for ads, booking pages, and paid social. Click play to watch.</p>
-
-  <div class="pf-carousel-wrap">
-    <div class="pf-carousel" id="pf-carousel">
-      <!-- Static cards — thumbnails from Drive, video plays natively on click -->
-      <div class="pf-card">
-        <div class="pf-video-wrap" id="pf-vwrap-0">
-          <div class="pf-video-thumb" id="pf-thumb-0" onclick="pfPlay(0,'1WtEoCFJLh5k8C4vPlF5CAHm5evlUKf7v')" style="background:#0d2535">
-            <img class="pf-thumb-img" src="https://drive.google.com/thumbnail?id=1WtEoCFJLh5k8C4vPlF5CAHm5evlUKf7v&sz=w400&no-redirect" alt="" loading="lazy" onerror="this.style.display='none'">
-            <div class="pf-thumb-grad"></div>
-            <div class="pf-play-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="#09080a"><polygon points="6,3 20,12 6,21"/></svg></div>
-          </div>
-        </div>
-        <div class="pf-info"><div class="pf-label">Boat Day — Milos Greece</div><div class="pf-desc">One of those experiences that actually feels like a movie.</div><div class="pf-watch-hint">▶ Watch Full Video</div></div>
-      </div>
-      <div class="pf-card">
-        <div class="pf-video-wrap" id="pf-vwrap-1">
-          <div class="pf-video-thumb" id="pf-thumb-1" onclick="pfPlay(1,'1mrhash8O5x1CwGRWi-DG9hEetoZUEyZr')" style="background:#0d1a2a">
-            <img class="pf-thumb-img" src="https://drive.google.com/thumbnail?id=1mrhash8O5x1CwGRWi-DG9hEetoZUEyZr&sz=w400&no-redirect" alt="" loading="lazy" onerror="this.style.display='none'">
-            <div class="pf-thumb-grad"></div>
-            <div class="pf-play-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="#09080a"><polygon points="6,3 20,12 6,21"/></svg></div>
-          </div>
-        </div>
-        <div class="pf-info"><div class="pf-label">Scorpion Watersports — Sharm El Sheikh</div><div class="pf-desc">Diving and watersports content built for booking pages and paid social.</div><div class="pf-watch-hint">▶ Watch Full Video</div></div>
-      </div>
-      <div class="pf-card">
-        <div class="pf-video-wrap" id="pf-vwrap-2">
-          <div class="pf-video-thumb" id="pf-thumb-2" onclick="pfPlay(2,'15hJA-HGIhV9l7zN4XaItJzVPNumAigQv')" style="background:#1f1205">
-            <img class="pf-thumb-img" src="https://drive.google.com/thumbnail?id=15hJA-HGIhV9l7zN4XaItJzVPNumAigQv&sz=w400&no-redirect" alt="" loading="lazy" onerror="this.style.display='none'">
-            <div class="pf-thumb-grad"></div>
-            <div class="pf-play-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="#09080a"><polygon points="6,3 20,12 6,21"/></svg></div>
-          </div>
-        </div>
-        <div class="pf-info"><div class="pf-label">Desert Safari — Sharm El Sheikh Egypt</div><div class="pf-desc">Quad biking through Sinai. Camel ride. Bedouin dinner under the stars.</div><div class="pf-watch-hint">▶ Watch Full Video</div></div>
-      </div>
-      <div class="pf-card">
-        <div class="pf-video-wrap" id="pf-vwrap-3">
-          <div class="pf-video-thumb" id="pf-thumb-3" onclick="pfPlay(3,'1v_5k09sl9tDVxgiIbkraXjhrG62MQONM')" style="background:#1a1205">
-            <img class="pf-thumb-img" src="https://drive.google.com/thumbnail?id=1v_5k09sl9tDVxgiIbkraXjhrG62MQONM&sz=w400&no-redirect" alt="" loading="lazy" onerror="this.style.display='none'">
-            <div class="pf-thumb-grad"></div>
-            <div class="pf-play-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="#09080a"><polygon points="6,3 20,12 6,21"/></svg></div>
-          </div>
-        </div>
-        <div class="pf-info"><div class="pf-label">Razzouk Tattoo — Jerusalem Israel</div><div class="pf-desc">Tattooed in the oldest tattoo shop in the world. A 700-year-old Jerusalem Cross.</div><div class="pf-watch-hint">▶ Watch Full Video</div></div>
-      </div>
-      <div class="pf-card">
-        <div class="pf-video-wrap" id="pf-vwrap-4">
-          <div class="pf-video-thumb" id="pf-thumb-4" onclick="pfPlay(4,'15JoEnYR94c0tcFCEACaE0Ph-3WzLzs6K')" style="background:#2a1a0d">
-            <img class="pf-thumb-img" src="https://drive.google.com/thumbnail?id=15JoEnYR94c0tcFCEACaE0Ph-3WzLzs6K&sz=w400&no-redirect" alt="" loading="lazy" onerror="this.style.display='none'">
-            <div class="pf-thumb-grad"></div>
-            <div class="pf-play-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="#09080a"><polygon points="6,3 20,12 6,21"/></svg></div>
-          </div>
-        </div>
-        <div class="pf-info"><div class="pf-label">Petra — Jordan</div><div class="pf-desc">Carved into stone over two thousand years ago. Some places don't feel real.</div><div class="pf-watch-hint">▶ Watch Full Video</div></div>
-      </div>
-      <div class="pf-card">
-        <div class="pf-video-wrap" id="pf-vwrap-5">
-          <div class="pf-video-thumb" id="pf-thumb-5" onclick="pfPlay(5,'1amRRnS4qOUdcR2PKm-mvZ-AZhfccs6G3')" style="background:#0d1f0d">
-            <img class="pf-thumb-img" src="https://drive.google.com/thumbnail?id=1amRRnS4qOUdcR2PKm-mvZ-AZhfccs6G3&sz=w400&no-redirect" alt="" loading="lazy" onerror="this.style.display='none'">
-            <div class="pf-thumb-grad"></div>
-            <div class="pf-play-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="#09080a"><polygon points="6,3 20,12 6,21"/></svg></div>
-          </div>
-        </div>
-        <div class="pf-info"><div class="pf-label">Albania — Exclusive Access</div><div class="pf-desc">This is your sign to do more than just the beaches in Albania.</div><div class="pf-watch-hint">▶ Watch Full Video</div></div>
-      </div>
-    </div>
-    <div class="pf-carousel-nav">
-      <div class="pf-nav-dots" id="pf-dots"></div>
-      <div class="pf-nav-arrows">
-        <button class="pf-arrow" id="pf-prev" onclick="pfScroll(-1)" aria-label="Previous">&#8592;</button>
-        <button class="pf-arrow" id="pf-next" onclick="pfScroll(1)" aria-label="Next">&#8594;</button>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-
-<!-- WHY ME — 3 cards -->
-<div style="padding:88px 52px;border-bottom:1px solid rgba(255,255,255,.05);background:#0a090d">
-<div style="max-width:1100px;margin:0 auto">
-  <p class="ugc-sec-tag">Why brands book me</p>
-  <h2 class="ugc-h2">The Difference Between <em>Generic UGC And This</em></h2>
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:40px">
-    <div class="ugc-del-card">
-      <div class="ugc-del-title">Access</div>
-      <div class="ugc-del-desc">I film premium and hard-to-access experiences most creators never get near — private charters, exclusive dinners, after-hours locations.</div>
-    </div>
-    <div class="ugc-del-card">
-      <div class="ugc-del-title">Conversion-Minded Creative</div>
-      <div class="ugc-del-desc">Content built for booking pages, ads, reels, and travel intent — not just organic views. Hook-first edits your team can run immediately.</div>
-    </div>
-    <div class="ugc-del-card">
-      <div class="ugc-del-title">Travel Niche Fit</div>
-      <div class="ugc-del-desc">Luxury stays, private experiences, water activities, and destination-led campaigns. I live in this world — your brand fits naturally.</div>
-    </div>
-  </div>
-</div>
-</div>
-
 <!-- WHO I CREATE FOR -->
 <div style="padding:88px 52px;border-bottom:1px solid rgba(255,255,255,.05)">
 <div style="max-width:1100px;margin:0 auto">
-  <p class="ugc-sec-tag">Who I create for</p>
-  <h2 class="ugc-h2">Brands That Work In The <em>World I Already Live In</em></h2>
-  <div class="ugc-who-grid" style="margin-top:40px">
-    <div class="ugc-who-card"><div class="ugc-who-title">Luxury Hotels &amp; Boutique Stays</div><div class="ugc-who-desc">Properties that want cinematic, on-brand short-form content for social and paid ads without a production crew.</div></div>
-    <div class="ugc-who-card"><div class="ugc-who-title">Tour &amp; Excursion Operators</div><div class="ugc-who-desc">Boat tours, scuba, food tours, and guided local experiences that need footage converting browsers into bookers.</div></div>
-    <div class="ugc-who-card"><div class="ugc-who-title">Private &amp; VIP Experiences</div><div class="ugc-who-desc">Brands offering exclusive access, private charters, after-hours events, or elevated guest moments.</div></div>
-    <div class="ugc-who-card"><div class="ugc-who-title">Tourism Boards &amp; Destination Campaigns</div><div class="ugc-who-desc">Destination marketers running creator collaboration programs for regional and international tourism.</div></div>
+  <p class="ugc-sec-tag">Built For</p>
+  <h2 class="ugc-h2">Built For Travel Brands That Need Content People Actually Feel</h2>
+  <div class="ugc-who-grid">
+    <div class="ugc-who-card">
+      <div class="ugc-who-title">Hotels And Stays</div>
+      <div class="ugc-who-desc">Room tours, lifestyle shots, guest experience content, aesthetic property storytelling.</div>
+    </div>
+    <div class="ugc-who-card">
+      <div class="ugc-who-title">Tours And Private Experiences</div>
+      <div class="ugc-who-desc">Boat days, food tours, cultural experiences, after-hours access, and VIP activities.</div>
+    </div>
+    <div class="ugc-who-card">
+      <div class="ugc-who-title">Adventure And Water Activities</div>
+      <div class="ugc-who-desc">Scuba, parasailing, ATV, hiking, desert safaris, and high-motion experiences.</div>
+    </div>
+    <div class="ugc-who-card">
+      <div class="ugc-who-title">Restaurants And Wellness Brands</div>
+      <div class="ugc-who-desc">Luxury meals, spa, fitness, recovery, and lifestyle-based content.</div>
+    </div>
   </div>
 </div>
 </div>
 
-<!-- DELIVERABLES -->
-<div style="padding:88px 52px;border-bottom:1px solid rgba(255,255,255,.05);background:#0a090d">
+<!-- WHAT I CREATE -->
+<div style="padding:88px 52px;border-bottom:1px solid rgba(255,255,255,.05)">
 <div style="max-width:1100px;margin:0 auto">
-  <p class="ugc-sec-tag">What brands get</p>
-  <h2 class="ugc-h2">Everything You Need To <em>Run, Test, And Convert</em></h2>
+  <p class="ugc-sec-tag">What You Can Use The Content For</p>
+  <h2 class="ugc-h2">What You Can Use The Content For</h2>
   <div class="ugc-del-grid">
-    <div class="ugc-del-card"><div class="ugc-del-title">Short-Form UGC Videos</div><div class="ugc-del-desc">15–45 second vertical videos built for TikTok, Reels, and paid social. Multiple hook variations per video so your team can A/B test.</div></div>
-    <div class="ugc-del-card"><div class="ugc-del-title">Ad-Ready Creative</div><div class="ugc-del-desc">Hook-first edits optimized for conversion, not just views. Delivered ready to upload to Meta, TikTok Ads, or Google.</div></div>
-    <div class="ugc-del-card"><div class="ugc-del-title">Raw Footage</div><div class="ugc-del-desc">Full unedited clips your team can cut, repurpose, and use across campaigns long-term.</div></div>
-    <div class="ugc-del-card"><div class="ugc-del-title">On-Camera &amp; Voiceover</div><div class="ugc-del-desc">Talking-head testimonial style or voiceover-led B-roll depending on brief.</div></div>
-    <div class="ugc-del-card"><div class="ugc-del-title">Photo Stills</div><div class="ugc-del-desc">Lifestyle and editorial images for booking pages, email headers, and web use.</div></div>
-    <div class="ugc-del-card"><div class="ugc-del-title">Usage Rights &amp; Licensing</div><div class="ugc-del-desc">30, 60, or 90-day paid usage options available. Content is yours to run anywhere.</div></div>
+    <div class="ugc-del-card">
+      <div class="ugc-del-title">Organic Social Content</div>
+      <div class="ugc-del-desc">TikTok, Instagram Reels, short-form storytelling, and creator-style posts.</div>
+    </div>
+    <div class="ugc-del-card">
+      <div class="ugc-del-title">Paid Ad Creative</div>
+      <div class="ugc-del-desc">UGC-style videos built for hooks, retention, and conversion.</div>
+    </div>
+    <div class="ugc-del-card">
+      <div class="ugc-del-title">Website And Booking Assets</div>
+      <div class="ugc-del-desc">Visual content that can live on your website, landing pages, and booking funnels.</div>
+    </div>
+    <div class="ugc-del-card">
+      <div class="ugc-del-title">Brand Storytelling</div>
+      <div class="ugc-del-desc">Content that makes the experience feel real, personal, and worth booking.</div>
+    </div>
   </div>
 </div>
 </div>
@@ -2652,297 +2654,452 @@ document.addEventListener('DOMContentLoaded',function(){
 <!-- PRICING -->
 <div id="ugc-pricing" style="padding:88px 52px;border-bottom:1px solid rgba(255,255,255,.05)">
 <div style="max-width:1100px;margin:0 auto">
-  <p class="ugc-sec-tag">Packages</p>
-  <h2 class="ugc-h2">Pick Your Package. <em>Let's Build.</em></h2>
+  <p class="ugc-sec-tag">UGC Packages</p>
+  <h2 class="ugc-h2">UGC Packages</h2>
+  <p class="ugc-p" style="margin-bottom:32px">Choose the package based on how much content your brand needs. Posting to my audience is separate from UGC delivery.</p>
+  
   <div class="ugc-price-grid">
     <div class="ugc-price-card">
-      <div class="ugc-price-tier">Starter Test</div>
-      <div class="ugc-price-amount">$775<span>/package</span></div>
-      <div class="ugc-price-desc">Best for brands testing UGC for the first time</div>
+      <div class="ugc-price-tier">Starter UGC</div>
+      <div class="ugc-price-amount">From $275</div>
+      <div class="ugc-price-desc">1 UGC Video</div>
+      <div class="ugc-price-for">Best for:</div>
+      <p class="ugc-p" style="font-size:.74rem;margin-bottom:14px">Brands that need one strong content piece to test.</p>
+      <div class="ugc-price-for">Includes:</div>
       <ul class="ugc-price-features">
-        <li>3 short-form videos (15-45 sec)</li>
-        <li>1 hook variation per video</li>
-        <li>1 revision per video</li>
-        <li>30-day organic brand usage</li>
-        <li>Platform-ready delivery</li>
+        <li>1 edited vertical video</li>
+        <li>Hook-focused structure</li>
+        <li>Natural creator-style delivery</li>
+        <li>Basic usage included</li>
       </ul>
-      <button class="ugc-price-cta" onclick="document.getElementById('ugc-contact').scrollIntoView({behavior:'smooth'})">Request a Quote</button>
+      <button class="ugc-price-cta" onclick="document.getElementById('ugc-contact').scrollIntoView({behavior:'smooth'})">Request 1 Video</button>
     </div>
+    
     <div class="ugc-price-card featured">
-      <div class="ugc-price-tier">Growth</div>
-      <div class="ugc-price-amount">$1,250<span>/package</span></div>
-      <div class="ugc-price-desc">Best for brands ready to run and test ad creative</div>
+      <div class="ugc-price-tier">Premium Travel UGC</div>
+      <div class="ugc-price-amount">From $425</div>
+      <div class="ugc-price-desc">Premium UGC Video</div>
+      <div class="ugc-price-for">Best for:</div>
+      <p class="ugc-p" style="font-size:.74rem;margin-bottom:14px">Hotels, tours, and luxury experiences that need higher-end storytelling.</p>
+      <div class="ugc-price-for">Includes:</div>
       <ul class="ugc-price-features">
-        <li>5 short-form videos</li>
-        <li>2 hook variations per video</li>
-        <li>1 revision per video</li>
-        <li>30-day organic brand usage</li>
-        <li>Ad-ready edits included</li>
+        <li>Cinematic short-form video</li>
+        <li>Experience-led storytelling</li>
+        <li>Stronger hook and pacing</li>
+        <li>Premium editing direction</li>
+        <li>Brand-ready delivery</li>
       </ul>
-      <button class="ugc-price-cta" onclick="document.getElementById('ugc-contact').scrollIntoView({behavior:'smooth'})">Request a Quote</button>
+      <button class="ugc-price-cta" onclick="document.getElementById('ugc-contact').scrollIntoView({behavior:'smooth'})">Request Premium UGC</button>
+    </div>
+    
+    <div class="ugc-price-card">
+      <div class="ugc-price-tier">Content Bundle</div>
+      <div class="ugc-price-amount">From $775</div>
+      <div class="ugc-price-desc">3 Video Package</div>
+      <div class="ugc-price-for">Best for:</div>
+      <p class="ugc-p" style="font-size:.74rem;margin-bottom:14px">Brands that want multiple angles from one experience.</p>
+      <div class="ugc-price-for">Includes:</div>
+      <ul class="ugc-price-features">
+        <li>3 edited vertical videos</li>
+        <li>Different hooks and concepts</li>
+        <li>Organic social ready</li>
+        <li>Stronger testing potential</li>
+        <li>Best value for most brands</li>
+      </ul>
+      <button class="ugc-price-cta" onclick="document.getElementById('ugc-contact').scrollIntoView({behavior:'smooth'})">Request A Bundle</button>
+    </div>
+  </div>
+  
+  <p class="ugc-addons" style="margin-top:24px">Larger packages available: 5 videos from $1,250. Edited photo sets from $175.</p>
+</div>
+</div>
+
+<!-- POSTING RATES -->
+<div style="padding:88px 52px;border-bottom:1px solid rgba(255,255,255,.05);background:#0a090d">
+<div style="max-width:1100px;margin:0 auto">
+  <p class="ugc-sec-tag">Posting Rates</p>
+  <h2 class="ugc-h2">Want The Content Posted On My Channels?</h2>
+  <p class="ugc-p" style="margin-bottom:32px">UGC is content delivered for your brand to use. Posting is separate and includes access to my audience.</p>
+  
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;max-width:700px;margin:0 auto">
+    <div class="ugc-price-card">
+      <div class="ugc-price-tier">TikTok Posting</div>
+      <div class="ugc-price-amount">From $900</div>
     </div>
     <div class="ugc-price-card">
-      <div class="ugc-price-tier">Campaign</div>
-      <div class="ugc-price-amount">$2,250<span>+ custom</span></div>
-      <div class="ugc-price-desc">Best for full campaign builds and multi-angle content</div>
-      <ul class="ugc-price-features">
-        <li>8-10 short-form videos</li>
-        <li>Multi-angle campaign build</li>
-        <li>Custom hook strategy</li>
-        <li>Custom quoting based on scope</li>
-        <li>Ideal for retainer relationships</li>
-      </ul>
-      <button class="ugc-price-cta" onclick="document.getElementById('ugc-contact').scrollIntoView({behavior:'smooth'})">Request a Quote</button>
+      <div class="ugc-price-tier">Instagram Reel Posting</div>
+      <div class="ugc-price-amount">From $250</div>
     </div>
   </div>
-  <!-- ADD-ONS -->
-  <div style="margin-top:32px;padding:24px 28px;background:#0a090d;border:1px solid rgba(201,160,86,.15);border-radius:12px">
-    <div style="font-size:.62rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#c9a056;margin-bottom:16px">Add-Ons &amp; Licensing — Quoted Separately</div>
-    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px">
-      <div style="text-align:center"><div style="font-size:.78rem;font-weight:600;color:#faf8f4">From $75</div><div style="font-size:.62rem;color:#6b6260;margin-top:3px">Paid Usage Rights</div></div>
-      <div style="text-align:center"><div style="font-size:.78rem;font-weight:600;color:#faf8f4">From $100</div><div style="font-size:.62rem;color:#6b6260;margin-top:3px">Whitelisting / Spark Ads</div></div>
-      <div style="text-align:center"><div style="font-size:.78rem;font-weight:600;color:#faf8f4">From $75</div><div style="font-size:.62rem;color:#6b6260;margin-top:3px">Raw Footage</div></div>
-      <div style="text-align:center"><div style="font-size:.78rem;font-weight:600;color:#faf8f4">+25% of fee</div><div style="font-size:.62rem;color:#6b6260;margin-top:3px">Exclusivity</div></div>
-      <div style="text-align:center"><div style="font-size:.78rem;font-weight:600;color:#faf8f4">+20% of fee</div><div style="font-size:.62rem;color:#6b6260;margin-top:3px">Rush Turnaround</div></div>
+  
+  <div style="text-align:center;margin-top:28px">
+    <button class="btn btn-o" onclick="document.getElementById('ugc-contact').scrollIntoView({behavior:'smooth'})">Ask About Posting</button>
+  </div>
+</div>
+</div>
+
+<!-- ADD-ONS -->
+<div style="padding:88px 52px;border-bottom:1px solid rgba(255,255,255,.05)">
+<div style="max-width:1100px;margin:0 auto">
+  <p class="ugc-sec-tag">Add-Ons</p>
+  <h2 class="ugc-h2">Add-Ons</h2>
+  
+  <div class="ugc-addons-grid">
+    <div class="ugc-addon-card">
+      <div class="ugc-addon-title">Paid Usage</div>
+      <div class="ugc-addon-price">From $75</div>
+      <div class="ugc-addon-desc">For brands using the content in ads.</div>
+    </div>
+    <div class="ugc-addon-card">
+      <div class="ugc-addon-title">Whitelisting</div>
+      <div class="ugc-addon-price">From $100</div>
+      <div class="ugc-addon-desc">For paid ads run through my profile.</div>
+    </div>
+    <div class="ugc-addon-card">
+      <div class="ugc-addon-title">Raw Footage</div>
+      <div class="ugc-addon-price">From $75</div>
+      <div class="ugc-addon-desc">For brands that want extra footage from the shoot.</div>
+    </div>
+    <div class="ugc-addon-card">
+      <div class="ugc-addon-title">Exclusivity</div>
+      <div class="ugc-addon-price">From 25%</div>
+      <div class="ugc-addon-desc">For category or destination exclusivity.</div>
+    </div>
+    <div class="ugc-addon-card">
+      <div class="ugc-addon-title">Rush Turnaround</div>
+      <div class="ugc-addon-price">From 20%</div>
+      <div class="ugc-addon-desc">For faster delivery windows.</div>
     </div>
   </div>
 </div>
 </div>
+
+<!-- PORTFOLIO -->
+<div id="ugc-portfolio" style="padding:88px 52px;border-bottom:1px solid rgba(255,255,255,.05)">
+<div style="max-width:1100px;margin:0 auto">
+  <p class="ugc-sec-tag">Past Brand Work</p>
+  <h2 class="ugc-h2">Past Brand Work</h2>
+  
+  <div id="ugc-reel-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-bottom:32px"></div>
+  
+  <div class="ugc-proof-block">
+    <div class="ugc-proof-title">Creator Performance</div>
+    <p class="ugc-p">Videos reaching 1M+ views. Strong performance across Holy Land, Egypt, Greece, and experience-based travel content. Audience built around travel curiosity, culture, budget, adventure, and immersive experiences.</p>
+  </div>
+  
+</div>
+</div>
+
+<style>
+.ugc-reel{display:block;border-radius:10px;overflow:hidden;background:#0f0e12;border:1px solid rgba(255,255,255,.07);cursor:pointer;transition:transform .2s,border-color .2s;text-decoration:none}
+.ugc-reel:hover{transform:translateY(-3px);border-color:rgba(201,160,86,.3)}
+.ugc-reel-thumb{position:relative;width:100%;padding-top:177.78%;background:#1a1820;overflow:hidden}
+.ugc-reel-thumb img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.ugc-reel:hover .ugc-reel-thumb img{transform:scale(1.04)}
+.ugc-reel-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(8,8,10,.3)}
+.ugc-reel-play-btn{width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.12);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;transition:all .2s}
+.ugc-reel:hover .ugc-reel-play-btn{background:rgba(255,255,255,.2);transform:scale(1.1)}
+.ugc-reel-badge{position:absolute;top:8px;right:8px;background:rgba(201,160,86,.9);color:#08080a;font-size:.52rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:100px}
+.ugc-reel-info{padding:12px 14px}
+.ugc-reel-label{font-size:.72rem;font-weight:600;color:#faf8f4;margin-bottom:3px}
+.ugc-reel-sub{font-size:.6rem;color:rgba(201,160,86,.7);letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+.ugc-reel-desc{font-size:.62rem;color:rgba(234,229,220,.5);line-height:1.55;margin-top:4px}
+/* YouTube modal */
+#yt-modal{position:fixed;inset:0;z-index:10000;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.88);backdrop-filter:blur(6px)}
+#yt-modal.open{display:flex}
+#yt-modal-inner{position:relative;width:min(420px,92vw);aspect-ratio:9/16}
+#yt-modal-inner iframe{width:100%;height:100%;border:none;border-radius:10px}
+#yt-modal-close{position:absolute;top:-36px;right:0;background:none;border:none;color:#faf8f4;font-size:1.4rem;cursor:pointer;line-height:1;padding:4px 8px;opacity:.7;transition:opacity .15s}
+#yt-modal-close:hover{opacity:1}
+</style>
+
+<script>
+// ── Static YouTube portfolio ─────────────────────────────────────────────────
+// To add a video: append one object to ugcPortfolio below.
+// To swap a thumbnail for a local file: change the thumbnail value to e.g.
+//   "assets/portfolio/ifly-orlando.webp"
+var ugcPortfolio = [
+  {
+    title: "GetYourGuide x iFly Orlando",
+    brand: "GetYourGuide",
+    category: "Adventure UGC",
+    badge: "Adventure",
+    videoId: "ocZHG7KTXU8",
+    shortsUrl: "https://youtube.com/shorts/ocZHG7KTXU8",
+    embedUrl: "https://www.youtube.com/embed/ocZHG7KTXU8?autoplay=1&rel=0",
+    thumbnail: "https://img.youtube.com/vi/ocZHG7KTXU8/hqdefault.jpg",
+    description: "First-person experience content built around movement, reaction, and the feeling of booking the activity."
+  },
+  {
+    title: "Premium Experience UGC",
+    brand: "Travel Experience",
+    category: "Travel UGC",
+    badge: "Travel",
+    videoId: "fu_TCPHQcXs",
+    shortsUrl: "https://youtube.com/shorts/fu_TCPHQcXs",
+    embedUrl: "https://www.youtube.com/embed/fu_TCPHQcXs?autoplay=1&rel=0",
+    thumbnail: "https://img.youtube.com/vi/fu_TCPHQcXs/hqdefault.jpg",
+    description: "Guest-perspective content designed to make the experience feel real, polished, and bookable."
+  },
+  {
+    title: "Cinematic Travel Story",
+    brand: "Destination Content",
+    category: "Destination UGC",
+    badge: "Destination",
+    videoId: "ME-ONV02HCw",
+    shortsUrl: "https://youtube.com/shorts/ME-ONV02HCw",
+    embedUrl: "https://www.youtube.com/embed/ME-ONV02HCw?autoplay=1&rel=0",
+    thumbnail: "https://img.youtube.com/vi/ME-ONV02HCw/hqdefault.jpg",
+    description: "Short-form travel storytelling built for attention, atmosphere, and brand-facing use."
+  },
+  {
+    title: "Experience-Led UGC",
+    brand: "Travel Brand",
+    category: "Hospitality & Experience",
+    badge: "Experience",
+    videoId: "aC6AAWmQfeo",
+    shortsUrl: "https://youtube.com/shorts/aC6AAWmQfeo",
+    embedUrl: "https://www.youtube.com/embed/aC6AAWmQfeo?autoplay=1&rel=0",
+    thumbnail: "https://img.youtube.com/vi/aC6AAWmQfeo/hqdefault.jpg",
+    description: "Organic short-form content showing the experience from the perspective of a real guest."
+  },
+  {
+    title: "Adventure Travel UGC",
+    brand: "Adventure Experience",
+    category: "Adventure & Travel",
+    badge: "Adventure",
+    videoId: "3LQAMWbV8f4",
+    shortsUrl: "https://youtube.com/shorts/3LQAMWbV8f4",
+    embedUrl: "https://www.youtube.com/embed/3LQAMWbV8f4?autoplay=1&rel=0",
+    thumbnail: "https://img.youtube.com/vi/3LQAMWbV8f4/hqdefault.jpg",
+    description: "Fast-moving travel content made to capture attention and make the activity feel worth booking."
+  }
+];
+
+// ── YouTube modal ────────────────────────────────────────────────────────────
+function openYTModal(embedUrl, shortsUrl) {
+  var isTouchOnly = window.matchMedia('(hover:none)').matches;
+  if (isTouchOnly) { window.open(shortsUrl, '_blank', 'noopener'); return; }
+  var modal = document.getElementById('yt-modal');
+  var iframe = document.getElementById('yt-modal-iframe');
+  if (!modal || !iframe) return;
+  iframe.src = embedUrl;
+  modal.classList.add('open');
+  document.getElementById('ugc-page').style.overflow = 'hidden';
+}
+
+function closeYTModal() {
+  var modal = document.getElementById('yt-modal');
+  var iframe = document.getElementById('yt-modal-iframe');
+  if (!modal || !iframe) return;
+  iframe.src = '';
+  modal.classList.remove('open');
+  document.getElementById('ugc-page').style.overflow = '';
+}
+
+// ── Render portfolio cards ───────────────────────────────────────────────────
+function renderUGCPortfolio() {
+  var grid = document.getElementById('ugc-reel-grid');
+  if (!grid) return;
+  grid.innerHTML = ugcPortfolio.map(function(v) {
+    return '<div class="ugc-reel" data-embed="' + v.embedUrl + '" data-shorts="' + v.shortsUrl + '">'
+      + '<div class="ugc-reel-thumb">'
+      + '<img src="' + v.thumbnail + '" alt="' + v.title + '" loading="lazy" width="360" height="640">'
+      + '<div class="ugc-reel-play"><div class="ugc-reel-play-btn">'
+      + '<svg width="18" height="18" viewBox="0 0 24 24" fill="white" aria-hidden="true"><polygon points="7,4 20,12 7,20"/></svg>'
+      + '</div></div>'
+      + '<div class="ugc-reel-badge">' + v.badge + '</div>'
+      + '</div>'
+      + '<div class="ugc-reel-info">'
+      + '<div class="ugc-reel-label">' + v.title + '</div>'
+      + '<div class="ugc-reel-sub">' + v.category + '</div>'
+      + '<div class="ugc-reel-desc">' + v.description + '</div>'
+      + '</div></div>';
+  }).join('');
+
+  grid.addEventListener('click', function(e) {
+    var card = e.target.closest('.ugc-reel');
+    if (card) openYTModal(card.dataset.embed, card.dataset.shorts);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  renderUGCPortfolio();
+
+  // Modal close button
+  var closeBtn = document.getElementById('yt-modal-close');
+  if (closeBtn) closeBtn.addEventListener('click', closeYTModal);
+
+  // Click outside video closes modal
+  var modal = document.getElementById('yt-modal');
+  if (modal) {
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) closeYTModal();
+    });
+  }
+
+  // Escape key closes modal
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeYTModal();
+  });
+});
+</script>
 
 <!-- PROCESS -->
 <div style="padding:88px 52px;border-bottom:1px solid rgba(255,255,255,.05);background:#0a090d">
 <div style="max-width:1100px;margin:0 auto">
   <p class="ugc-sec-tag">How it works</p>
-  <h2 class="ugc-h2">Four Steps From Brief <em>To Final Assets</em></h2>
+  <h2 class="ugc-h2">How It Works</h2>
   <div class="ugc-process">
-    <div class="ugc-step"><div class="ugc-step-num">1</div><div><div class="ugc-step-title">Reach Out</div><div class="ugc-step-desc">Share brand, location, goals, and timeline.</div></div></div>
-    <div class="ugc-step"><div class="ugc-step-num">2</div><div><div class="ugc-step-title">Creative Direction</div><div class="ugc-step-desc">We align on deliverables, style, and usage rights.</div></div></div>
-    <div class="ugc-step"><div class="ugc-step-num">3</div><div><div class="ugc-step-title">Capture &amp; Edit</div><div class="ugc-step-desc">I shoot and edit based on agreed scope, on location.</div></div></div>
-    <div class="ugc-step"><div class="ugc-step-num">4</div><div><div class="ugc-step-title">Delivery</div><div class="ugc-step-desc">Final assets delivered ready for posting, ads, or internal use.</div></div></div>
+    <div class="ugc-step"><div class="ugc-step-num">1</div><div><div class="ugc-step-title">Send The Details</div><div class="ugc-step-desc">Tell me the brand, location, experience, and what type of content you need.</div></div></div>
+    <div class="ugc-step"><div class="ugc-step-num">2</div><div><div class="ugc-step-title">We Align On Deliverables</div><div class="ugc-step-desc">We confirm videos, posting, usage, timeline, and creative direction.</div></div></div>
+    <div class="ugc-step"><div class="ugc-step-num">3</div><div><div class="ugc-step-title">I Capture The Experience</div><div class="ugc-step-desc">I create content from the guest perspective so it feels natural, immersive, and useful for your brand.</div></div></div>
+    <div class="ugc-step"><div class="ugc-step-num">4</div><div><div class="ugc-step-title">You Receive The Assets</div><div class="ugc-step-desc">Edited videos are delivered ready for organic use, paid ads, or your website.</div></div></div>
   </div>
 </div>
 </div>
 
-<!-- STATS / PROOF -->
-<div style="padding:64px 52px;border-bottom:1px solid rgba(255,255,255,.05)">
+<!-- TESTIMONIALS -->
+<div style="padding:88px 52px;border-bottom:1px solid rgba(255,255,255,.05)">
 <div style="max-width:1100px;margin:0 auto">
-  <div class="ugc-stats-row">
-    <div class="ugc-stat-item"><div class="ugc-stat-val">48K+</div><div class="ugc-stat-lbl">TikTok Followers</div></div>
-    <div class="ugc-stat-item"><div class="ugc-stat-val">Millions</div><div class="ugc-stat-lbl">Total Travel Views</div></div>
-    <div class="ugc-stat-item"><div class="ugc-stat-val">25+</div><div class="ugc-stat-lbl">Countries Filmed</div></div>
-    <div class="ugc-stat-item"><div class="ugc-stat-val">Luxury &amp; VIP</div><div class="ugc-stat-lbl">Niche Specialization</div></div>
+  <p class="ugc-sec-tag">What Brands Say</p>
+  <h2 class="ugc-h2">What Brands Say</h2>
+  <div class="ugc-test-grid">
+    <div class="ugc-test-card">
+      <div class="ugc-test-quote">Clear communication, great attitude, and low-stress collaboration. Malachi adapts quickly, respects timing and space, and brings real value without overcomplicating anything.</div>
+      <div class="ugc-test-name">SeaQuest Milos</div>
+      <div class="ugc-test-role">Private Boat Experience</div>
+    </div>
+    <div class="ugc-test-card">
+      <div class="ugc-test-quote">Professional, easygoing, respectful of the shop pace, and genuinely interested in understanding the business. A pleasure to have around.</div>
+      <div class="ugc-test-name">Norcineria Iacozzilli</div>
+      <div class="ugc-test-role">Food & Hospitality</div>
+    </div>
+    <div class="ugc-test-card" style="background:rgba(201,160,86,.05);border-color:rgba(201,160,86,.2)">
+      <div class="ugc-test-quote" style="text-align:center;color:var(--sub);font-style:normal">Leave a testimonial for your collaboration</div>
+      <div style="text-align:center;margin-top:16px">
+        <a href="https://tally.so/r/LZEd92" target="_blank" class="btn btn-o" style="font-size:.7rem;padding:10px 22px">Leave A Testimonial</a>
+      </div>
+    </div>
   </div>
 </div>
-</div>
-
-<!-- FAQ -->
-<div style="padding:88px 52px;border-bottom:1px solid rgba(255,255,255,.05);background:#0a090d">
-<div style="max-width:700px;margin:0 auto">
-  <p class="ugc-sec-tag">FAQ</p>
-  <h2 class="ugc-h2">Questions <em>Brands Ask</em></h2>
-  <div class="ugc-faq">
-    <div class="ugc-fq"><button class="ugc-fq-btn" onclick="toggleUGCFaq(this)"><span>Do I need to post to your account for UGC deals?</span><span class="ugc-fq-icon">+</span></button><div class="ugc-fq-ans"><div class="ugc-fq-ans-inner">No. UGC is brand-owned content. You keep the footage, I deliver it, you use it however you want — no posting to my account required.</div></div></div>
-    <div class="ugc-fq"><button class="ugc-fq-btn" onclick="toggleUGCFaq(this)"><span>Do you travel for shoots?</span><span class="ugc-fq-icon">+</span></button><div class="ugc-fq-ans"><div class="ugc-fq-ans-inner">Yes. Available for on-location, destination, and hosted shoots worldwide.</div></div></div>
-    <div class="ugc-fq"><button class="ugc-fq-btn" onclick="toggleUGCFaq(this)"><span>What's your turnaround?</span><span class="ugc-fq-icon">+</span></button><div class="ugc-fq-ans"><div class="ugc-fq-ans-inner">Discussed upfront per project. Typically 5–10 business days after the shoot is complete.</div></div></div>
-    <div class="ugc-fq"><button class="ugc-fq-btn" onclick="toggleUGCFaq(this)"><span>Do you offer usage rights?</span><span class="ugc-fq-icon">+</span></button><div class="ugc-fq-ans"><div class="ugc-fq-ans-inner">Yes. 30/60/90-day options included in packages. Extensions available at +$100/30 days.</div></div></div>
-    <div class="ugc-fq"><button class="ugc-fq-btn" onclick="toggleUGCFaq(this)"><span>Can you create ad-style content with multiple hooks?</span><span class="ugc-fq-icon">+</span></button><div class="ugc-fq-ans"><div class="ugc-fq-ans-inner">Yes. Hook variations are included in every package — 1 on Starter, 2 on Core, 3+ on Concierge.</div></div></div>
-    <div class="ugc-fq"><button class="ugc-fq-btn" onclick="toggleUGCFaq(this)"><span>Do you work with hotels, tours, and tourism boards?</span><span class="ugc-fq-icon">+</span></button><div class="ugc-fq-ans"><div class="ugc-fq-ans-inner">Yes — all three are core categories. Hotel content, excursion operators, and destination campaigns are the majority of my work.</div></div></div>
-    <div class="ugc-fq"><button class="ugc-fq-btn" onclick="toggleUGCFaq(this)"><span>Do you offer retainers?</span><span class="ugc-fq-icon">+</span></button><div class="ugc-fq-ans"><div class="ugc-fq-ans-inner">Yes. Monthly retainer from $1,000/mo for 8 videos. Ideal for brands that need consistent content output.</div></div></div>
-    <div class="ugc-fq"><button class="ugc-fq-btn" onclick="toggleUGCFaq(this)"><span>What formats do you deliver in?</span><span class="ugc-fq-icon">+</span></button><div class="ugc-fq-ans"><div class="ugc-fq-ans-inner">MP4 for video, JPEG/PNG for photos, formatted per platform spec (9:16 for TikTok/Reels, etc.).</div></div></div>
-  </div>
-</div>
-</div>
-
-<!-- FINAL CTA -->
-<div class="ugc-cta-section">
-  <p class="ugc-sec-tag">Ready to work?</p>
-  <h2 class="ugc-h2">Need Premium Travel UGC <em>That Actually Books?</em></h2>
-  <p class="ugc-p">Send your project details and I'll get back within 24 hours.</p>
-  <div class="ugc-btns">
-    <a href="#ugc-contact" class="ugc-btn-primary" onclick="document.getElementById('ugc-contact').scrollIntoView({behavior:'smooth'});return false;">Inquire Now</a>
-    <a href="mailto:worldwidewmal@gmail.com?subject=Brand%20Deck%20Request" class="ugc-btn-outline">Request Brand Deck</a>
-  </div>
 </div>
 
 <!-- CONTACT FORM -->
 <div id="ugc-contact" style="padding:88px 52px;background:#0a090d">
 <div style="max-width:1100px;margin:0 auto">
-  <p class="ugc-sec-tag">Get in touch</p>
-  <h2 class="ugc-h2" style="margin-bottom:36px">Start Your <em>Project</em></h2>
+  <p class="ugc-sec-tag">Ready To Work</p>
+  <h2 class="ugc-h2">Ready To Make The Experience Feel Bookable?</h2>
+  <p class="ugc-p" style="max-width:620px;margin:0 auto 32px;text-align:center">Send the brand, location, dates, and what kind of content you need. I'll recommend the cleanest package based on the experience, usage, and whether you want it posted on my channels.</p>
+  <p style="font-size:.68rem;color:#6b6260;text-align:center;margin-bottom:36px">For hotels, tours, restaurants, wellness brands, water activities, and private experiences.</p>
   <form class="ugc-form" id="ugc-inquiry-form" onsubmit="submitUGCForm(event)">
     <div class="ugc-form-row">
-      <div class="ugc-field"><label class="ugc-label">Your Name</label><input class="ugc-input" type="text" name="name" placeholder="Your name" required></div>
-      <div class="ugc-field"><label class="ugc-label">Email</label><input class="ugc-input" type="email" name="email" placeholder="brand@company.com" required></div>
+      <div class="ugc-field"><label class="ugc-label">Your Name</label><input class="ugc-input" type="text" name="name" placeholder="Malachi Marshall" required></div>
+      <div class="ugc-field"><label class="ugc-label">Brand / Company</label><input class="ugc-input" type="text" name="brand" placeholder="Brand Name" required></div>
     </div>
     <div class="ugc-form-row">
-      <div class="ugc-field"><label class="ugc-label">Brand / Company</label><input class="ugc-input" type="text" name="brand" placeholder="Brand name" required></div>
+      <div class="ugc-field"><label class="ugc-label">Email</label><input class="ugc-input" type="email" name="email" placeholder="brand@company.com" required></div>
       <div class="ugc-field"><label class="ugc-label">Website or Social</label><input class="ugc-input" type="text" name="social" placeholder="@brand or website.com"></div>
     </div>
-    <div class="ugc-field"><label class="ugc-label">Project Details</label><textarea class="ugc-textarea" name="message" placeholder="Tell me about your brand, goals, and what you're looking for..."></textarea></div>
+    <div class="ugc-form-row">
+      <div class="ugc-field"><label class="ugc-label">Project Type</label>
+        <select class="ugc-select" name="project_type" required>
+          <option value="" disabled selected>Choose Package</option>
+          <option>Starter UGC</option>
+          <option>Premium Travel UGC</option>
+          <option>Content Bundle</option>
+        </select>
+      </div>
+      <div class="ugc-field"><label class="ugc-label">Location / Destination</label><input class="ugc-input" type="text" name="location" placeholder="e.g. Santorini, Greece"></div>
+    </div>
+    <div class="ugc-field">
+      <label class="ugc-label">Add-Ons (Select All That Apply)</label>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:12px 14px;background:#0f0e12;border:1px solid rgba(255,255,255,.1);border-radius:7px">
+        <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:.8rem;color:var(--text)">
+          <input type="checkbox" name="addons" value="Paid Usage - From $75" style="accent-color:#c9a056">
+          <span>Paid Usage <span style="color:var(--sub);font-size:.72rem">(From $75)</span></span>
+        </label>
+        <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:.8rem;color:var(--text)">
+          <input type="checkbox" name="addons" value="Whitelisting - From $100" style="accent-color:#c9a056">
+          <span>Whitelisting <span style="color:var(--sub);font-size:.72rem">(From $100)</span></span>
+        </label>
+        <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:.8rem;color:var(--text)">
+          <input type="checkbox" name="addons" value="Raw Footage - From $75" style="accent-color:#c9a056">
+          <span>Raw Footage <span style="color:var(--sub);font-size:.72rem">(From $75)</span></span>
+        </label>
+        <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:.8rem;color:var(--text)">
+          <input type="checkbox" name="addons" value="Exclusivity - From 25%" style="accent-color:#c9a056">
+          <span>Exclusivity <span style="color:var(--sub);font-size:.72rem">(From 25%)</span></span>
+        </label>
+        <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:.8rem;color:var(--text)">
+          <input type="checkbox" name="addons" value="Rush Turnaround - From 20%" style="accent-color:#c9a056">
+          <span>Rush Turnaround <span style="color:var(--sub);font-size:.72rem">(From 20%)</span></span>
+        </label>
+      </div>
+    </div>
+    <div class="ugc-field"><label class="ugc-label">Timeline</label><input class="ugc-input" type="text" name="timeline" placeholder="e.g. Within 4 weeks"></div>
+    <div class="ugc-field"><label class="ugc-label">Tell Me About The Project</label><textarea class="ugc-textarea" name="message" placeholder="Share your brand, goals, what you're looking for, and any specific deliverables in mind..."></textarea></div>
     <button type="submit" class="ugc-submit" id="ugc-submit-btn">Send Inquiry</button>
     <div class="ugc-form-success" id="ugc-form-success">✓ Got it. I'll be in touch within 24 hours.</div>
   </form>
 </div>
 </div>
 
-<div class="ugc-footer">
-  &copy; 2025 worldwidewmal &nbsp;·&nbsp; <a href="#" onclick="closeUGC();return false;">Back to Travel Plans</a> &nbsp;·&nbsp; <a href="mailto:worldwidewmal@gmail.com">worldwidewmal@gmail.com</a>
+<!-- YouTube video modal (inside ugc-page so it respects the layer) -->
+<div id="yt-modal" role="dialog" aria-modal="true" aria-label="Portfolio video">
+  <div id="yt-modal-inner">
+    <button id="yt-modal-close" aria-label="Close video">&times;</button>
+    <iframe id="yt-modal-iframe" src="" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+  </div>
 </div>
 
-<script>
-/* ── PORTFOLIO CAROUSEL ────────────────────────────────────────────────
-   MASTER SHEET (designated — do NOT create new sheets):
-   https://docs.google.com/spreadsheets/d/123wkKjUT--9m9VEuPlcY2CdUJ5eloYzyT6XBZS9qaqY
-   
-   Columns: drive_id | label | description | bg_color | emoji | active | category
-   
-   HOW TO MANAGE PORTFOLIO:
-   - Add video: add a row with active=TRUE and valid Google Drive file ID
-   - Remove video: set active=FALSE or delete the row
-   - Reorder: move rows up/down — order in sheet = order on site
-   
-   REQUIRED: Sheet must be published to web for dynamic loading:
-   File > Share > Publish to web > Sheet1 > CSV > Publish
-   
-   Until published, static cards below are shown (always visible as fallback).
-──────────────────────────────────────────────────────────────────────── */
-(function() {
-  /* Primary: published CSV URL — must be "CSV" format, not "Web page".
-     HOW TO GET THE CORRECT URL:
-     1. Open the master sheet
-     2. File > Share > Publish to web
-     3. Change the RIGHT dropdown from "Web page" → "CSV"  
-     4. Click Publish, copy the URL (ends in ?output=csv or similar)
-     5. Replace the URL below with that one
-     Currently set to the published URL from your sheet: */
-  var PUB_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTYdAu870Wvq6-pS_2XezBLUy-qOj3Z2qBb0S1LckltcDnyZhrIoMtzS_wAibUQJd2D-pBi0HlYU7-f/pub?output=csv&gid=0';
-  var CSV_URL = PUB_CSV_URL;
+<div class="ugc-footer">
+  <div style="max-width:1100px;margin:0 auto;padding:48px 24px;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px">
+    <div>
+      <div style="font-family:Georgia,serif;font-size:1.1rem;color:#c9a056;margin-bottom:10px;letter-spacing:.06em">worldwidewmal</div>
+      <p style="font-size:.72rem;color:#6b6260;line-height:1.7">Creator-led travel content, custom trip planning, and brand storytelling for experiences worth booking.</p>
+    </div>
+    <div>
+      <div style="font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(201,160,86,.6);margin-bottom:12px">Travel Planning</div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <a href="#" onclick="closeUGC();return false;" style="font-size:.72rem;color:#6b6260;transition:color .2s">Custom Travel Plans</a>
+        <a href="#" onclick="closeUGC();return false;" style="font-size:.72rem;color:#6b6260;transition:color .2s">Start A Plan</a>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(201,160,86,.6);margin-bottom:12px">Brand Work</div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <a href="#ugc-pricing" style="font-size:.72rem;color:#6b6260;transition:color .2s">UGC Packages</a>
+        <a href="#ugc-portfolio" style="font-size:.72rem;color:#6b6260;transition:color .2s">Past Work</a>
+        <a href="#ugc-contact" style="font-size:.72rem;color:#6b6260;transition:color .2s">Request UGC</a>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(201,160,86,.6);margin-bottom:12px">Social</div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <a href="https://tiktok.com/@worldwidewmal" target="_blank" style="font-size:.72rem;color:#6b6260;transition:color .2s">TikTok</a>
+        <a href="https://instagram.com/malachi.mh" target="_blank" style="font-size:.72rem;color:#6b6260;transition:color .2s">Instagram</a>
+        <a href="mailto:worldwidewmal@gmail.com" style="font-size:.72rem;color:#6b6260;transition:color .2s">Email</a>
+      </div>
+    </div>
+  </div>
+  <div style="text-align:center;padding:24px;border-top:1px solid rgba(255,255,255,.05);font-size:.65rem;color:#4a4848">&copy; 2025 worldwidewmal</div>
+</div>
 
-  /* ---- Carousel controls (work on both static and dynamic cards) ---- */
-  function getCarousel() { return document.getElementById('pf-carousel'); }
-
-  function initDots() {
-    var c = getCarousel(); if (!c) return;
-    var cards = c.querySelectorAll('.pf-card');
-    var dotsEl = document.getElementById('pf-dots');
-    if (!dotsEl || !cards.length) return;
-    dotsEl.innerHTML = '';
-    cards.forEach(function(_, i) {
-      var d = document.createElement('button');
-      d.className = 'pf-dot' + (i === 0 ? ' active' : '');
-      d.onclick = function() { pfScrollTo(i); };
-      dotsEl.appendChild(d);
-    });
-    c.addEventListener('scroll', function() {
-      var idx = Math.round(c.scrollLeft / (c.querySelector('.pf-card').offsetWidth + 16));
-      dotsEl.querySelectorAll('.pf-dot').forEach(function(d, i) {
-        d.classList.toggle('active', i === idx);
-      });
-    }, {passive: true});
-
-    /* drag-to-scroll */
-    var isDown=false, startX, scrollL;
-    c.addEventListener('mousedown', function(e){isDown=true;startX=e.pageX-c.offsetLeft;scrollL=c.scrollLeft;});
-    c.addEventListener('mouseleave', function(){isDown=false;});
-    c.addEventListener('mouseup', function(){isDown=false;});
-    c.addEventListener('mousemove', function(e){if(!isDown)return;e.preventDefault();var x=e.pageX-c.offsetLeft;c.scrollLeft=scrollL-(x-startX)*1.4;});
-  }
-
-  window.pfPlay = function(idx, driveId) {
-    /* Open Drive video in preview/player mode for immediate playback */
-    window.open('https://drive.google.com/file/d/' + driveId + '/preview', '_blank');
-  };
-
-  window.pfScrollTo = function(idx) {
-    var c = getCarousel(); if (!c) return;
-    var card = c.querySelector('.pf-card');
-    if (!card) return;
-    c.scrollTo({left: idx * (card.offsetWidth + 16), behavior: 'smooth'});
-  };
-
-  window.pfScroll = function(dir) {
-    var c = getCarousel(); if (!c) return;
-    var card = c.querySelector('.pf-card');
-    if (!card) return;
-    c.scrollBy({left: dir * (card.offsetWidth + 16), behavior: 'smooth'});
-  };
-
-  /* ---- Try dynamic sheet load — replaces static cards if sheet is published ---- */
-  function parseCSV(text) {
-    var lines = text.trim().split('\n');
-    var headers = lines[0].split(',').map(function(h){return h.trim().replace(/^"|"$/g,'');});
-    return lines.slice(1).map(function(line) {
-      var cols=[],cur='',inQ=false;
-      for(var i=0;i<line.length;i++){var c=line[i];if(c==='"'){inQ=!inQ;}else if(c===','&&!inQ){cols.push(cur.trim());cur='';}else{cur+=c;}}
-      cols.push(cur.trim());
-      var obj={};
-      headers.forEach(function(h,i){obj[h]=(cols[i]||'').replace(/^"|"$/g,'').trim();});
-      return obj;
-    }).filter(function(r){return r.drive_id && r.active && r.active.toUpperCase()==='TRUE';});
-  }
-
-  function makeCard(r, idx) {
-    var div = document.createElement('div'); div.className = 'pf-card';
-    var thumbUrl = 'https://drive.google.com/thumbnail?id=' + r.drive_id + '&sz=w400&no-redirect';
-    var bg = r.bg_color || '#0d1a2a';
-    div.innerHTML =
-      '<div class="pf-video-wrap" id="pf-vwrap-' + idx + '">' +
-        '<div class="pf-video-thumb" id="pf-thumb-' + idx + '" onclick="pfPlay(' + idx + ',\'' + r.drive_id + '\')" style="background:' + bg + '">' +
-          '<img class="pf-thumb-img" src="' + thumbUrl + '" alt="" loading="lazy" onerror="this.style.display=\'none\'">' +
-          '<div class="pf-thumb-grad"></div>' +
-          '<div class="pf-play-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="#09080a"><polygon points="6,3 20,12 6,21"/></svg></div>' +
-        '</div>' +
-      '</div>' +
-      '<div class="pf-info"><div class="pf-label">' + (r.label||'') + '</div><div class="pf-desc">' + (r.description||'') + '</div><div class="pf-watch-hint">▶ Watch Full Video</div></div>';
-    return div;
-  }
-
-  function tryDynamicLoad() {
-    fetch(CSV_URL + '&t=' + Date.now())
-      .then(function(res){ if(!res.ok) throw new Error('not published'); return res.text(); })
-      .then(function(csv) {
-        var rows = parseCSV(csv);
-        if (!rows.length) return; /* keep static cards */
-        var c = getCarousel(); if (!c) return;
-        c.innerHTML = '';
-        rows.forEach(function(r,i){ c.appendChild(makeCard(r,i)); });
-        initDots();
-      })
-      .catch(function(){ /* sheet not published — static cards stay, dots still init */ });
-  }
-
-  function init() {
-    initDots();       /* init dots on static cards immediately */
-    tryDynamicLoad(); /* attempt sheet load — replaces if published */
-  }
-
-  /* Run on DOM ready, and when UGC page opens */
-  var _origOpen = window.openUGC;
-  window.openUGC = function() { if(_origOpen) _origOpen(); setTimeout(init, 100); };
-  document.addEventListener('DOMContentLoaded', function() {
-    var p = document.getElementById('ugc-page');
-    if (p && p.style.display !== 'none') init();
-    else setTimeout(init, 200);
-  });
-  window._reloadUGCPortfolio = init;
-})();
-</script>
 </div><!-- end ugc-page -->
 
 <script>
 /* UGC PAGE CONTROLS */
 function openUGC() {
   var p = document.getElementById('ugc-page');
-  if (!p) return;
-  p.style.display = 'block';
+  if (p) { p.style.display = 'block'; p.scrollTop = 0; }
   document.body.style.overflow = 'hidden';
-  window.scrollTo(0,0);
 }
 function closeUGC() {
   var p = document.getElementById('ugc-page');
-  if (!p) return;
-  p.style.display = 'none';
+  if (p) p.style.display = 'none';
   document.body.style.overflow = '';
+  window.scrollTo(0, 0);
 }
 window.openUGC  = openUGC;
 window.closeUGC = closeUGC;
@@ -2969,7 +3126,27 @@ function submitUGCForm(e) {
   var btn = document.getElementById('ugc-submit-btn');
   btn.textContent = 'Sending...'; btn.disabled = true;
   var fd = new FormData(e.target);
-  var data = Object.fromEntries(fd.entries());
+  
+  // Collect all selected addons
+  var addons = [];
+  var addonInputs = e.target.querySelectorAll('input[name="addons"]:checked');
+  addonInputs.forEach(function(input) {
+    addons.push(input.value);
+  });
+  var addonsText = addons.length > 0 ? addons.join(', ') : 'None selected';
+  
+  var data = {
+    name: fd.get('name'),
+    brand: fd.get('brand'),
+    email: fd.get('email'),
+    social: fd.get('social'),
+    project_type: fd.get('project_type'),
+    location: fd.get('location'),
+    timeline: fd.get('timeline'),
+    message: fd.get('message'),
+    addons: addonsText
+  };
+  
   fetch('https://api.emailjs.com/api/v1.0/email/send', {
     method: 'POST',
     headers: {'Content-Type':'application/json'},
@@ -2983,7 +3160,7 @@ function submitUGCForm(e) {
         email: data.email,
         destination: 'UGC INQUIRY — ' + data.project_type,
         plan_purchased: 'UGC — ' + data.project_type,
-        goal: data.message,
+        goal: data.message + '\n\nAdd-ons: ' + data.addons,
         dates: data.timeline,
         departure: data.location,
         budget: 'Brand: ' + data.brand,
@@ -3004,6 +3181,7 @@ function submitUGCForm(e) {
 }
 window.submitUGCForm = submitUGCForm;
 </script>
+<script>document.body.style.overflow='hidden';</script>
 
 </body>
 </html>

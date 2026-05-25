@@ -374,6 +374,7 @@ app.get('/api/sheets/forms', (req, res) => {
     requires_video: f.requires_video || false,
     notes: f.notes || '',
     submitted: st.forms[f.form_url]?.submitted ?? f.submitted ?? false,
+    selected:  st.forms[f.form_url]?.selected  ?? false,
   }));
   res.json(rows);
 });
@@ -437,6 +438,7 @@ app.get('/api/sheets/tourism-boards', (req, res) => {
     follower_minimum: b.follower_minimum || null,
     notes: b.notes || '',
     submitted: st.tourism?.[b.form_url]?.submitted ?? b.submitted ?? false,
+    selected:  st.tourism?.[b.form_url]?.selected  ?? false,
   }));
   res.json(rows);
 });
