@@ -2312,7 +2312,7 @@ document.addEventListener('DOMContentLoaded',function(){
 .ugc-back:hover{color:#c9a056}
 
 /* HERO */
-.ugc-hero{padding:80px 52px 68px;background:var(--bg);border-bottom:1px solid var(--b1)}
+.ugc-hero{position:relative;padding:80px 52px 68px;background:var(--bg);border-bottom:1px solid var(--b1)}
 .ugc-hero-content{max-width:1080px;margin:0 auto}
 .ugc-hero-text{max-width:780px}
 .ugc-h1{font-family:var(--ff);font-size:clamp(2.4rem,5vw,4.2rem);font-weight:200;line-height:1.08;color:var(--cream);margin-bottom:18px}
@@ -2574,6 +2574,23 @@ document.addEventListener('DOMContentLoaded',function(){
 
 <!-- HERO -->
 <section class="ugc-hero">
+  <!-- Ethereal shadow background (etheral-shadow component) -->
+  <div id="ugc-eth-bg" aria-hidden="true">
+    <svg width="0" height="0" style="position:absolute;overflow:visible" aria-hidden="true">
+      <defs>
+        <filter id="eth-f" x="-25%" y="-25%" width="150%" height="150%">
+          <feTurbulence result="noise" numOctaves="2" baseFrequency="0.0003 0.0016" seed="5" type="turbulence"/>
+          <feColorMatrix in="noise" type="hueRotate" values="0">
+            <animate attributeName="values" from="0" to="360" dur="14s" repeatCount="indefinite"/>
+          </feColorMatrix>
+          <feColorMatrix result="circ" type="matrix" values="4 0 0 0 1  4 0 0 0 1  4 0 0 0 1  1 0 0 0 0"/>
+          <feDisplacementMap in="SourceGraphic" in2="circ" scale="50" result="d1"/>
+          <feDisplacementMap in="d1" in2="noise" scale="50"/>
+        </filter>
+      </defs>
+    </svg>
+    <div id="ugc-eth-layer"><div id="ugc-eth-shape"></div></div>
+  </div>
   <div class="ugc-hero-content">
     <div class="ugc-hero-text">
       <div class="hey">
@@ -3462,6 +3479,460 @@ window.submitUGCForm = submitUGCForm;
     fetchTikTok();
     fetchInstagram();
   });
+})();
+</script>
+
+<!-- ══ STRUCTURAL STYLES FOR NEW COMPONENTS ══════════════════════════════ -->
+<style>
+/* ── Ethereal shadow background ───────────────────────────────────────────── */
+#ugc-eth-bg{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+#ugc-eth-layer{position:absolute;inset:-52px;filter:url(#eth-f) blur(3px)}
+#ugc-eth-shape{width:100%;height:100%;background:rgba(201,160,86,.17);-webkit-mask:radial-gradient(ellipse 80% 80% at 18% 50%,#000 25%,transparent 72%);mask:radial-gradient(ellipse 80% 80% at 18% 50%,#000 25%,transparent 72%)}
+.ugc-hero-content{position:relative;z-index:1}
+@media(prefers-reduced-motion:reduce){#ugc-eth-layer{filter:none}}
+
+/* ── Tubelight active indicator on top nav links ──────────────────────────── */
+.ugc-back{position:relative}
+.ugc-back.is-on{color:#c9a056}
+.ugc-back.is-on::after{content:'';position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);width:24px;height:3px;background:#c9a056;border-radius:6px 6px 0 0;box-shadow:0 0 10px 2px rgba(201,160,86,.7),0 0 22px 4px rgba(201,160,86,.3),0 0 38px 8px rgba(201,160,86,.12)}
+
+/* ── Portfolio prev/next nav buttons ──────────────────────────────────────── */
+#ww-stack-nav{display:flex;justify-content:center;align-items:center;gap:16px;margin:6px 0 2px}
+#ww-sp,#ww-sn{width:40px;height:40px;border-radius:50%;border:1px solid rgba(201,160,86,.3);background:rgba(201,160,86,.06);color:#c9a056;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .22s;font-family:inherit;line-height:1}
+#ww-sp:hover,#ww-sn:hover{background:rgba(201,160,86,.15);border-color:#c9a056;transform:scale(1.08)}
+</style>
+
+<!-- ══ VISUAL ENHANCEMENTS ═══════════════════════════════════════════════ -->
+<style>
+@media(prefers-reduced-motion:no-preference){
+
+/* ── 1. Word-rise animation — UGC hero h1 (animated-hero / splite) ─────── */
+@keyframes ww-word-rise{
+  from{opacity:0;transform:translateY(22px);filter:blur(5px)}
+  to{opacity:1;transform:translateY(0);filter:blur(0)}
+}
+.ww-word{display:inline-block;animation:ww-word-rise .65s cubic-bezier(.16,1,.3,1) both}
+
+/* ── 2. Section heading clip-reveal — ugc-h2 (splite) ─────────────────── */
+.ww-h2-wrap{display:inline-block;overflow:hidden;vertical-align:bottom;line-height:1.1}
+.ww-h2-inner{display:inline-block;transform:translateY(110%);transition:transform .6s cubic-bezier(.16,1,.3,1)}
+.ww-h2-visible .ww-h2-inner{transform:translateY(0)}
+
+/* ── 3. 3D card entrance — travel .pc & ugc-price-card (container scroll) */
+@keyframes ww-3d-in{
+  from{opacity:0;transform:perspective(900px) rotateX(10deg) translateY(28px)}
+  to{opacity:1;transform:perspective(900px) rotateX(0) translateY(0)}
+}
+.ww-3d-enter{animation:ww-3d-in .72s cubic-bezier(.16,1,.3,1) both}
+
+/* ── 4. Featured card glow pulse (Codehagen pricing) ────────────────────── */
+@keyframes ww-glow{
+  0%,100%{box-shadow:0 0 0 1px rgba(201,160,86,.22),0 8px 40px rgba(201,160,86,.07)}
+  50%{box-shadow:0 0 0 1px rgba(201,160,86,.55),0 8px 60px rgba(201,160,86,.2)}
+}
+.pc.feat{animation:ww-glow 3.5s ease-in-out infinite}
+.ugc-price-card.featured{animation:ww-glow 3.5s ease-in-out infinite}
+
+/* ── 5. Proof / testimonial cards — hover lift (testimonial-cards) ───────── */
+.ugc-proof-card{
+  transition:transform .28s cubic-bezier(.16,1,.3,1),
+             box-shadow .28s cubic-bezier(.16,1,.3,1),
+             border-color .28s !important
+}
+.ugc-proof-card:hover{
+  transform:translateY(-5px) !important;
+  box-shadow:0 12px 36px rgba(201,160,86,.13) !important
+}
+
+/* ── 6. UGC pricing card hover lift ─────────────────────────────────────── */
+.ugc-price-card{
+  transition:border-color .22s,transform .28s cubic-bezier(.16,1,.3,1),
+             box-shadow .28s cubic-bezier(.16,1,.3,1) !important
+}
+.ugc-price-card:not(.featured):hover{
+  transform:translateY(-4px) !important;
+  box-shadow:0 10px 32px rgba(0,0,0,.25) !important
+}
+.ugc-price-card.featured:hover{
+  transform:translateY(-4px) !important
+}
+
+/* ── 7. Portfolio reel card hover depth ─────────────────────────────────── */
+.ugc-reel:hover{
+  transform:translateY(-4px) scale(1.01) !important;
+  border-color:rgba(201,160,86,.4) !important;
+  box-shadow:0 14px 40px rgba(0,0,0,.35) !important
+}
+
+/* ── 8. Portfolio card-stack (card-stack + testimonial-cards) ──────────── */
+.ww-stack-card{position:absolute;bottom:0;left:50%;border-radius:14px;overflow:hidden;cursor:pointer;background:#0f0e12;color:inherit;font-family:inherit;text-align:left;padding:0;will-change:transform,opacity;-webkit-user-select:none;user-select:none}
+.ww-stack-card.is-active{box-shadow:0 20px 60px rgba(0,0,0,.55)}
+#ww-stack-dots{display:flex;justify-content:center;align-items:center;gap:6px;margin:14px 0 28px}
+.ww-dot{height:7px;width:7px;border-radius:100px;border:none;background:rgba(201,160,86,.3);cursor:pointer;transition:all .3s cubic-bezier(.16,1,.3,1);padding:0}
+.ww-dot.active{background:#c9a056;width:20px}
+.ww-stack-hint{text-align:center;font-size:.65rem;color:rgba(201,160,86,.38);letter-spacing:.06em;text-transform:uppercase;margin-bottom:20px}
+
+} /* end prefers-reduced-motion */
+</style>
+
+<script>
+(function(){
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+
+  /* ── 1. Word-split for UGC h1 (animated-hero / splite) ───────────────── */
+  function splitWords(el, baseDelay){
+    if(!el||el.dataset.wwSplit) return;
+    el.dataset.wwSplit='1';
+    var tmp=document.createElement('div');
+    tmp.innerHTML=el.innerHTML;
+    var idx=0;
+    function wrap(node){
+      if(node.nodeType===3){
+        var words=node.textContent.split(/(\s+)/);
+        var frag=document.createDocumentFragment();
+        words.forEach(function(w){
+          if(/^\s+$/.test(w)){frag.appendChild(document.createTextNode(w));return;}
+          if(!w) return;
+          var sp=document.createElement('span');
+          sp.className='ww-word';
+          sp.style.animationDelay=(baseDelay+idx*0.085)+'s';
+          sp.textContent=w;
+          frag.appendChild(sp);
+          idx++;
+        });
+        node.parentNode.replaceChild(frag,node);
+      } else if(node.nodeType===1){
+        Array.from(node.childNodes).forEach(wrap);
+      }
+    }
+    Array.from(tmp.childNodes).forEach(wrap);
+    el.innerHTML=tmp.innerHTML;
+  }
+
+  /* ── 2. Section heading clip-reveal (splite) ─────────────────────────── */
+  function wrapH2(el){
+    if(!el||el.dataset.wwH2) return;
+    el.dataset.wwH2='1';
+    var tmp=document.createElement('div');
+    tmp.innerHTML=el.innerHTML;
+    var idx=0;
+    function wrap(node){
+      if(node.nodeType===3){
+        var words=node.textContent.split(/(\s+)/);
+        var frag=document.createDocumentFragment();
+        words.forEach(function(w){
+          if(/^\s+$/.test(w)){frag.appendChild(document.createTextNode(w));return;}
+          if(!w) return;
+          var outer=document.createElement('span');
+          outer.className='ww-h2-wrap';
+          var inner=document.createElement('span');
+          inner.className='ww-h2-inner';
+          inner.style.transitionDelay=(idx*0.065)+'s';
+          inner.textContent=w;
+          outer.appendChild(inner);
+          frag.appendChild(outer);
+          frag.appendChild(document.createTextNode(' '));
+          idx++;
+        });
+        node.parentNode.replaceChild(frag,node);
+      } else if(node.nodeType===1){
+        Array.from(node.childNodes).forEach(wrap);
+      }
+    }
+    Array.from(tmp.childNodes).forEach(wrap);
+    el.innerHTML=tmp.innerHTML;
+  }
+
+  /* ── 3. IntersectionObserver helper ─────────────────────────────────── */
+  function onEnter(els, cb, threshold){
+    if(!window.IntersectionObserver) return;
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ cb(e.target); io.unobserve(e.target); }
+      });
+    },{threshold:threshold||0.12});
+    els.forEach(function(el){ io.observe(el); });
+  }
+
+  /* ── 4. Travel pricing cards — 3D entrance (container scroll) ─────────── */
+  onEnter(Array.from(document.querySelectorAll('.pc')), function(card){
+    var siblings=Array.from(card.parentNode.querySelectorAll('.pc'));
+    var i=siblings.indexOf(card);
+    card.style.animationDelay=(i*0.11)+'s';
+    card.classList.add('ww-3d-enter');
+  });
+
+  /* ── 5. UGC pricing cards — 3D entrance ─────────────────────────────── */
+  onEnter(Array.from(document.querySelectorAll('.ugc-price-card')), function(card){
+    var siblings=Array.from(card.parentNode.querySelectorAll('.ugc-price-card'));
+    var i=siblings.indexOf(card);
+    card.style.animationDelay=(i*0.11)+'s';
+    card.classList.add('ww-3d-enter');
+  });
+
+  /* ── 6. UGC proof cards — staggered entrance (testimonial-cards) ──────── */
+  var proofCards=Array.from(document.querySelectorAll('.ugc-proof-card'));
+  proofCards.forEach(function(c){ c.style.opacity='0'; c.style.transform='translateY(16px) scale(.97)'; });
+  onEnter(proofCards, function(card){
+    var i=proofCards.indexOf(card);
+    setTimeout(function(){
+      card.style.transition='opacity .55s cubic-bezier(.16,1,.3,1),transform .55s cubic-bezier(.16,1,.3,1)';
+      card.style.opacity='1';
+      card.style.transform='translateY(0) scale(1)';
+    }, i*90);
+  }, 0.1);
+
+  /* ── 7. UGC h2 clip-reveal (splite) — wrap then observe ─────────────── */
+  var h2els=Array.from(document.querySelectorAll('.ugc-h2'));
+  h2els.forEach(function(h){ wrapH2(h); });
+  onEnter(h2els, function(el){ el.classList.add('ww-h2-visible'); }, 0.2);
+
+  /* ── 8. UGC h1 word split — run on first openUGC() call ─────────────── */
+  var origOpen=window.openUGC;
+  window.openUGC=function(){
+    if(origOpen) origOpen.apply(this,arguments);
+    splitWords(document.querySelector('.ugc-h1'), 0.12);
+  };
+
+  /* ── 9. Scroll expansion on travel hero (scroll-expansion-hero) ─────── */
+  var heroEl=document.getElementById('hero');
+  var heroContent=heroEl&&heroEl.querySelector('.hi');
+  if(heroEl&&heroContent){
+    window.addEventListener('scroll',function(){
+      var p=Math.min(window.scrollY/heroEl.offsetHeight,1);
+      heroContent.style.transform='scale('+(1-p*0.035)+') translateY('+(-p*10)+'px)';
+      heroContent.style.opacity=String(1-p*0.25);
+    },{passive:true});
+  }
+
+  /* ── 10. UGC hero parallax on page scroll (scroll-expansion-hero) ────── */
+  var ugcPage=document.getElementById('ugc-page');
+  var ugcText=document.querySelector('.ugc-hero-text');
+  if(ugcPage&&ugcText){
+    ugcPage.addEventListener('scroll',function(){
+      var s=ugcPage.scrollTop;
+      ugcText.style.transform='translateY('+(s*0.15)+'px)';
+      ugcText.style.opacity=String(Math.max(1-s/420,0));
+    },{passive:true});
+  }
+
+  /* ── 11. Portfolio card-stack fan (card-stack + testimonial-cards) ─────── */
+  var FAN_D=[{x:0,r:0,s:1,z:10,o:1},{x:150,r:8,s:.88,z:8,o:.82},{x:272,r:15,s:.77,z:6,o:.58}];
+  var FAN_M=[{x:0,r:0,s:1,z:10,o:1},{x:54,r:6,s:.86,z:8,o:.78},{x:94,r:12,s:.73,z:6,o:.54}];
+  function _isMobStack(){return window.innerWidth<600;}
+
+  /* ── 11. Portfolio card-stack — update-in-place (no DOM rebuild) ────────── */
+  window.renderUGCPortfolio=function(){
+    var grid=document.getElementById('ugc-reel-grid');
+    if(!grid||!window.ugcPortfolio||!ugcPortfolio.length)return;
+    if(grid.dataset.wwStack)return;
+    grid.dataset.wwStack='1';
+
+    var total=ugcPortfolio.length;
+    var active=0, autoTmr=null, dragX0=0, dragging=false;
+    function getFan(){return _isMobStack()?FAN_M:FAN_D;}
+    function cardW(){return _isMobStack()?'64vw':'210px';}
+
+    /* reset inline grid styles */
+    grid.style.cssText='position:relative;height:440px;overflow:visible;margin-bottom:0;display:block;touch-action:pan-y';
+
+    /* ── Pre-build ALL card elements once ──────────────────────────────────── */
+    var cards=ugcPortfolio.map(function(item,i){
+      var c=document.createElement('button');
+      c.type='button';
+      c.className='ww-stack-card';
+      c.style.cssText='width:'+cardW()+';aspect-ratio:9/16;position:absolute;bottom:0;left:50%;border-radius:14px;overflow:hidden;background:#0f0e12;color:inherit;font-family:inherit;text-align:left;padding:0;will-change:transform,opacity;border:1px solid rgba(255,255,255,.07);transition:transform .42s cubic-bezier(.16,1,.3,1),opacity .42s cubic-bezier(.16,1,.3,1),border-color .25s';
+      c.innerHTML=
+        '<div style="position:absolute;inset:0">'
+          +'<img src="'+item.thumbnail+'" alt="'+item.title+'" style="width:100%;height:100%;object-fit:cover" loading="lazy" decoding="async">'
+          +'<div class="ww-ov" style="position:absolute;inset:0;background:rgba(0,0,0,.45);transition:background .35s"></div>'
+        +'</div>'
+        +'<span class="ww-badge" style="position:absolute;top:9px;right:9px;background:rgba(201,160,86,.92);color:#08080a;font-size:.52rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:100px;opacity:0;transition:opacity .35s">'+item.badge+'</span>'
+        +'<div class="ww-info" style="position:absolute;bottom:0;left:0;right:0;padding:16px 12px 12px;background:linear-gradient(to top,rgba(0,0,0,.9) 60%,transparent);opacity:0;transition:opacity .35s">'
+          +'<div style="font-size:.75rem;font-weight:600;color:#faf8f4;margin-bottom:2px">'+item.title+'</div>'
+          +'<div style="font-size:.62rem;color:rgba(201,160,86,.8);letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px">'+item.category+'</div>'
+          +'<div style="font-size:.58rem;color:rgba(234,229,220,.45)">'+item.brand+'</div>'
+        +'</div>'
+        +'<div class="ww-play" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;opacity:0;transition:opacity .35s">'
+          +'<div style="width:54px;height:54px;border-radius:50%;background:rgba(255,255,255,.12);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center">'
+            +'<svg width="20" height="20" viewBox="0 0 20 20"><path d="M7 4L16 10L7 16V4Z" fill="#c9a056"/></svg>'
+          +'</div></div>';
+      (function(idx){
+        c.addEventListener('click',function(){
+          var off=idx-active;
+          if(off>total/2)off-=total;
+          if(off<-total/2)off+=total;
+          if(Math.abs(off)===0){if(typeof openYTModal==='function')openYTModal(ugcPortfolio[idx]);}
+          else{active=idx;applyState();applyDots();resetTmr();}
+        });
+      })(i);
+      grid.appendChild(c);
+      return c;
+    });
+
+    /* ── Update transforms only — zero DOM creation ─────────────────────────── */
+    function applyState(){
+      var fan=getFan();
+      cards.forEach(function(c,i){
+        var off=i-active;
+        if(off>total/2)off-=total;
+        if(off<-total/2)off+=total;
+        var abs=Math.abs(off);
+        if(abs<=2){
+          var f=fan[abs], dir=off<0?-1:(off>0?1:0);
+          c.style.transform='translateX(-50%) translateX('+(dir*f.x)+'px) rotate('+(dir*f.r)+'deg) scale('+f.s+')';
+          c.style.zIndex=f.z;
+          c.style.opacity=f.o;
+          c.style.pointerEvents='auto';
+          var isAct=abs===0;
+          c.querySelector('.ww-ov').style.background='rgba(0,0,0,'+(isAct?.04:.42)+')';
+          c.querySelector('.ww-badge').style.opacity=isAct?'1':'0';
+          c.querySelector('.ww-info').style.opacity='1';
+          c.querySelector('.ww-play').style.opacity=isAct?'1':'0';
+          c.style.borderColor=isAct?'rgba(201,160,86,.45)':'rgba(255,255,255,.07)';
+          c.style.boxShadow=isAct?'0 20px 60px rgba(0,0,0,.55)':'none';
+        }else{
+          c.style.opacity='0';c.style.pointerEvents='none';
+        }
+      });
+    }
+
+    /* dots */
+    var dotsEl=document.getElementById('ww-stack-dots');
+    if(!dotsEl){dotsEl=document.createElement('div');dotsEl.id='ww-stack-dots';grid.parentNode.insertBefore(dotsEl,grid.nextSibling);}
+    function applyDots(){
+      var d=dotsEl.querySelectorAll('.ww-dot');
+      d.forEach(function(dot,i){
+        dot.classList.toggle('active',i===active);
+        dot.style.width=i===active?'20px':'7px';
+      });
+    }
+    function buildDots(){
+      dotsEl.innerHTML='';
+      for(var j=0;j<total;j++){
+        (function(idx){
+          var dot=document.createElement('button');
+          dot.type='button';dot.className='ww-dot'+(idx===active?' active':'');
+          dot.style.width=idx===active?'20px':'7px';
+          dot.setAttribute('aria-label','Video '+(idx+1));
+          dot.addEventListener('click',function(){active=idx;applyState();applyDots();resetTmr();});
+          dotsEl.appendChild(dot);
+        })(j);
+      }
+    }
+
+    /* prev/next buttons */
+    if(!document.getElementById('ww-stack-nav')){
+      var navEl=document.createElement('div');navEl.id='ww-stack-nav';
+      navEl.innerHTML='<button id="ww-sp" aria-label="Previous">&#8592;</button><button id="ww-sn" aria-label="Next">&#8594;</button>';
+      grid.parentNode.insertBefore(navEl,dotsEl.nextSibling||dotsEl);
+      document.getElementById('ww-sp').addEventListener('click',function(){navPrev();resetTmr();});
+      document.getElementById('ww-sn').addEventListener('click',function(){navNext();resetTmr();});
+    }
+
+    /* hint */
+    if(!document.getElementById('ww-stack-hint')){
+      var hint=document.createElement('p');hint.id='ww-stack-hint';hint.className='ww-stack-hint';
+      hint.textContent='Tap sides · Drag · ←→ keys';
+      grid.parentNode.insertBefore(hint,document.getElementById('ww-stack-nav').nextSibling);
+    }
+
+    function navNext(){active=(active+1)%total;applyState();applyDots();}
+    function navPrev(){active=(active-1+total)%total;applyState();applyDots();}
+    function resetTmr(){if(autoTmr)clearInterval(autoTmr);autoTmr=setInterval(navNext,4500);}
+
+    /* drag/swipe */
+    grid.addEventListener('mousedown',function(e){dragX0=e.clientX;dragging=true;e.preventDefault();});
+    window.addEventListener('mouseup',function(e){
+      if(!dragging)return;dragging=false;
+      var d=e.clientX-dragX0;
+      if(d<-65){navNext();resetTmr();}else if(d>65){navPrev();resetTmr();}
+    });
+    grid.addEventListener('touchstart',function(e){dragX0=e.touches[0].clientX;dragging=true;},{passive:true});
+    grid.addEventListener('touchend',function(e){
+      if(!dragging)return;dragging=false;
+      var d=e.changedTouches[0].clientX-dragX0;
+      if(d<-55){navNext();resetTmr();}else if(d>55){navPrev();resetTmr();}
+    },{passive:true});
+    /* pause on hover */
+    grid.addEventListener('mouseenter',function(){if(autoTmr){clearInterval(autoTmr);autoTmr=null;}});
+    grid.addEventListener('mouseleave',resetTmr);
+    /* keyboard */
+    document.addEventListener('keydown',function(e){
+      var pg=document.getElementById('ugc-page');
+      if(!pg||pg.style.display==='none')return;
+      if(e.key==='ArrowLeft'){navPrev();resetTmr();}
+      if(e.key==='ArrowRight'){navNext();resetTmr();}
+    });
+    /* responsive */
+    window.addEventListener('resize',function(){
+      grid.style.height=_isMobStack()?'380px':'440px';
+      cards.forEach(function(c){c.style.width=cardW();});
+    });
+
+    applyState();buildDots();resetTmr();
+  };
+
+  /* ── 12. Confetti on pricing CTA clicks (pricing component) ──────────────── */
+  function wwConfetti(el){
+    var cvs=document.createElement('canvas');
+    cvs.style.cssText='position:fixed;inset:0;pointer-events:none;z-index:99999';
+    document.body.appendChild(cvs);
+    cvs.width=window.innerWidth;cvs.height=window.innerHeight;
+    var ctx=cvs.getContext('2d');
+    var rect=el?el.getBoundingClientRect():{left:innerWidth/2,top:innerHeight*.65,width:0,height:0};
+    var ox=rect.left+rect.width/2,oy=rect.top+rect.height/2;
+    var colors=['#c9a056','#e8c47a','#faf8f4','#daa520','#b8860b'];
+    var ps=[];
+    for(var ci=0;ci<60;ci++){
+      var ang=Math.random()*Math.PI*2,spd=4+Math.random()*8;
+      ps.push({x:ox,y:oy,vx:Math.cos(ang)*spd,vy:Math.sin(ang)*spd-7,
+        color:colors[Math.floor(Math.random()*colors.length)],
+        w:5+Math.random()*6,h:3+Math.random()*3,
+        rot:Math.random()*360,rv:(Math.random()-.5)*12,
+        life:1,decay:.013+Math.random()*.009});
+    }
+    (function tick(){
+      ctx.clearRect(0,0,cvs.width,cvs.height);
+      var any=false;
+      ps.forEach(function(p){
+        p.x+=p.vx;p.y+=p.vy;p.vy+=0.3;
+        p.rot+=p.rv;p.life-=p.decay;
+        if(p.life>0){
+          any=true;
+          ctx.save();ctx.globalAlpha=p.life;
+          ctx.translate(p.x,p.y);ctx.rotate(p.rot*Math.PI/180);
+          ctx.fillStyle=p.color;
+          ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);
+          ctx.restore();
+        }
+      });
+      if(any)requestAnimationFrame(tick);
+      else{if(cvs.parentNode)cvs.parentNode.removeChild(cvs);}
+    })();
+  }
+  document.addEventListener('click',function(e){
+    var btn=e.target.closest('.ugc-price-cta,.pc-cta');
+    if(btn)wwConfetti(btn);
+  });
+
+  /* ── 13. Tubelight scroll-tracking — highlights active top nav link ──────── */
+  (function(){
+    var ugcNav=document.querySelector('.ugc-nav');
+    var tubePage=document.getElementById('ugc-page');
+    if(!ugcNav||!tubePage)return;
+    var backs=Array.from(ugcNav.querySelectorAll('.ugc-back'));
+    if(!backs.length)return;
+    var secIds=['ugc-portfolio','ugc-pricing','ugc-contact'];
+    var secs=secIds.map(function(id){return document.getElementById(id);});
+    tubePage.addEventListener('scroll',function(){
+      var sy=tubePage.scrollTop+window.innerHeight*0.35;
+      var ai=-1;
+      secs.forEach(function(sec,i){if(sec&&sec.offsetTop<=sy)ai=i;});
+      backs.forEach(function(it,i){it.classList.toggle('is-on',i===ai);});
+    },{passive:true});
+  })();
+
 })();
 </script>
 
