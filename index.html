@@ -2318,8 +2318,15 @@ document.addEventListener('DOMContentLoaded',function(){
 .ugc-hero-text{flex:1;min-width:0}
 .ugc-hero-logo{flex:0 0 290px;display:flex;align-items:center;justify-content:center;align-self:flex-end;opacity:.92}
 @media(max-width:860px){.ugc-hero-logo{flex:0 0 200px}}
-@media(max-width:768px){.ugc-hero-content{flex-direction:column;align-items:stretch;gap:24px}.ugc-hero-logo{flex:none;width:130px;align-self:flex-end}}
-@media(max-width:480px){.ugc-hero-logo{width:96px}}
+@media(max-width:768px){.ugc-hero-content{flex-direction:column;align-items:stretch;gap:24px}.ugc-hero-logo{flex:none;width:130px;height:auto;align-self:flex-end}}
+@media(max-width:480px){.ugc-hero-logo{width:96px;height:auto}}
+/* Portrait phones: center the logo below the CTA buttons */
+@media(orientation:portrait) and (max-width:768px){
+  .ugc-hero-logo{align-self:center!important;width:150px!important;height:auto!important;margin-top:8px!important}
+}
+@media(orientation:portrait) and (max-width:480px){
+  .ugc-hero-logo{width:130px!important}
+}
 .ugc-h1{font-family:var(--ff);font-size:clamp(2.4rem,5vw,4.2rem);font-weight:200;line-height:1.08;color:var(--cream);margin-bottom:18px}
 .ugc-hero-sub{font-size:1rem;line-height:1.7;color:var(--sub);max-width:620px;margin-bottom:28px}
 .ugc-proof-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px}
@@ -2550,6 +2557,10 @@ document.addEventListener('DOMContentLoaded',function(){
   .ugc-footer { padding: 32px 16px !important; flex-direction: column !important; align-items: flex-start !important; gap: 16px !important; }
   .ugc-footer-links { flex-wrap: wrap !important; gap: 8px !important; }
 
+  /* Fan-stack sections: reduce outer padding so cards don't bleed into adjacent content */
+  .ww-shuffle-active{margin-left:-8px!important;margin-right:-8px!important}
+  .ww-cf-ui{margin-top:12px!important}
+
   input, textarea, select { font-size: 16px !important; }
 }
 
@@ -2614,7 +2625,7 @@ document.addEventListener('DOMContentLoaded',function(){
       </div>
     </div>
     <div class="ugc-hero-logo">
-      <img src="logo.png" alt="WorldWideMal" width="290" height="290" style="width:100%;max-width:290px;display:block;border-radius:4px" onerror="this.onerror=null;this.style.display='none';var f=this.parentNode.querySelector('.ww-logo-fb');if(f)f.style.display='flex'">
+      <img src="logo.png" alt="WorldWideMal" width="290" height="290" style="width:100%;max-width:290px;height:auto;display:block;border-radius:4px;object-fit:contain" onerror="this.onerror=null;this.style.display='none';var f=this.parentNode.querySelector('.ww-logo-fb');if(f)f.style.display='flex'">
       <div class="ww-logo-fb" style="display:none;width:290px;height:290px;background:linear-gradient(145deg,#0d0c10,#09080a);border:1px solid rgba(201,160,86,.18);border-radius:8px;flex-direction:column;align-items:center;justify-content:center;gap:10px">
         <div style="font-family:Georgia,serif;font-size:3.6rem;font-weight:700;color:#c9a056;letter-spacing:.04em;line-height:1">WWM</div>
         <div style="font-size:.5rem;letter-spacing:.28em;color:rgba(201,160,86,.45);text-transform:uppercase">worldwidewmal</div>
@@ -3689,6 +3700,14 @@ window.submitUGCForm = submitUGCForm;
   .ww-sp-l2{transform:translateX(calc(-50% - 105px)) rotate(-13deg) scale(.73)!important;opacity:.52!important}
   .ww-sp-r2{transform:translateX(calc(-50% + 105px)) rotate(13deg) scale(.73)!important;opacity:.52!important}
 }
+/* Small phones: hide outer l2/r2 cards entirely so they don't bleed over buttons */
+@media(max-width:480px){
+  .ww-sp-l2{opacity:0!important;pointer-events:none!important;z-index:0!important;transform:translateX(-50%) scale(.3)!important}
+  .ww-sp-r2{opacity:0!important;pointer-events:none!important;z-index:0!important;transform:translateX(-50%) scale(.3)!important}
+  .ww-sp-l1{transform:translateX(calc(-50% - 72px)) rotate(-8deg) scale(.84)!important;opacity:.8!important}
+  .ww-sp-r1{transform:translateX(calc(-50% + 72px)) rotate(8deg) scale(.84)!important;opacity:.8!important}
+  .ww-shuffle-active{overflow:hidden!important}
+}
 /* Pager UI */
 .ww-cf-ui{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:16px;margin-bottom:8px}
 .ww-cf-arrow{width:38px;height:38px;border-radius:50%;border:1px solid rgba(201,160,86,.35);background:rgba(9,8,10,.7);color:#c9a056;cursor:pointer;font-size:1.15rem;line-height:1;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .2s,border-color .2s;font-family:inherit}
@@ -3918,7 +3937,17 @@ window.submitUGCForm = submitUGCForm;
     h2els.forEach(function(el){h2io.observe(el);});
   }
 
-  /* ── 8a. Shuffle deck — front/mid/back stack, drag to advance ────────── */
+  /* ── 8a. Shuffle deck — front/mid/back stack, drag/arrow to advance ─── */
+  var wwActiveDeck=null;
+  document.addEventListener('keydown',function(e){
+    if(!wwActiveDeck) return;
+    /* Only fire if no text input is focused */
+    var tag=(document.activeElement||{}).tagName||'';
+    if(tag==='INPUT'||tag==='TEXTAREA'||tag==='SELECT') return;
+    if(e.key==='ArrowRight'||e.key==='ArrowDown'){e.preventDefault();wwActiveDeck.advance();}
+    else if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();wwActiveDeck.retreat();}
+  });
+
   function wwInitShuffle(root){
     if(!root||root.__sh) return;
     var cards=Array.prototype.slice.call(root.children);
@@ -3958,19 +3987,27 @@ window.submitUGCForm = submitUGCForm;
     next.addEventListener('click',advance);
     root.addEventListener('click',function(e){if(e.target.closest('.ww-sp-c')) advance();});
 
+    function setActive(){wwActiveDeck={advance:advance,retreat:retreat};}
+
     var sx=null;
-    root.addEventListener('mousedown',function(e){sx=e.clientX;});
+    root.addEventListener('mousedown',function(e){sx=e.clientX;setActive();});
     document.addEventListener('mouseup',function(e){
       if(sx===null) return;
       var dx=e.clientX-sx;sx=null;
       if(dx<-70) advance();else if(dx>70) retreat();
     });
-    root.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});
+    root.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;setActive();},{passive:true});
     root.addEventListener('touchend',function(e){
       if(sx===null) return;
       var dx=e.changedTouches[0].clientX-sx;sx=null;
       if(dx<-50) advance();else if(dx>50) retreat();
     });
+    prev.addEventListener('click',setActive);
+    next.addEventListener('click',setActive);
+
+    /* Default first deck to active so arrow keys work on page load */
+    if(!wwActiveDeck) wwActiveDeck={advance:advance,retreat:retreat};
+
     render();
   }
 
