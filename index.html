@@ -2557,10 +2557,6 @@ document.addEventListener('DOMContentLoaded',function(){
   .ugc-footer { padding: 32px 16px !important; flex-direction: column !important; align-items: flex-start !important; gap: 16px !important; }
   .ugc-footer-links { flex-wrap: wrap !important; gap: 8px !important; }
 
-  /* Fan-stack sections: reduce outer padding so cards don't bleed into adjacent content */
-  .ww-shuffle-active{margin-left:-8px!important;margin-right:-8px!important}
-  .ww-cf-ui{margin-top:12px!important}
-
   input, textarea, select { font-size: 16px !important; }
 }
 
@@ -3700,14 +3696,7 @@ window.submitUGCForm = submitUGCForm;
   .ww-sp-l2{transform:translateX(calc(-50% - 105px)) rotate(-13deg) scale(.73)!important;opacity:.52!important}
   .ww-sp-r2{transform:translateX(calc(-50% + 105px)) rotate(13deg) scale(.73)!important;opacity:.52!important}
 }
-/* Small phones: hide outer l2/r2 cards, tighten l1/r1 so nothing bleeds over buttons */
-@media(max-width:480px){
-  .ww-sp-l2{opacity:0!important;pointer-events:none!important;z-index:0!important;transform:translateX(-50%) scale(.3)!important}
-  .ww-sp-r2{opacity:0!important;pointer-events:none!important;z-index:0!important;transform:translateX(-50%) scale(.3)!important}
-  .ww-sp-l1{transform:translateX(calc(-50% - 56px)) rotate(-6deg) scale(.82)!important;opacity:.75!important}
-  .ww-sp-r1{transform:translateX(calc(-50% + 56px)) rotate(6deg) scale(.82)!important;opacity:.75!important}
-  .ww-shuffle-active{overflow:hidden!important}
-}
+/* Small phones use snap-scroll (ww-mobile-scroll), fan only on >640px */
 /* Pager UI */
 .ww-cf-ui{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:16px;margin-bottom:8px}
 .ww-cf-arrow{width:38px;height:38px;border-radius:50%;border:1px solid rgba(201,160,86,.35);background:rgba(9,8,10,.7);color:#c9a056;cursor:pointer;font-size:1.15rem;line-height:1;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .2s,border-color .2s;font-family:inherit}
@@ -3948,21 +3937,33 @@ window.submitUGCForm = submitUGCForm;
     else if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();wwActiveDeck.retreat();}
   });
 
+  var MOBILE_BP=640;
+  function wwIsMobile(){return window.innerWidth<=MOBILE_BP;}
+
   function wwInitShuffle(root){
     if(!root||root.__sh) return;
     var cards=Array.prototype.slice.call(root.children);
     if(cards.length<2) return;
     root.__sh=true;
     root.classList.remove('ww-hscroll-track');
-    root.classList.add('ww-shuffle-active');
-    root.classList.add(root.id==='ugc-reel-grid'?'ww-sh-video':'ww-sh-text');
-
+    var isVideo=(root.id==='ugc-reel-grid');
     var n=cards.length,cur=0;
 
-    function render(){
+    /* ── Counter element (shared between modes) ── */
+    var ui=document.createElement('div');ui.className='ww-cf-ui';
+    var prev=document.createElement('button');prev.type='button';prev.className='ww-cf-arrow';prev.innerHTML='&#8249;';prev.setAttribute('aria-label','Previous');
+    var counter=document.createElement('span');counter.className='ww-cf-count';
+    var next=document.createElement('button');next.type='button';next.className='ww-cf-arrow';next.innerHTML='&#8250;';next.setAttribute('aria-label','Next');
+    ui.appendChild(prev);ui.appendChild(counter);ui.appendChild(next);
+    root.parentNode.insertBefore(ui,root.nextSibling);
+
+    /* ── Fan mode (tablet/desktop) ── */
+    function applyFan(){
+      root.classList.add('ww-shuffle-active');
+      root.classList.add(isVideo?'ww-sh-video':'ww-sh-text');
+      root.classList.remove('ww-mobile-scroll');
       cards.forEach(function(c,i){
         var rel=(i-cur+n)%n;
-        /* Convert to signed: values > n/2 become negative (left side) */
         if(rel>n/2) rel-=n;
         c.classList.remove('ww-sp-c','ww-sp-l1','ww-sp-r1','ww-sp-l2','ww-sp-r2','ww-sp-hidden');
         if(rel===0) c.classList.add('ww-sp-c');
@@ -3972,40 +3973,76 @@ window.submitUGCForm = submitUGCForm;
         else if(rel===-2) c.classList.add('ww-sp-l2');
         else c.classList.add('ww-sp-hidden');
       });
+    }
+
+    /* ── Snap-scroll mode (mobile phones) ── */
+    function applyMobile(){
+      root.classList.remove('ww-shuffle-active','ww-sh-video','ww-sh-text');
+      root.classList.add('ww-mobile-scroll');
+      cards.forEach(function(c){
+        c.classList.remove('ww-sp-c','ww-sp-l1','ww-sp-r1','ww-sp-l2','ww-sp-r2','ww-sp-hidden');
+      });
+      /* Scroll active card into center */
+      var card=cards[cur];
+      if(card){
+        var offset=card.offsetLeft-(root.clientWidth-card.offsetWidth)/2;
+        root.scrollTo({left:Math.max(0,offset),behavior:'smooth'});
+      }
+    }
+
+    function render(){
+      if(wwIsMobile()) applyMobile(); else applyFan();
       counter.textContent=(cur+1)+' / '+n;
     }
     function advance(){cur=(cur+1)%n;render();}
     function retreat(){cur=(cur-1+n)%n;render();}
 
-    var ui=document.createElement('div');ui.className='ww-cf-ui';
-    var prev=document.createElement('button');prev.type='button';prev.className='ww-cf-arrow';prev.innerHTML='&#8249;';prev.setAttribute('aria-label','Previous');
-    var counter=document.createElement('span');counter.className='ww-cf-count';
-    var next=document.createElement('button');next.type='button';next.className='ww-cf-arrow';next.innerHTML='&#8250;';next.setAttribute('aria-label','Next');
-    ui.appendChild(prev);ui.appendChild(counter);ui.appendChild(next);
-    root.parentNode.insertBefore(ui,root.nextSibling);
     prev.addEventListener('click',retreat);
     next.addEventListener('click',advance);
+
+    /* Click center card on fan mode to advance */
     root.addEventListener('click',function(e){if(e.target.closest('.ww-sp-c')) advance();});
 
     function setActive(){wwActiveDeck={advance:advance,retreat:retreat};}
 
+    /* Mouse drag */
     var sx=null;
     root.addEventListener('mousedown',function(e){sx=e.clientX;setActive();});
     document.addEventListener('mouseup',function(e){
       if(sx===null) return;
       var dx=e.clientX-sx;sx=null;
-      if(dx<-70) advance();else if(dx>70) retreat();
+      /* Only trigger drag-nav when NOT in mobile snap-scroll (let native scroll handle it) */
+      if(!wwIsMobile()){if(dx<-70) advance();else if(dx>70) retreat();}
     });
-    root.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;setActive();},{passive:true});
+
+    /* Touch swipe — mobile snap-scroll handles native swipe; buttons/arrows navigate programmatically */
+    var tx=null;
+    root.addEventListener('touchstart',function(e){tx=e.touches[0].clientX;setActive();},{passive:true});
     root.addEventListener('touchend',function(e){
-      if(sx===null) return;
-      var dx=e.changedTouches[0].clientX-sx;sx=null;
-      if(dx<-50) advance();else if(dx>50) retreat();
+      if(tx===null) return;
+      var dx=e.changedTouches[0].clientX-tx;tx=null;
+      if(wwIsMobile()){
+        /* After native swipe settles, sync cur to whichever card is most visible */
+        setTimeout(function(){
+          var best=0,bestDist=Infinity;
+          cards.forEach(function(c,i){
+            var dist=Math.abs(c.offsetLeft-(root.scrollLeft+(root.clientWidth-c.offsetWidth)/2));
+            if(dist<bestDist){bestDist=dist;best=i;}
+          });
+          cur=best;
+          counter.textContent=(cur+1)+' / '+n;
+        },350);
+      } else {
+        if(dx<-50) advance();else if(dx>50) retreat();
+      }
     });
+
     prev.addEventListener('click',setActive);
     next.addEventListener('click',setActive);
 
-    /* Default first deck to active so arrow keys work on page load */
+    /* Re-render on resize (switch between fan/scroll modes) */
+    window.addEventListener('resize',function(){render();});
+
     if(!wwActiveDeck) wwActiveDeck={advance:advance,retreat:retreat};
 
     render();
@@ -4236,36 +4273,44 @@ window.submitUGCForm = submitUGCForm;
   }
 }
 
-/* ── Mobile: fan-section responsive overrides ────────────────────────── */
+/* ── Mobile snap-scroll deck (phones <=640px) ────────────────────────── */
+.ww-mobile-scroll{
+  display:flex!important;
+  overflow-x:scroll!important;
+  overflow-y:visible!important;
+  scroll-snap-type:x mandatory!important;
+  -webkit-overflow-scrolling:touch!important;
+  gap:12px!important;
+  padding:8px 20px 16px!important;
+  height:auto!important;
+  min-height:unset!important;
+  cursor:grab!important;
+  scrollbar-width:none!important;
+  position:relative!important;
+  /* undo fan-deck absolute layout */
+  transform:none!important;
+}
+.ww-mobile-scroll::-webkit-scrollbar{display:none!important}
+.ww-mobile-scroll>*{
+  position:relative!important;
+  left:auto!important;
+  top:auto!important;
+  flex:0 0 82%!important;
+  width:82%!important;
+  max-width:82%!important;
+  min-width:0!important;
+  scroll-snap-align:center!important;
+  transform:none!important;
+  opacity:1!important;
+  z-index:auto!important;
+  cursor:default!important;
+  box-sizing:border-box!important;
+}
+
+/* Section padding on mobile */
 @media(max-width:640px){
-  /* Reduce side padding so fan cards have more room */
   #ugc-portfolio,
   .ww-fan-section{padding-left:20px!important;padding-right:20px!important;padding-top:52px!important;padding-bottom:52px!important}
-
-  /* Narrower cards so they don't overflow viewport */
-  .ww-test-card{min-width:230px!important;flex:0 0 230px!important;max-width:230px!important}
-  .ww-cs-card{min-width:230px!important;flex:0 0 230px!important;max-width:230px!important}
-
-  /* More bottom margin on the deck so arrow nav buttons are never overlapped */
-  .ww-shuffle-active{margin-bottom:20px!important}
-
-  /* Tighter text card deck height to match actual card content on phones */
-  .ww-sh-text{height:340px!important}
-  .ww-sh-video{height:250px!important}
-}
-
-@media(max-width:480px){
-  .ww-test-card{min-width:210px!important;flex:0 0 210px!important;max-width:210px!important}
-  .ww-cs-card{min-width:210px!important;flex:0 0 210px!important;max-width:210px!important}
-  .ww-sh-text{height:320px!important}
-  .ww-sh-video{height:230px!important}
-}
-
-@media(max-width:380px){
-  .ww-test-card{min-width:190px!important;flex:0 0 190px!important;max-width:190px!important}
-  .ww-cs-card{min-width:190px!important;flex:0 0 190px!important;max-width:190px!important}
-  .ww-sh-text{height:300px!important}
-  .ww-sh-video{height:210px!important}
 }
 
 /* ── Mobile: disable hero parallax transform (JS sets inline styles) ──── */
