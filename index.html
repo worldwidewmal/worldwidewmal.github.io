@@ -3143,7 +3143,7 @@ if (document.readyState === 'loading') {
 </div>
 
 <!-- TESTIMONIALS -->
-<div style="padding:88px 52px;border-bottom:1px solid rgba(255,255,255,.05)">
+<div class="ww-fan-section" style="padding:88px 52px;border-bottom:1px solid rgba(255,255,255,.05)">
 <div style="max-width:1100px;margin:0 auto">
   <p class="ugc-sec-tag">What Brands Say</p>
   <h2 class="ugc-h2">What Brands Say</h2>
@@ -3193,7 +3193,7 @@ if (document.readyState === 'loading') {
 </div>
 
 <!-- CASE STUDIES -->
-<div style="padding:88px 52px;border-bottom:1px solid rgba(255,255,255,.05);background:#0a090d">
+<div class="ww-fan-section" style="padding:88px 52px;border-bottom:1px solid rgba(255,255,255,.05);background:#0a090d">
 <div style="max-width:1100px;margin:0 auto">
   <p class="ugc-sec-tag">Selected Work</p>
   <h2 class="ugc-h2">Case Studies</h2>
@@ -3700,12 +3700,12 @@ window.submitUGCForm = submitUGCForm;
   .ww-sp-l2{transform:translateX(calc(-50% - 105px)) rotate(-13deg) scale(.73)!important;opacity:.52!important}
   .ww-sp-r2{transform:translateX(calc(-50% + 105px)) rotate(13deg) scale(.73)!important;opacity:.52!important}
 }
-/* Small phones: hide outer l2/r2 cards entirely so they don't bleed over buttons */
+/* Small phones: hide outer l2/r2 cards, tighten l1/r1 so nothing bleeds over buttons */
 @media(max-width:480px){
   .ww-sp-l2{opacity:0!important;pointer-events:none!important;z-index:0!important;transform:translateX(-50%) scale(.3)!important}
   .ww-sp-r2{opacity:0!important;pointer-events:none!important;z-index:0!important;transform:translateX(-50%) scale(.3)!important}
-  .ww-sp-l1{transform:translateX(calc(-50% - 72px)) rotate(-8deg) scale(.84)!important;opacity:.8!important}
-  .ww-sp-r1{transform:translateX(calc(-50% + 72px)) rotate(8deg) scale(.84)!important;opacity:.8!important}
+  .ww-sp-l1{transform:translateX(calc(-50% - 56px)) rotate(-6deg) scale(.82)!important;opacity:.75!important}
+  .ww-sp-r1{transform:translateX(calc(-50% + 56px)) rotate(6deg) scale(.82)!important;opacity:.75!important}
   .ww-shuffle-active{overflow:hidden!important}
 }
 /* Pager UI */
@@ -4236,10 +4236,36 @@ window.submitUGCForm = submitUGCForm;
   }
 }
 
-/* ── Mobile: card widths in horizontal scroll tracks ─────────────────── */
+/* ── Mobile: fan-section responsive overrides ────────────────────────── */
+@media(max-width:640px){
+  /* Reduce side padding so fan cards have more room */
+  #ugc-portfolio,
+  .ww-fan-section{padding-left:20px!important;padding-right:20px!important;padding-top:52px!important;padding-bottom:52px!important}
+
+  /* Narrower cards so they don't overflow viewport */
+  .ww-test-card{min-width:230px!important;flex:0 0 230px!important;max-width:230px!important}
+  .ww-cs-card{min-width:230px!important;flex:0 0 230px!important;max-width:230px!important}
+
+  /* More bottom margin on the deck so arrow nav buttons are never overlapped */
+  .ww-shuffle-active{margin-bottom:20px!important}
+
+  /* Tighter text card deck height to match actual card content on phones */
+  .ww-sh-text{height:340px!important}
+  .ww-sh-video{height:250px!important}
+}
+
 @media(max-width:480px){
-  .ww-test-card{min-width:250px!important;flex:0 0 250px!important;max-width:250px!important}
-  .ww-cs-card{min-width:250px!important;flex:0 0 250px!important;max-width:250px!important}
+  .ww-test-card{min-width:210px!important;flex:0 0 210px!important;max-width:210px!important}
+  .ww-cs-card{min-width:210px!important;flex:0 0 210px!important;max-width:210px!important}
+  .ww-sh-text{height:320px!important}
+  .ww-sh-video{height:230px!important}
+}
+
+@media(max-width:380px){
+  .ww-test-card{min-width:190px!important;flex:0 0 190px!important;max-width:190px!important}
+  .ww-cs-card{min-width:190px!important;flex:0 0 190px!important;max-width:190px!important}
+  .ww-sh-text{height:300px!important}
+  .ww-sh-video{height:210px!important}
 }
 
 /* ── Mobile: disable hero parallax transform (JS sets inline styles) ──── */
