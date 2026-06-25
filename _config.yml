@@ -1,0 +1,17 @@
+# GitHub Pages build config — keeps internal pipeline files out of the published site.
+# These files stay in the repo for the UGC OS agents, but are NOT served at worldwidewmal.com.
+exclude:
+  - pipeline.csv
+  - suppression-list.csv
+  - data/
+  - reports/
+  - routines/
+  - docs/
+  - dashboard/
+  - scripts/
+  - CLAUDE.md
+  - README.md
+  - render.yaml
+  - package.json
+  - package-lock.json
+  - .claude/
