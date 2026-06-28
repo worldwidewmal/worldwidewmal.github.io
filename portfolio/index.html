@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<script>if(window.top!==window.self){try{window.top.location=window.self.location;}catch(e){document.body.innerHTML='';}}</script>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; frame-src https://www.canva.com https://canva.link https://*.canva.com; connect-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'; worker-src 'none'; manifest-src 'self'; upgrade-insecure-requests;"/>
+<meta http-equiv="Permissions-Policy" content="accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), usb=(), serial=(), bluetooth=(), browsing-topics=()"/>
+<meta name="referrer" content="strict-origin-when-cross-origin"/>
+<title>Portfolio | Worldwidewmal</title>
+<meta name="description" content="Selected UGC and travel content work by Worldwidewmal — brand collaborations, short-form video, and creator campaigns for hotels, tourism, restaurants, and experiences."/>
+<link rel="canonical" href="https://worldwidewmal.com/portfolio"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Portfolio | Worldwidewmal"/>
+<meta property="og:description" content="Selected UGC and travel content work by Worldwidewmal — brand collaborations, short-form video, and creator campaigns."/>
+<meta property="og:url" content="https://worldwidewmal.com/portfolio"/>
+<meta property="og:image" content="https://worldwidewmal.com/logo.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Portfolio | Worldwidewmal"/>
+<meta name="twitter:description" content="Selected UGC and travel content work by Worldwidewmal — brand collaborations, short-form video, and creator campaigns."/>
+<meta name="twitter:image" content="https://worldwidewmal.com/logo.png"/>
+<link rel="icon" href="../logo.png"/>
+<style>
+@font-face{font-family:'DM Sans';font-style:normal;font-weight:300 600;font-display:swap;src:url(../assets/fonts/dm-sans-normal-ca72d2bc.woff2) format('woff2')}
+@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:200 600;font-display:swap;src:url(../assets/fonts/cormorant-garamond-normal-d80df8ff.woff2) format('woff2')}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:#09080a;color:#eae5dc;
+  font-family:'DM Sans',system-ui,-apple-system,sans-serif;
+  min-height:100vh;
+}
+/* ---- sticky top bar ---- */
+.pf-bar{
+  position:sticky;top:0;z-index:10;
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding:12px 18px;background:rgba(9,8,10,.96);backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(201,160,86,.18);
+}
+.pf-brand{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.05rem;letter-spacing:.06em;color:#c9a056}
+.pf-back{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:11px 22px;border-radius:100px;
+  background:#c9a056;color:#09080a;text-decoration:none;
+  font-size:.74rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;
+  transition:opacity .2s,transform .2s;white-space:nowrap;
+}
+.pf-back:hover{opacity:.9;transform:translateX(-2px)}
+/* ---- embed (Canva responsive wrapper — full design renders, page scrolls) ---- */
+.pf-embed-outer{max-width:860px;margin:0 auto;padding:18px 14px 40px}
+.pf-embed{
+  position:relative;width:100%;height:0;
+  /* Aspect ratio from Canva's embed snippet. If you change the design's
+     dimensions/length, update this padding-top to match the new % Canva gives. */
+  padding-top:663.6164%;
+  overflow:hidden;border-radius:10px;
+  box-shadow:0 2px 8px 0 rgba(63,69,81,0.16);background:#0b0a0d;
+}
+.pf-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0;margin:0;padding:0}
+/* ---- subtle loader (only shown if the embed is slow) ---- */
+.pf-loader{
+  position:fixed;left:0;right:0;top:58px;bottom:0;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;
+  background:#0b0a0d;opacity:0;visibility:hidden;transition:opacity .25s;z-index:5;
+}
+.pf-loader.show{opacity:1;visibility:visible}
+.pf-spin{width:38px;height:38px;border-radius:50%;border:3px solid rgba(201,160,86,.2);border-top-color:#c9a056;animation:pfspin .8s linear infinite}
+.pf-loadtxt{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(234,229,220,.5)}
+@keyframes pfspin{to{transform:rotate(360deg)}}
+@media(max-width:560px){
+  .pf-brand{display:none}
+  .pf-bar{justify-content:center}
+  .pf-back{width:100%;justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<script>
+  /* ============================================================
+     EDIT THIS ONE LINE to update the portfolio.
+     Paste the link from Canva (Share → More → Embed) here and it
+     updates everywhere automatically.
+     ============================================================ */
+  var CANVA_EMBED_URL = "https://www.canva.com/design/DAHN4eP3wPA/XJKyM5JlWnJ9XhMsBnIVPg/view?embed";
+</script>
+
+<header class="pf-bar">
+  <span class="pf-brand">worldwidewmal</span>
+  <a class="pf-back" href="/#ugc-pricing">&larr; View UGC Packages &amp; Pricing</a>
+</header>
+
+<div class="pf-loader" id="pf-loader">
+  <div class="pf-spin"></div>
+  <div class="pf-loadtxt">Loading portfolio</div>
+</div>
+
+<div class="pf-embed-outer">
+  <div class="pf-embed">
+    <iframe id="pf-frame" title="Worldwidewmal portfolio" loading="eager"
+      allow="fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+  </div>
+</div>
+
+<script>
+(function(){
+  var frame  = document.getElementById('pf-frame');
+  var loader = document.getElementById('pf-loader');
+  var loaded = false;
+
+  /* Show the loader ONLY if the embed hasn't loaded almost instantly (>600ms). */
+  var slowTimer = setTimeout(function(){ if(!loaded) loader.classList.add('show'); }, 600);
+
+  frame.addEventListener('load', function(){
+    loaded = true;
+    clearTimeout(slowTimer);
+    loader.classList.remove('show');
+  });
+
+  /* Single source of truth for the embed URL (set above). */
+  frame.src = (typeof CANVA_EMBED_URL === 'string' && CANVA_EMBED_URL) ? CANVA_EMBED_URL : 'about:blank';
+})();
+</script>
+
+</body>
+</html>
