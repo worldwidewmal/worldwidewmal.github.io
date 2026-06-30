@@ -60,6 +60,14 @@ body{
   overflow:hidden;background:#0b0a0d;
 }
 .pf-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0;margin:0;padding:0}
+/* Mobile (<=767px): the tall iframe spans almost the whole page, so on touch
+   devices it captures the swipe and blocks the page from scrolling to the
+   bottom. Disabling pointer events lets the touch fall through to the page,
+   which scrolls the full design. The embed is a static view on mobile (its
+   animations don't run inside Canva embeds), so no interaction is lost.     */
+@media(max-width:767px){
+  .pf-embed iframe{pointer-events:none}
+}
 @media(min-width:768px){
   .pf-embed-outer{padding:0}
   .pf-embed{height:calc(100vh - 58px);height:calc(100svh - 58px);padding-top:0}
