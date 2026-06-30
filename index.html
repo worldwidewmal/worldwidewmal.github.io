@@ -114,6 +114,48 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://js.stripe.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' https://img.youtube.com https://i.ytimg.com https://a0.muscache.com; frame-src https://www.youtube.com https://js.stripe.com https://hooks.stripe.com; connect-src 'self' https://api.web3forms.com https://api.stripe.com https://m.stripe.com https://m.stripe.network https://q.stripe.com; form-action 'self' https://api.web3forms.com; base-uri 'self'; object-src 'none'; worker-src 'none'; manifest-src 'self'; upgrade-insecure-requests;"/>
 <meta http-equiv="Permissions-Policy" content="accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), usb=(), serial=(), bluetooth=(), browsing-topics=()"/>
 <meta name="referrer" content="strict-origin-when-cross-origin"/>
+<!-- Faster /portfolio open. (1) Chromium prerenders the portfolio page AND its
+     Canva embed in the background the instant the visitor shows intent, so the
+     click is instant. "moderate" = intent-driven only, no wasted prerenders. -->
+<script type="speculationrules">
+{
+  "prerender": [
+    {
+      "where": { "href_matches": "/portfolio*" },
+      "eagerness": "moderate"
+    }
+  ]
+}
+</script>
+<script>
+/* (2) Cross-browser companion (Safari/iOS, where prerender is unsupported):
+   the first time a visitor reaches for a portfolio link, open the TLS
+   connection to Canva so the embed loads from a hot connection after
+   navigation. Fires once, event-delegated, no effect until intent. */
+(function(){
+  var warmed = false;
+  function warm(){
+    if (warmed) return; warmed = true;
+    var hints = [
+      ['preconnect',   'https://www.canva.com',    true],
+      ['dns-prefetch', 'https://static.canva.com', false],
+      ['dns-prefetch', 'https://media.canva.com',  false]
+    ];
+    for (var i = 0; i < hints.length; i++){
+      var l = document.createElement('link');
+      l.rel = hints[i][0]; l.href = hints[i][1];
+      if (hints[i][2]) l.crossOrigin = 'anonymous';
+      document.head.appendChild(l);
+    }
+  }
+  function onIntent(e){
+    var t = e.target;
+    if (t && t.closest && t.closest('a[href^="/portfolio"]')) warm();
+  }
+  document.addEventListener('pointerover', onIntent, true);
+  document.addEventListener('touchstart',  onIntent, { capture: true, passive: true });
+})();
+</script>
 <title>Worldwidewmal | UGC Creator &amp; Travel Content Portfolio</title>
 <meta name="description" content="Worldwidewmal creates high-performing UGC, short-form travel content, and branded video assets for hotels, tourism brands, restaurants, experiences, and lifestyle companies."/>
 <link rel="canonical" href="https://worldwidewmal.com/"/>
