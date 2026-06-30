@@ -32,11 +32,12 @@
 body{
   background:#09080a;color:#eae5dc;
   font-family:'DM Sans',system-ui,-apple-system,sans-serif;
-  min-height:100vh;
+  height:100vh;height:100svh;
+  display:flex;flex-direction:column;overflow:hidden;
 }
 /* ---- sticky top bar ---- */
 .pf-bar{
-  position:sticky;top:0;z-index:10;
+  position:relative;z-index:10;flex:0 0 auto;
   display:flex;align-items:center;justify-content:space-between;gap:14px;
   padding:12px 18px;background:rgba(9,8,10,.96);backdrop-filter:blur(8px);
   border-bottom:1px solid rgba(201,160,86,.18);
@@ -51,27 +52,17 @@ body{
 }
 .pf-back:hover{opacity:.9;transform:translateX(-2px)}
 /* ---- embed ---- */
-/* Mobile: full design height via aspect ratio so every page is reachable.
-   Desktop (>=768px): iframe fills the viewport below the nav bar.          */
-.pf-embed-outer{max-width:100%;margin:0;padding:0}
-.pf-embed{
-  position:relative;width:100%;height:0;
-  padding-top:663.6164%;
-  overflow:hidden;background:#0b0a0d;
-}
+/* One fixed viewport-height frame on EVERY device (this is what the desktop
+   view already did and it works). Canva's embed scrolls its own content
+   inside the frame, so there is a single scroll context — no tall iframe
+   sitting inside a scrolling page, which is what trapped touch scrolling on
+   mobile and clipped everything below "hotel/properties". And because the
+   height is the viewport (not a hard-coded design ratio), it can never clip
+   the bottom of the design no matter how tall the design is or how often
+   it's edited in Canva.                                                     */
+.pf-embed-outer{flex:1 1 auto;min-height:0;max-width:100%;margin:0;padding:0}
+.pf-embed{position:relative;width:100%;height:100%;overflow:hidden;background:#0b0a0d}
 .pf-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0;margin:0;padding:0}
-/* Mobile (<=767px): the tall iframe spans almost the whole page, so on touch
-   devices it captures the swipe and blocks the page from scrolling to the
-   bottom. Disabling pointer events lets the touch fall through to the page,
-   which scrolls the full design. The embed is a static view on mobile (its
-   animations don't run inside Canva embeds), so no interaction is lost.     */
-@media(max-width:767px){
-  .pf-embed iframe{pointer-events:none}
-}
-@media(min-width:768px){
-  .pf-embed-outer{padding:0}
-  .pf-embed{height:calc(100vh - 58px);height:calc(100svh - 58px);padding-top:0}
-}
 /* ---- loader — visible immediately, fades out when Canva fires load ---- */
 .pf-loader{
   position:fixed;left:0;right:0;top:58px;bottom:0;
