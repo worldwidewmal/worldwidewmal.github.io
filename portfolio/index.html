@@ -20,6 +20,11 @@
 <meta name="twitter:description" content="Selected UGC and travel content work by Worldwidewmal — brand collaborations, short-form video, and creator campaigns."/>
 <meta name="twitter:image" content="https://worldwidewmal.com/logo.png"/>
 <link rel="icon" href="../logo.png"/>
+<!-- DNS + TCP connection to Canva resolved before iframe starts loading -->
+<link rel="preconnect" href="https://www.canva.com" crossorigin/>
+<link rel="dns-prefetch" href="https://www.canva.com"/>
+<link rel="dns-prefetch" href="https://static.canva.com"/>
+<link rel="dns-prefetch" href="https://media.canva.com"/>
 <style>
 @font-face{font-family:'DM Sans';font-style:normal;font-weight:300 600;font-display:swap;src:url(../assets/fonts/dm-sans-normal-ca72d2bc.woff2) format('woff2')}
 @font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:200 600;font-display:swap;src:url(../assets/fonts/cormorant-garamond-normal-d80df8ff.woff2) format('woff2')}
@@ -45,24 +50,28 @@ body{
   transition:opacity .2s,transform .2s;white-space:nowrap;
 }
 .pf-back:hover{opacity:.9;transform:translateX(-2px)}
-/* ---- embed (Canva responsive wrapper — full design renders, page scrolls) ---- */
-.pf-embed-outer{max-width:860px;margin:0 auto;padding:18px 14px 40px}
+/* ---- embed ---- */
+/* Mobile: full design height via aspect ratio so every page is reachable.
+   Desktop (>=768px): iframe fills the viewport below the nav bar — no dead
+   space left/right, content scrolls inside Canva's own embed UI.            */
+.pf-embed-outer{max-width:100%;margin:0;padding:0}
 .pf-embed{
   position:relative;width:100%;height:0;
-  /* Aspect ratio from Canva's embed snippet. If you change the design's
-     dimensions/length, update this padding-top to match the new % Canva gives. */
   padding-top:663.6164%;
-  overflow:hidden;border-radius:10px;
-  box-shadow:0 2px 8px 0 rgba(63,69,81,0.16);background:#0b0a0d;
+  overflow:hidden;background:#0b0a0d;
 }
 .pf-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0;margin:0;padding:0}
-/* ---- subtle loader (only shown if the embed is slow) ---- */
+@media(min-width:768px){
+  .pf-embed-outer{padding:0}
+  .pf-embed{height:calc(100svh - 58px);padding-top:0}
+}
+/* ---- loader — visible immediately, fades out when Canva fires load ---- */
 .pf-loader{
   position:fixed;left:0;right:0;top:58px;bottom:0;
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;
-  background:#0b0a0d;opacity:0;visibility:hidden;transition:opacity .25s;z-index:5;
+  background:#0b0a0d;opacity:1;visibility:visible;transition:opacity .4s;z-index:5;
 }
-.pf-loader.show{opacity:1;visibility:visible}
+.pf-loader.hide{opacity:0;visibility:hidden;pointer-events:none}
 .pf-spin{width:38px;height:38px;border-radius:50%;border:3px solid rgba(201,160,86,.2);border-top-color:#c9a056;animation:pfspin .8s linear infinite}
 .pf-loadtxt{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(234,229,220,.5)}
 @keyframes pfspin{to{transform:rotate(360deg)}}
@@ -105,18 +114,13 @@ body{
 (function(){
   var frame  = document.getElementById('pf-frame');
   var loader = document.getElementById('pf-loader');
-  var loaded = false;
 
-  /* Show the loader ONLY if the embed hasn't loaded almost instantly (>600ms). */
-  var slowTimer = setTimeout(function(){ if(!loaded) loader.classList.add('show'); }, 600);
-
+  /* Loader is visible by default; hide it once Canva fires its load event. */
   frame.addEventListener('load', function(){
-    loaded = true;
-    clearTimeout(slowTimer);
-    loader.classList.remove('show');
+    loader.classList.add('hide');
   });
 
-  /* Single source of truth for the embed URL (set above). */
+  /* Set src last so preconnect hints have maximum time to resolve first. */
   frame.src = (typeof CANVA_EMBED_URL === 'string' && CANVA_EMBED_URL) ? CANVA_EMBED_URL : 'about:blank';
 })();
 </script>
