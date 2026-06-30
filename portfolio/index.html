@@ -20,7 +20,7 @@
 <meta name="twitter:description" content="Selected UGC and travel content work by Worldwidewmal — brand collaborations, short-form video, and creator campaigns."/>
 <meta name="twitter:image" content="https://worldwidewmal.com/logo.png"/>
 <link rel="icon" href="../logo.png"/>
-<!-- DNS + TCP connection to Canva resolved before iframe starts loading -->
+<!-- DNS + TCP to Canva resolved before iframe starts loading -->
 <link rel="preconnect" href="https://www.canva.com" crossorigin/>
 <link rel="dns-prefetch" href="https://www.canva.com"/>
 <link rel="dns-prefetch" href="https://static.canva.com"/>
@@ -52,8 +52,7 @@ body{
 .pf-back:hover{opacity:.9;transform:translateX(-2px)}
 /* ---- embed ---- */
 /* Mobile: full design height via aspect ratio so every page is reachable.
-   Desktop (>=768px): iframe fills the viewport below the nav bar — no dead
-   space left/right, content scrolls inside Canva's own embed UI.            */
+   Desktop (>=768px): iframe fills the viewport below the nav bar.          */
 .pf-embed-outer{max-width:100%;margin:0;padding:0}
 .pf-embed{
   position:relative;width:100%;height:0;
@@ -63,7 +62,7 @@ body{
 .pf-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0;margin:0;padding:0}
 @media(min-width:768px){
   .pf-embed-outer{padding:0}
-  .pf-embed{height:calc(100svh - 58px);padding-top:0}
+  .pf-embed{height:calc(100vh - 58px);height:calc(100svh - 58px);padding-top:0}
 }
 /* ---- loader — visible immediately, fades out when Canva fires load ---- */
 .pf-loader{
@@ -84,15 +83,6 @@ body{
 </head>
 <body>
 
-<script>
-  /* ============================================================
-     EDIT THIS ONE LINE to update the portfolio.
-     Paste the link from Canva (Share → More → Embed) here and it
-     updates everywhere automatically.
-     ============================================================ */
-  var CANVA_EMBED_URL = "https://www.canva.com/design/DAHN4eP3wPA/XJKyM5JlWnJ9XhMsBnIVPg/view?embed";
-</script>
-
 <header class="pf-bar">
   <span class="pf-brand">worldwidewmal</span>
   <a class="pf-back" href="/#ugc-pricing">&larr; View UGC Packages &amp; Pricing</a>
@@ -105,23 +95,22 @@ body{
 
 <div class="pf-embed-outer">
   <div class="pf-embed">
-    <iframe id="pf-frame" title="Worldwidewmal portfolio" loading="eager"
+    <!--
+      EDIT THIS src to update the portfolio.
+      Paste the Canva embed link (Share → More → Embed) here.
+    -->
+    <iframe id="pf-frame" title="Worldwidewmal portfolio" loading="eager" fetchpriority="high"
+      src="https://www.canva.com/design/DAHN4eP3wPA/XJKyM5JlWnJ9XhMsBnIVPg/view?embed"
       allow="fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
   </div>
 </div>
 
 <script>
 (function(){
-  var frame  = document.getElementById('pf-frame');
   var loader = document.getElementById('pf-loader');
-
-  /* Loader is visible by default; hide it once Canva fires its load event. */
-  frame.addEventListener('load', function(){
+  document.getElementById('pf-frame').addEventListener('load', function(){
     loader.classList.add('hide');
   });
-
-  /* Set src last so preconnect hints have maximum time to resolve first. */
-  frame.src = (typeof CANVA_EMBED_URL === 'string' && CANVA_EMBED_URL) ? CANVA_EMBED_URL : 'about:blank';
 })();
 </script>
 
