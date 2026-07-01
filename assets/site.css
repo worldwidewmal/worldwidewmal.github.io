@@ -1119,6 +1119,13 @@ footer{border-top:1px solid var(--b1);background:var(--s1);padding:26px 52px;mar
 .ugc-faq-item.open .ugc-faq-ic{transform:rotate(45deg)}
 .ugc-faq-a{display:none;padding:0 20px 16px;font-size:.78rem;color:#a49a96;line-height:1.7}
 .ugc-faq-item.open .ugc-faq-a{display:block}
+/* ── Add-on / usage / licensing menu rows ─────────────────────────────── */
+.ww-addon-row{display:flex;justify-content:space-between;align-items:baseline;gap:18px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.ww-addon-row:last-child{border-bottom:0}
+.ww-addon-row .lbl{flex:1;font-size:.8rem;color:rgba(234,229,220,.82);line-height:1.5}
+.ww-addon-row .amt{font-size:.82rem;color:#c9a056;font-weight:700;white-space:nowrap}
+/* Bundle badge label override — funnel target reads "BEST VALUE" */
+.ugc-price-card.featured.ww-best-value::before{content:'BEST VALUE'}
 
 /* FINAL CTA */
 .ugc-cta-section{background:linear-gradient(135deg,#0d0b0f,#1a1520,#0d0b0f);padding:88px 24px;text-align:center;border-bottom:1px solid rgba(255,255,255,.05)}
