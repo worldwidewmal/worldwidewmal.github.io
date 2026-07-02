@@ -1968,10 +1968,6 @@ document.addEventListener('DOMContentLoaded',function(){
         </select>
       </div>
     </div>
-    <div class="ugc-form-row">
-      <div class="ugc-field"><label class="ugc-label" for="inq-deliverables">Deliverables Needed</label><input id="inq-deliverables" class="ugc-input" type="text" name="deliverables" autocomplete="off" maxlength="200" placeholder="e.g. 2 TikToks, 1 Reel, raw footage"></div>
-      <div class="ugc-field"><label class="ugc-label" for="inq-usage">Usage Needs</label><input id="inq-usage" class="ugc-input" type="text" name="usage" autocomplete="off" maxlength="200" placeholder="e.g. organic only, paid ads, website"></div>
-    </div>
     <div class="ugc-field">
       <label class="ugc-label">Add-Ons (Select All That Apply)</label>
       <p style="font-size:.7rem;color:var(--sub);margin:0 0 10px">Check any add-on, then choose the length or scope in the dropdown beneath it.</p>
@@ -2036,7 +2032,6 @@ document.addEventListener('DOMContentLoaded',function(){
         </div>
       </div>
     </div>
-    <div class="ugc-field"><label class="ugc-label">Timeline</label><input class="ugc-input" type="text" name="timeline" autocomplete="off" maxlength="80" placeholder="e.g. Within 4 weeks"></div>
     <div class="ugc-field"><label class="ugc-label">Tell Me About The Project</label><textarea class="ugc-textarea" name="message" placeholder="Share your brand maxlength="2000", goals, what you're looking for, and any specific deliverables in mind..."></textarea></div>
     <button type="submit" class="ugc-submit" id="ugc-submit-btn">Send Inquiry</button>
     <div class="ugc-form-success" id="ugc-form-success">✓ Got it. I'll be in touch within 24 hours.</div>
@@ -2100,7 +2095,7 @@ function submitUGCForm(e) {
   var btn = document.getElementById('ugc-submit-btn');
   if(!sec){ alert('Please refresh the page and try again.'); return; }
   if(!sec.acquire('ugc-inquiry-form',60000)){ return; }
-  var data = sec.safeForm(e.target,{name:100,brand:120,email:254,social:80,project_type:120,location:100,timeline:80,shoot_date:80,budget:80,deliverables:200,usage:200,message:1800});
+  var data = sec.safeForm(e.target,{name:100,brand:120,email:254,social:80,project_type:120,location:100,shoot_date:80,budget:80,message:1800});
   if(!sec.validEmail(data.email)){ sec.release('ugc-inquiry-form'); alert('Please enter a valid email address.'); return; }
   var addons = [];
   e.target.querySelectorAll('.ugc-addon-item').forEach(function(item){
@@ -2124,10 +2119,7 @@ function submitUGCForm(e) {
     project_type: data.project_type,
     location: data.location,
     shoot_date: data.shoot_date||'-',
-    timeline: data.timeline,
     budget: data.budget||'-',
-    deliverables: data.deliverables||'-',
-    usage: data.usage||'-',
     social_handle: data.social,
     message: data.message,
     addons: addonsText
