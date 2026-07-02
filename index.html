@@ -355,7 +355,7 @@
   <div class="rv">
     <p class="sec-tag L">Where I&rsquo;ve Stayed</p>
     <h2 class="sh">Places I&rsquo;ve stayed<br>and <i>personally approve.</i></h2>
-    <p style="margin-top:12px;margin-bottom:40px;font-size:.93rem;color:var(--sub);max-width:520px;line-height:1.75">Handpicked places I&rsquo;ve personally stayed at and stand behind &mdash; each one selected for quality, character, and the kind of experience worth recommending.</p>
+    <p style="margin-top:12px;margin-bottom:40px;font-size:.93rem;color:var(--sub);max-width:520px;line-height:1.75">Handpicked places I&rsquo;ve personally stayed at and stand behind, each one selected for quality, character, and the kind of experience worth recommending.</p>
   </div>
   <div class="ww-hscroll-track">
     <div class="ww-ab-card">
@@ -633,7 +633,7 @@
     <!-- success message -->
     <div id="intake-success" style="display:none;text-align:center;padding:32px 0">
       <div style="font-size:2rem;margin-bottom:12px">✓</div>
-      <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:200;color:var(--cream);margin-bottom:8px">Got it — I'll start building this out and reach out shortly with your plan.</h3>
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:200;color:var(--cream);margin-bottom:8px">Got it! I'll start building this out and reach out shortly with your plan.</h3>
       <p style="font-size:.84rem;color:var(--sub)">Check your inbox. I usually deliver within the window of your chosen plan.</p>
     </div>
   </div>
@@ -785,7 +785,7 @@
     <details style="margin-bottom:10px">
       <summary style="cursor:pointer;font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#6b6260">Privacy Policy</summary>
       <div style="font-size:.72rem;color:#6b6260;line-height:1.7;padding:10px 0 4px">
-        <p style="margin:0 0 8px">When you submit a form on this site (contact, intake, inquiry, or email signup), the information you enter — such as your name, email address, and message — is sent to us via Web3Forms, a form delivery service, so we can respond to you and deliver what you requested. We do not sell, rent, or share your personal information with third parties for their marketing purposes.</p>
+        <p style="margin:0 0 8px">When you submit a form on this site (contact, intake, inquiry, or email signup), the information you enter (such as your name, email address, and message) is sent to us via Web3Forms, a form delivery service, so we can respond to you and deliver what you requested. We do not sell, rent, or share your personal information with third parties for their marketing purposes.</p>
         <p style="margin:0 0 8px">Payments are processed entirely by Stripe or PayPal on their own secure checkout pages. We never see, collect, or store your card or bank details. Stripe and PayPal handle your payment data under their own privacy policies.</p>
         <p style="margin:0 0 8px">This site does not use advertising cookies or third-party analytics trackers. It stores small amounts of data in your browser's local storage strictly for site functionality (such as preventing duplicate form submissions). This data stays on your device.</p>
         <p style="margin:0">To request access to or deletion of any personal information you've submitted, email <a href="mailto:partnerships@worldwidewmal.com" style="color:#c9a056">partnerships@worldwidewmal.com</a> and we will respond promptly.</p>
@@ -825,12 +825,12 @@
     <div style="margin:0 18px 16px;padding:14px;border:1px solid rgba(201,160,86,.12);border-radius:8px;background:rgba(201,160,86,.04);display:flex;justify-content:space-between;align-items:center">
       <div>
         <div id="ww-badge" style="font-size:.58rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#c9a056;margin-bottom:4px">Plan</div>
-        <div id="ww-name" style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:200;color:#faf8f4">—</div>
-        <div id="ww-desc" style="font-size:.71rem;color:#6b6260;line-height:1.4;margin-top:3px;max-width:230px">—</div>
+        <div id="ww-name" style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:200;color:#faf8f4">&nbsp;</div>
+        <div id="ww-desc" style="font-size:.71rem;color:#6b6260;line-height:1.4;margin-top:3px;max-width:230px">&nbsp;</div>
       </div>
       <div style="text-align:right;flex-shrink:0;padding-left:10px">
-        <div id="ww-price" style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:200;color:#c9a056">—</div>
-        <div id="ww-was" style="font-size:.71rem;color:#6b6260;text-decoration:line-through;opacity:.45">—</div>
+        <div id="ww-price" style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:200;color:#c9a056">&nbsp;</div>
+        <div id="ww-was" style="font-size:.71rem;color:#6b6260;text-decoration:line-through;opacity:.45">&nbsp;</div>
       </div>
     </div>
     <!-- payment buttons -->
@@ -1059,7 +1059,7 @@ function showWaitlistModal(tier, nextWeek) {
     + '</div>'
     + '<div style="padding:0 20px 14px;">'
     +   '<div style="background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.2);border-radius:8px;padding:12px 14px;font-size:.78rem;color:rgba(234,229,220,.8);line-height:1.6;">'
-    +     '&#128274; This week\'s ' + planName + ' slots are full. Enter your email below and you\'ll be <strong style="color:#f59e0b">automatically booked for ' + safeWeek + '</strong> — first in line, no action needed.'
+    +     '&#128274; This week\'s ' + planName + ' slots are full. Enter your email below and you\'ll be <strong style="color:#f59e0b">automatically booked for ' + safeWeek + '</strong>. First in line, no action needed.'
     +   '</div>'
     + '</div>'
     + '<div style="padding:0 20px 6px;">'
@@ -1118,7 +1118,7 @@ window.submitWaitlist = function(tier, nextWeek) {
     var planNames = { starter:'Starter Plan', core:'Core Plan', concierge:'Concierge Plan' };
     sec.postJSON('https://api.web3forms.com/submit', {
       access_key: '43898b71-02c7-419d-8c4b-6ee3b1ca6121',
-      subject: 'Travel Plan Waitlist — ' + (planNames[tier] || tier),
+      subject: 'Travel Plan Waitlist: ' + (planNames[tier] || tier),
       botcheck: hpEl ? (hpEl.checked ? '1' : '') : '',
       from_name: name,
       email: email,
@@ -1426,7 +1426,7 @@ document.addEventListener('DOMContentLoaded',function(){
     if(btn){ btn.textContent='Sending...'; btn.disabled=true; }
     sec.postJSON('https://api.web3forms.com/submit',{
       access_key:'43898b71-02c7-419d-8c4b-6ee3b1ca6121',
-      subject:'Travel Plan Intake Form — '+plan,
+      subject:'Travel Plan Intake Form: '+plan,
       botcheck:data.botcheck||'',
       from_name: data.name||'-',
       email: data.email||'-',
@@ -1626,7 +1626,7 @@ document.addEventListener('DOMContentLoaded',function(){
 <div style="max-width:1100px;margin:0 auto">
   <p class="ugc-sec-tag">UGC Packages</p>
   <h2 class="ugc-h2">UGC Packages</h2>
-  <p class="ugc-p" style="margin-bottom:40px">Premium advertising footage for your brand &mdash; cinematic video built to run as paid ads and organic content. Choose the package based on how much footage you need. Posting to my audience is separate.</p>
+  <p class="ugc-p" style="margin-bottom:40px">Premium advertising footage for your brand. Cinematic video built to run as paid ads and organic content. Choose the package based on how much footage you need. Posting to my audience is separate.</p>
 
   <div class="ww-cscroll-wrap">
   <div class="ww-cscroll-inner">
@@ -1682,8 +1682,8 @@ document.addEventListener('DOMContentLoaded',function(){
       <div class="ugc-price-for">Includes:</div>
       <ul class="ugc-price-features">
         <li>3 cinematic vertical videos shot up to 8K (up to 90 seconds each)</li>
-        <li>8K included on all 3 &mdash; a $250 upgrade on single-video packages</li>
-        <li>1 edited short-form cutdown (15&ndash;30s) with 2 hook variations &mdash; a $150 add-on elsewhere</li>
+        <li>8K included on all 3, a $250 upgrade on single-video packages</li>
+        <li>1 edited short-form cutdown (15&ndash;30s) with 2 hook variations, a $150 add-on elsewhere</li>
         <li>Reframe and crop 8K footage for any ad placement with no quality loss</li>
         <li>Shot on location, one visit, three complete advertising pieces</li>
         <li>Each video has a different hook, angle, and concept for testing ad creative</li>
@@ -1691,7 +1691,7 @@ document.addEventListener('DOMContentLoaded',function(){
         <li>2 rounds of revisions per video</li>
         <li>Organic social usage rights (12 months) on all 3</li>
         <li>Delivered within 7 business days</li>
-        <li>Best per-video value &mdash; 8K and editing come included, not added on</li>
+        <li>Best per-video value. 8K and editing come included, not added on</li>
       </ul>
       <button type="button" class="ugc-price-cta" onclick="(function(){var c=document.getElementById('ugc-page'),t=document.getElementById('ugc-contact');if(c&&t)c.scrollTo({top:t.offsetTop-64,behavior:'smooth'});})();">Request A Bundle</button>
     </div>
@@ -1704,23 +1704,22 @@ document.addEventListener('DOMContentLoaded',function(){
   <div style="max-width:760px;margin:48px auto 0">
     <h3 class="ugc-h2" style="text-align:center;font-size:1.5rem;margin-bottom:8px">Add-Ons, Usage &amp; Licensing</h3>
     <p class="ugc-p" style="text-align:center;margin-bottom:6px;font-size:.82rem">Every add-on is optional. Usage and licensing are per video unless noted.</p>
-    <p class="ugc-p" style="text-align:center;margin-bottom:26px;font-size:.76rem;color:#8a817d">The Ad Content Bundle already includes 8K and one edited cutdown &mdash; both paid add-ons on single-video packages.</p>
+    <p class="ugc-p" style="text-align:center;margin-bottom:26px;font-size:.76rem;color:#8a817d">The Ad Content Bundle already includes 8K and one edited cutdown, both paid add-ons on single-video packages.</p>
     <div class="ugc-faq">
 
       <div class="ugc-faq-item">
         <button type="button" class="ugc-faq-q" onclick="this.parentElement.classList.toggle('open')">Production Add-Ons<span class="ugc-faq-ic">+</span></button>
         <div class="ugc-faq-a">
-          <div class="ww-addon-row"><span class="lbl">Edited short-form cutdown (15&ndash;30s from your raw footage) &mdash; 2 hook variations</span><span class="amt">$150</span></div>
+          <div class="ww-addon-row"><span class="lbl">Edited short-form cutdown (15&ndash;30s from your raw footage), 2 hook variations</span><span class="amt">$150</span></div>
           <div class="ww-addon-row"><span class="lbl">Additional hook variation</span><span class="amt">$75</span></div>
-          <div class="ww-addon-row"><span class="lbl">Raw footage access (per video)</span><span class="amt">$150</span></div>
-          <div class="ww-addon-row"><span class="lbl">8K footage upgrade (Ad Starter &amp; Premium)</span><span class="amt">$250</span></div>
+          <div class="ww-addon-row"><span class="lbl">Raw footage access (per video)</span><span class="amt">$75</span></div>
+          <div class="ww-addon-row"><span class="lbl">8K footage upgrade (Ad Starter and Premium)</span><span class="amt">$250</span></div>
           <div class="ww-addon-row"><span class="lbl">Additional video (add to any package)</span><span class="amt">$225</span></div>
-          <div class="ww-addon-row"><span class="lbl">Edited photo set</span><span class="amt">from $175</span></div>
         </div>
       </div>
 
       <div class="ugc-faq-item">
-        <button type="button" class="ugc-faq-q" onclick="this.parentElement.classList.toggle('open')">Paid Ad Usage &mdash; run as paid ads, per video<span class="ugc-faq-ic">+</span></button>
+        <button type="button" class="ugc-faq-q" onclick="this.parentElement.classList.toggle('open')">Paid Ad Usage (run as paid ads, per video)<span class="ugc-faq-ic">+</span></button>
         <div class="ugc-faq-a">
           <div class="ww-addon-row"><span class="lbl">30 days</span><span class="amt">$75</span></div>
           <div class="ww-addon-row"><span class="lbl">3 months</span><span class="amt">$125</span></div>
@@ -1731,44 +1730,44 @@ document.addEventListener('DOMContentLoaded',function(){
       </div>
 
       <div class="ugc-faq-item">
-        <button type="button" class="ugc-faq-q" onclick="this.parentElement.classList.toggle('open')">Whitelisting / Spark Ads &mdash; ads through my handle, per video<span class="ugc-faq-ic">+</span></button>
-        <div class="ugc-faq-a">
-          <div class="ww-addon-row"><span class="lbl">30 days</span><span class="amt">$150</span></div>
-          <div class="ww-addon-row"><span class="lbl">60 days</span><span class="amt">$250</span></div>
-          <div class="ww-addon-row"><span class="lbl">90 days</span><span class="amt">$350</span></div>
-          <div class="ww-addon-row"><span class="lbl">6 months</span><span class="amt">$550</span></div>
-        </div>
-      </div>
-
-      <div class="ugc-faq-item">
-        <button type="button" class="ugc-faq-q" onclick="this.parentElement.classList.toggle('open')">Brand Exclusivity &mdash; I won&rsquo;t film for a direct competitor<span class="ugc-faq-ic">+</span></button>
+        <button type="button" class="ugc-faq-q" onclick="this.parentElement.classList.toggle('open')">Whitelisting / Spark Ads (ads through my handle, per video)<span class="ugc-faq-ic">+</span></button>
         <div class="ugc-faq-a">
           <div class="ww-addon-row"><span class="lbl">30 days</span><span class="amt">$100</span></div>
           <div class="ww-addon-row"><span class="lbl">60 days</span><span class="amt">$175</span></div>
           <div class="ww-addon-row"><span class="lbl">90 days</span><span class="amt">$250</span></div>
-          <div class="ww-addon-row"><span class="lbl">6 months</span><span class="amt">$350</span></div>
-          <div class="ww-addon-row"><span class="lbl">12 months</span><span class="amt">$600</span></div>
+          <div class="ww-addon-row"><span class="lbl">6 months</span><span class="amt">$400</span></div>
         </div>
       </div>
 
       <div class="ugc-faq-item">
-        <button type="button" class="ugc-faq-q" onclick="this.parentElement.classList.toggle('open')">Business Licensing &mdash; commercial use beyond paid social<span class="ugc-faq-ic">+</span></button>
+        <button type="button" class="ugc-faq-q" onclick="this.parentElement.classList.toggle('open')">Brand Exclusivity (% of package, no direct competitors)<span class="ugc-faq-ic">+</span></button>
+        <div class="ugc-faq-a">
+          <div class="ww-addon-row"><span class="lbl">30 days</span><span class="amt">25%</span></div>
+          <div class="ww-addon-row"><span class="lbl">60 days</span><span class="amt">40%</span></div>
+          <div class="ww-addon-row"><span class="lbl">90 days</span><span class="amt">60%</span></div>
+          <div class="ww-addon-row"><span class="lbl">6 months</span><span class="amt">90%</span></div>
+          <div class="ww-addon-row"><span class="lbl">12 months</span><span class="amt">150%</span></div>
+        </div>
+      </div>
+
+      <div class="ugc-faq-item">
+        <button type="button" class="ugc-faq-q" onclick="this.parentElement.classList.toggle('open')">Business Licensing (commercial use beyond paid social)<span class="ugc-faq-ic">+</span></button>
         <div class="ugc-faq-a">
           <div class="ww-addon-row"><span class="lbl">Owned channels (website, email, in-store, sales decks)</span><span class="amt">$150</span></div>
-          <div class="ww-addon-row"><span class="lbl">Full commercial buyout (all media &mdash; broadcast, OOH, print)</span><span class="amt">$600</span></div>
+          <div class="ww-addon-row"><span class="lbl">Full commercial buyout (all media: broadcast, OOH, print)</span><span class="amt">$600</span></div>
         </div>
       </div>
 
       <div class="ugc-faq-item">
-        <button type="button" class="ugc-faq-q" onclick="this.parentElement.classList.toggle('open')">Rush Delivery<span class="ugc-faq-ic">+</span></button>
+        <button type="button" class="ugc-faq-q" onclick="this.parentElement.classList.toggle('open')">Rush Turnaround (% of project)<span class="ugc-faq-ic">+</span></button>
         <div class="ugc-faq-a">
-          <div class="ww-addon-row"><span class="lbl">24-hour rush</span><span class="amt">$150</span></div>
-          <div class="ww-addon-row"><span class="lbl">48&ndash;72 hour rush</span><span class="amt">$90</span></div>
+          <div class="ww-addon-row"><span class="lbl">48&ndash;72 hours</span><span class="amt">20%</span></div>
+          <div class="ww-addon-row"><span class="lbl">24 hours</span><span class="amt">35%</span></div>
         </div>
       </div>
 
     </div>
-    <p class="ugc-addons" style="margin-top:28px">5-video packages from $1,250. All content shot on location &mdash; no studio, no props, no staged setups.</p>
+    <p class="ugc-addons" style="margin-top:28px;font-weight:700">5-video packages from $1,250. Edited photo sets from $175. All content shot on location, no studio, no props, no staged setups.</p>
   </div>
 </div>
 </div>
@@ -1786,7 +1785,7 @@ document.addEventListener('DOMContentLoaded',function(){
       <div class="ugc-price-amount">$250</div>
       <ul class="ugc-price-features">
         <li>1 cinematic 4K video posted to my audience</li>
-        <li>Location tag + your brand @ credited</li>
+        <li>3&ndash;5 story frames with geolocation tags + your @</li>
       </ul>
     </div>
     <div class="ugc-price-card ww-glow-card">
@@ -1817,7 +1816,7 @@ document.addEventListener('DOMContentLoaded',function(){
       <div class="ww-cs-cat">Spa &amp; Wellness</div>
       <div class="ww-cs-title">Orlando Beer Spa</div>
       <div class="ww-cs-row"><span class="ww-cs-lbl">Challenge</span><span class="ww-cs-val">Present a craft beer spa as a luxury wellness experience, not a novelty.</span></div>
-      <div class="ww-cs-row"><span class="ww-cs-lbl">Angle</span><span class="ww-cs-val">Arrival, soak sequence, tasting moment — immersive POV that places the viewer inside the experience.</span></div>
+      <div class="ww-cs-row"><span class="ww-cs-lbl">Angle</span><span class="ww-cs-val">Arrival, soak sequence, tasting moment: immersive POV that places the viewer inside the experience.</span></div>
       <div class="ww-cs-row"><span class="ww-cs-lbl">Deliverables</span><span class="ww-cs-val">TikTok/Reel, lifestyle UGC asset.</span></div>
       <div class="ww-cs-val-line">Content that bridges wellness and experiential audiences.</div>
     </div>
@@ -1825,7 +1824,7 @@ document.addEventListener('DOMContentLoaded',function(){
       <div class="ww-cs-cat">Destination UGC</div>
       <div class="ww-cs-title">Kennedy Space Center</div>
       <div class="ww-cs-row"><span class="ww-cs-lbl">Challenge</span><span class="ww-cs-val">Make a landmark feel personally compelling, not like a school trip recap.</span></div>
-      <div class="ww-cs-row"><span class="ww-cs-lbl">Angle</span><span class="ww-cs-val">Scale moments — the Vehicle Assembly Building, rocket garden, Saturn V hall — shot to communicate genuine awe.</span></div>
+      <div class="ww-cs-row"><span class="ww-cs-lbl">Angle</span><span class="ww-cs-val">Scale moments (the Vehicle Assembly Building, rocket garden, Saturn V hall) shot to communicate genuine awe.</span></div>
       <div class="ww-cs-row"><span class="ww-cs-lbl">Deliverables</span><span class="ww-cs-val">Short-form travel Reel, destination asset.</span></div>
       <div class="ww-cs-val-line">Turns "I've heard of it" into "I have to go."</div>
     </div>
@@ -1833,20 +1832,20 @@ document.addEventListener('DOMContentLoaded',function(){
       <div class="ww-cs-cat">Travel UGC</div>
       <div class="ww-cs-title">Sandy Waves</div>
       <div class="ww-cs-row"><span class="ww-cs-lbl">Challenge</span><span class="ww-cs-val">Differentiate a beach property in an oversaturated travel niche.</span></div>
-      <div class="ww-cs-row"><span class="ww-cs-lbl">Angle</span><span class="ww-cs-val">Texture, light, and pace — content that makes viewers feel the atmosphere, not just see it.</span></div>
+      <div class="ww-cs-row"><span class="ww-cs-lbl">Angle</span><span class="ww-cs-val">Texture, light, and pace: content that makes viewers feel the atmosphere, not just see it.</span></div>
       <div class="ww-cs-row"><span class="ww-cs-lbl">Deliverables</span><span class="ww-cs-val">TikTok, Instagram Reel, travel lifestyle asset.</span></div>
       <div class="ww-cs-val-line">Emotional content that earns saves and shares, not just views.</div>
     </div>
     <div class="ww-cs-card ww-glow-card">
       <div class="ww-cs-cat">Adventure UGC</div>
       <div class="ww-cs-title">Scorpion Diving &amp; Watersports</div>
-      <div class="ww-cs-row"><span class="ww-cs-lbl">Challenge</span><span class="ww-cs-val">Most people scrolling past a dive company have never done it — they need to feel it before they'll book it.</span></div>
+      <div class="ww-cs-row"><span class="ww-cs-lbl">Challenge</span><span class="ww-cs-val">Most people scrolling past a dive company have never done it. They need to feel it before they'll book it.</span></div>
       <div class="ww-cs-row"><span class="ww-cs-lbl">Angle</span><span class="ww-cs-val">First-timer POV: strapping into gear on the boat, breaking the surface, hitting the reef. The disbelief reaction on the way back up does the selling.</span></div>
       <div class="ww-cs-row"><span class="ww-cs-lbl">Deliverables</span><span class="ww-cs-val">30-second TikTok + Instagram Reel, vertical short-form adventure asset.</span></div>
       <div class="ww-cs-val-line">First-person underwater content that removes hesitation and drives first-time dive bookings.</div>
     </div>
     <div class="ww-cs-card ww-glow-card">
-      <div class="ww-cs-cat">Adventure UGC — Orlando, FL</div>
+      <div class="ww-cs-cat">Adventure UGC &middot; Orlando, FL</div>
       <div class="ww-cs-title">GetYourGuide &times; iFly Orlando</div>
       <div class="ww-cs-row"><span class="ww-cs-lbl">Challenge</span><span class="ww-cs-val">iFly needed content that drove GetYourGuide ticket clicks from viewers who'd never considered indoor skydiving.</span></div>
       <div class="ww-cs-row"><span class="ww-cs-lbl">Angle</span><span class="ww-cs-val">Walking in skeptical, gearing up with the instructor, hitting the wind tunnel, and the unscripted shock-and-grin on the way out.</span></div>
@@ -1854,20 +1853,20 @@ document.addEventListener('DOMContentLoaded',function(){
       <div class="ww-cs-val-line">Experience-first content that turns "I've never thought about that" into a booked ticket.</div>
     </div>
     <div class="ww-cs-card ww-glow-card">
-      <div class="ww-cs-cat">Experience UGC — Saint Petersburg</div>
+      <div class="ww-cs-cat">Experience UGC &middot; Saint Petersburg</div>
       <div class="ww-cs-title">FlyHeli Saint Petersburg</div>
-      <div class="ww-cs-row"><span class="ww-cs-lbl">Challenge</span><span class="ww-cs-val">Helicopter tours are a hard sell in short-form — viewers need to feel the scale and emotion to actually book.</span></div>
-      <div class="ww-cs-row"><span class="ww-cs-lbl">Angle</span><span class="ww-cs-val">Rotor spin → lift-off → the moment the city opens up below — shot from the seat, real-time reaction kept in full.</span></div>
+      <div class="ww-cs-row"><span class="ww-cs-lbl">Challenge</span><span class="ww-cs-val">Helicopter tours are a hard sell in short-form. Viewers need to feel the scale and emotion to actually book.</span></div>
+      <div class="ww-cs-row"><span class="ww-cs-lbl">Angle</span><span class="ww-cs-val">Rotor spin → lift-off → the moment the city opens up below, shot from the seat with the real-time reaction kept in full.</span></div>
       <div class="ww-cs-row"><span class="ww-cs-lbl">Deliverables</span><span class="ww-cs-val">Vertical short-form Reel, raw in-cabin + aerial footage package.</span></div>
       <div class="ww-cs-val-line">Emotion-led aerial content that converts "someday" browsers into same-week bookings.</div>
     </div>
     <div class="ww-cs-card ww-glow-card">
-      <div class="ww-cs-cat">Destination UGC — Sharm El-Sheikh, Egypt</div>
+      <div class="ww-cs-cat">Destination UGC &middot; Sharm El-Sheikh, Egypt</div>
       <div class="ww-cs-title">Kimidar Sharm</div>
-      <div class="ww-cs-row"><span class="ww-cs-lbl">Challenge</span><span class="ww-cs-val">Red Sea resort content either goes full luxury-polish or full dive-footage — neither converts the travel audience that actually books.</span></div>
+      <div class="ww-cs-row"><span class="ww-cs-lbl">Challenge</span><span class="ww-cs-val">Red Sea resort content either goes full luxury-polish or full dive-footage, and neither converts the travel audience that actually books.</span></div>
       <div class="ww-cs-row"><span class="ww-cs-lbl">Angle</span><span class="ww-cs-val">Four beats: Red Sea reef color underwater, unhurried resort pace, a spread at the table, and the mountain-meets-water sunset you can't fake in post.</span></div>
       <div class="ww-cs-row"><span class="ww-cs-lbl">Deliverables</span><span class="ww-cs-val">Destination Reel, multi-scene short-form asset for organic + paid use.</span></div>
-      <div class="ww-cs-val-line">International destination content that builds genuine "I need to go there" desire — not just reach.</div>
+      <div class="ww-cs-val-line">International destination content that builds genuine "I need to go there" desire, not just reach.</div>
     </div>
   </div>
 </div>
@@ -1890,16 +1889,16 @@ document.addEventListener('DOMContentLoaded',function(){
       <span style="color:#faf8f4">Website use</span><span style="color:#a49a96">Package dependent</span><span style="color:#a49a96">Included in Premium or as add-on</span>
     </div>
     <div style="display:grid;grid-template-columns:2fr 1fr 2fr;padding:14px 20px;border-top:1px solid rgba(255,255,255,.05);font-size:.78rem">
-      <span style="color:#faf8f4">Paid ads</span><span style="color:#a49a96">Add-on</span><span style="color:#a49a96">Must be agreed before shoot — from $75</span>
+      <span style="color:#faf8f4">Paid ads</span><span style="color:#a49a96">Add-on</span><span style="color:#a49a96">Must be agreed before shoot, from $75</span>
     </div>
     <div style="display:grid;grid-template-columns:2fr 1fr 2fr;padding:14px 20px;border-top:1px solid rgba(255,255,255,.05);font-size:.78rem;background:rgba(255,255,255,.02)">
-      <span style="color:#faf8f4">Raw footage</span><span style="color:#a49a96">Add-on</span><span style="color:#a49a96">Not included by default — from $75</span>
+      <span style="color:#faf8f4">Raw footage</span><span style="color:#a49a96">Add-on</span><span style="color:#a49a96">Not included by default, from $75</span>
     </div>
     <div style="display:grid;grid-template-columns:2fr 1fr 2fr;padding:14px 20px;border-top:1px solid rgba(255,255,255,.05);font-size:.78rem">
-      <span style="color:#faf8f4">Whitelisting</span><span style="color:#a49a96">Add-on</span><span style="color:#a49a96">Separate from standard usage — from $100</span>
+      <span style="color:#faf8f4">Whitelisting</span><span style="color:#a49a96">Add-on</span><span style="color:#a49a96">Separate from standard usage, from $100</span>
     </div>
     <div style="display:grid;grid-template-columns:2fr 1fr 2fr;padding:14px 20px;border-top:1px solid rgba(255,255,255,.05);font-size:.78rem;background:rgba(255,255,255,.02)">
-      <span style="color:#faf8f4">Exclusivity</span><span style="color:#a49a96">Add-on</span><span style="color:#a49a96">Competitor-specific only — from 25% of package</span>
+      <span style="color:#faf8f4">Exclusivity</span><span style="color:#a49a96">Add-on</span><span style="color:#a49a96">Competitor-specific only, from 25% of package</span>
     </div>
   </div>
 </div>
@@ -1912,13 +1911,13 @@ document.addEventListener('DOMContentLoaded',function(){
   <h2 class="ugc-h2">Common Questions</h2>
   <div class="ugc-faq" style="max-width:760px;margin-top:36px">
     <div class="ugc-faq-item"><button type="button" class="ugc-faq-q" onclick="this.parentElement.classList.toggle('open')">Do you offer hosted collaborations?<span class="ugc-faq-ic">+</span></button><div class="ugc-faq-a">Yes. For hotels, resorts, and experiences, hosted collaborations are available when the brand covers the stay or experience in exchange for deliverables. Scope, usage rights, and posting requirements are confirmed before the shoot.</div></div>
-    <div class="ugc-faq-item"><button type="button" class="ugc-faq-q" onclick="this.parentElement.classList.toggle('open')">Do packages include posting to your channels?<span class="ugc-faq-ic">+</span></button><div class="ugc-faq-a">No — UGC delivery and organic posting are separate. Posting add-ons are available and priced based on platform and number of posts. This keeps the deliverable clean for brands who only need assets.</div></div>
+    <div class="ugc-faq-item"><button type="button" class="ugc-faq-q" onclick="this.parentElement.classList.toggle('open')">Do packages include posting to your channels?<span class="ugc-faq-ic">+</span></button><div class="ugc-faq-a">No. UGC delivery and organic posting are separate. Posting add-ons are available and priced based on platform and number of posts. This keeps the deliverable clean for brands who only need assets.</div></div>
     <div class="ugc-faq-item"><button type="button" class="ugc-faq-q" onclick="this.parentElement.classList.toggle('open')">Are usage rights included in the package price?<span class="ugc-faq-ic">+</span></button><div class="ugc-faq-a">Standard organic usage is included. Paid ad usage, whitelisting, raw footage, and exclusivity are add-ons that must be agreed before the shoot. Pricing is listed in the Usage Rights section above.</div></div>
-    <div class="ugc-faq-item"><button type="button" class="ugc-faq-q" onclick="this.parentElement.classList.toggle('open')">Can brands use the footage for paid ads?<span class="ugc-faq-ic">+</span></button><div class="ugc-faq-a">Yes, with the paid usage add-on. This must be agreed before the shoot — retroactive paid usage licensing is not available. Ad usage starts at $75 depending on scope and duration.</div></div>
+    <div class="ugc-faq-item"><button type="button" class="ugc-faq-q" onclick="this.parentElement.classList.toggle('open')">Can brands use the footage for paid ads?<span class="ugc-faq-ic">+</span></button><div class="ugc-faq-a">Yes, with the paid usage add-on. This must be agreed before the shoot; retroactive paid usage licensing is not available. Ad usage starts at $75 depending on scope and duration.</div></div>
     <div class="ugc-faq-item"><button type="button" class="ugc-faq-q" onclick="this.parentElement.classList.toggle('open')">Do you provide raw footage?<span class="ugc-faq-ic">+</span></button><div class="ugc-faq-a">Raw footage is available as an add-on, starting at $75. It is not included in standard packages. If you need b-roll alongside edited deliverables, mention this in your inquiry.</div></div>
     <div class="ugc-faq-item"><button type="button" class="ugc-faq-q" onclick="this.parentElement.classList.toggle('open')">Do you travel for brand campaigns?<span class="ugc-faq-ic">+</span></button><div class="ugc-faq-a">Yes. I'm available for on-location shoots internationally. Travel and accommodation costs are handled separately. Florida-based brands have no additional travel cost for most shoots.</div></div>
     <div class="ugc-faq-item"><button type="button" class="ugc-faq-q" onclick="this.parentElement.classList.toggle('open')">How fast is turnaround?<span class="ugc-faq-ic">+</span></button><div class="ugc-faq-a">Standard turnaround is 5–7 business days from shoot. Rush turnaround (2–3 business days) is available at a 20% surcharge. Timeline is confirmed before the project begins.</div></div>
-    <div class="ugc-faq-item"><button type="button" class="ugc-faq-q" onclick="this.parentElement.classList.toggle('open')">Can you create concepts before the shoot?<span class="ugc-faq-ic">+</span></button><div class="ugc-faq-a">Yes. Once a project is confirmed, I provide a brief creative direction outline — hook approach, key moments to capture, and intended platform — before the shoot day. Brands can review and give notes before filming.</div></div>
+    <div class="ugc-faq-item"><button type="button" class="ugc-faq-q" onclick="this.parentElement.classList.toggle('open')">Can you create concepts before the shoot?<span class="ugc-faq-ic">+</span></button><div class="ugc-faq-a">Yes. Once a project is confirmed, I provide a brief creative direction outline (hook approach, key moments to capture, and intended platform) before the shoot day. Brands can review and give notes before filming.</div></div>
   </div>
 </div>
 </div>
@@ -1949,9 +1948,9 @@ document.addEventListener('DOMContentLoaded',function(){
       <div class="ugc-field"><label class="ugc-label" for="inq-collab">Type of Collaboration</label>
         <select id="inq-collab" class="ugc-select" name="project_type" required>
           <option value="" disabled selected>Choose type</option>
-          <option>Starter UGC — 1 Video</option>
-          <option>Premium Travel UGC — 1 Video</option>
-          <option>Content Bundle — 3 Videos</option>
+          <option>Ad Starter (1 Video)</option>
+          <option>Premium Ad Footage (1 Video)</option>
+          <option>Ad Content Bundle (3 Videos)</option>
           <option>Hosted Collaboration</option>
           <option>Destination Campaign</option>
           <option>Other / Not Sure</option>
@@ -1975,27 +1974,66 @@ document.addEventListener('DOMContentLoaded',function(){
     </div>
     <div class="ugc-field">
       <label class="ugc-label">Add-Ons (Select All That Apply)</label>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:12px 14px;background:#0f0e12;border:1px solid rgba(255,255,255,.1);border-radius:7px">
-        <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:.8rem;color:var(--text)">
-          <input type="checkbox" name="addons" value="Paid Usage - From $75" style="accent-color:#c9a056">
-          <span>Paid Usage <span style="color:var(--sub);font-size:.72rem">(From $75)</span></span>
-        </label>
-        <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:.8rem;color:var(--text)">
-          <input type="checkbox" name="addons" value="Whitelisting - From $100" style="accent-color:#c9a056">
-          <span>Whitelisting <span style="color:var(--sub);font-size:.72rem">(From $100)</span></span>
-        </label>
-        <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:.8rem;color:var(--text)">
-          <input type="checkbox" name="addons" value="Raw Footage - From $75" style="accent-color:#c9a056">
-          <span>Raw Footage <span style="color:var(--sub);font-size:.72rem">(From $75)</span></span>
-        </label>
-        <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:.8rem;color:var(--text)">
-          <input type="checkbox" name="addons" value="Exclusivity - From 25%" style="accent-color:#c9a056">
-          <span>Exclusivity <span style="color:var(--sub);font-size:.72rem">(From 25%)</span></span>
-        </label>
-        <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:.8rem;color:var(--text)">
-          <input type="checkbox" name="addons" value="Rush Turnaround - From 20%" style="accent-color:#c9a056">
-          <span>Rush Turnaround <span style="color:var(--sub);font-size:.72rem">(From 20%)</span></span>
-        </label>
+      <p style="font-size:.7rem;color:var(--sub);margin:0 0 10px">Check any add-on, then choose the length or scope in the dropdown beneath it.</p>
+      <div style="display:flex;flex-direction:column;gap:14px;padding:14px;background:#0f0e12;border:1px solid rgba(255,255,255,.1);border-radius:7px">
+        <div class="ugc-addon-item">
+          <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:.8rem;color:var(--text)">
+            <input type="checkbox" name="addons" value="Paid Usage" style="accent-color:#c9a056" onchange="this.closest('.ugc-addon-item').querySelector('select').disabled=!this.checked">
+            <span>Paid Usage <span style="color:var(--sub);font-size:.72rem">(From $75)</span></span>
+          </label>
+          <select name="addon_paid_term" disabled aria-label="Paid Usage length" style="margin:6px 0 0 26px;width:calc(100% - 26px);max-width:300px;padding:7px 10px;background:#08080a;border:1px solid rgba(255,255,255,.14);border-radius:6px;color:var(--text);font-family:var(--fb);font-size:.78rem;outline:none;appearance:none;cursor:pointer">
+            <option>30 days (+$75)</option>
+            <option>3 months (+$125)</option>
+            <option>6 months (+$200)</option>
+            <option>12 months (+$325)</option>
+            <option>Perpetual (+$550)</option>
+          </select>
+        </div>
+        <div class="ugc-addon-item">
+          <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:.8rem;color:var(--text)">
+            <input type="checkbox" name="addons" value="Whitelisting" style="accent-color:#c9a056" onchange="this.closest('.ugc-addon-item').querySelector('select').disabled=!this.checked">
+            <span>Whitelisting <span style="color:var(--sub);font-size:.72rem">(From $100)</span></span>
+          </label>
+          <select name="addon_white_term" disabled aria-label="Whitelisting length" style="margin:6px 0 0 26px;width:calc(100% - 26px);max-width:300px;padding:7px 10px;background:#08080a;border:1px solid rgba(255,255,255,.14);border-radius:6px;color:var(--text);font-family:var(--fb);font-size:.78rem;outline:none;appearance:none;cursor:pointer">
+            <option>30 days (+$100)</option>
+            <option>60 days (+$175)</option>
+            <option>90 days (+$250)</option>
+            <option>6 months (+$400)</option>
+          </select>
+        </div>
+        <div class="ugc-addon-item">
+          <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:.8rem;color:var(--text)">
+            <input type="checkbox" name="addons" value="Raw Footage" style="accent-color:#c9a056" onchange="this.closest('.ugc-addon-item').querySelector('select').disabled=!this.checked">
+            <span>Raw Footage <span style="color:var(--sub);font-size:.72rem">(From $75)</span></span>
+          </label>
+          <select name="addon_raw_scope" disabled aria-label="Raw footage scope" style="margin:6px 0 0 26px;width:calc(100% - 26px);max-width:300px;padding:7px 10px;background:#08080a;border:1px solid rgba(255,255,255,.14);border-radius:6px;color:var(--text);font-family:var(--fb);font-size:.78rem;outline:none;appearance:none;cursor:pointer">
+            <option>One video (+$75)</option>
+            <option>Full shoot (+$150)</option>
+          </select>
+        </div>
+        <div class="ugc-addon-item">
+          <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:.8rem;color:var(--text)">
+            <input type="checkbox" name="addons" value="Exclusivity" style="accent-color:#c9a056" onchange="this.closest('.ugc-addon-item').querySelector('select').disabled=!this.checked">
+            <span>Exclusivity <span style="color:var(--sub);font-size:.72rem">(From 25%)</span></span>
+          </label>
+          <select name="addon_excl_term" disabled aria-label="Exclusivity length" style="margin:6px 0 0 26px;width:calc(100% - 26px);max-width:300px;padding:7px 10px;background:#08080a;border:1px solid rgba(255,255,255,.14);border-radius:6px;color:var(--text);font-family:var(--fb);font-size:.78rem;outline:none;appearance:none;cursor:pointer">
+            <option>30 days (+25% of package)</option>
+            <option>60 days (+40% of package)</option>
+            <option>90 days (+60% of package)</option>
+            <option>6 months (+90% of package)</option>
+            <option>12 months (+150% of package)</option>
+          </select>
+        </div>
+        <div class="ugc-addon-item">
+          <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:.8rem;color:var(--text)">
+            <input type="checkbox" name="addons" value="Rush Turnaround" style="accent-color:#c9a056" onchange="this.closest('.ugc-addon-item').querySelector('select').disabled=!this.checked">
+            <span>Rush Turnaround <span style="color:var(--sub);font-size:.72rem">(From 20%)</span></span>
+          </label>
+          <select name="addon_rush_term" disabled aria-label="Rush turnaround speed" style="margin:6px 0 0 26px;width:calc(100% - 26px);max-width:300px;padding:7px 10px;background:#08080a;border:1px solid rgba(255,255,255,.14);border-radius:6px;color:var(--text);font-family:var(--fb);font-size:.78rem;outline:none;appearance:none;cursor:pointer">
+            <option>48 to 72 hours (+20% of project)</option>
+            <option>24 hours (+35% of project)</option>
+          </select>
+        </div>
       </div>
     </div>
     <div class="ugc-field"><label class="ugc-label">Timeline</label><input class="ugc-input" type="text" name="timeline" autocomplete="off" maxlength="80" placeholder="e.g. Within 4 weeks"></div>
@@ -2065,13 +2103,20 @@ function submitUGCForm(e) {
   var data = sec.safeForm(e.target,{name:100,brand:120,email:254,social:80,project_type:120,location:100,timeline:80,shoot_date:80,budget:80,deliverables:200,usage:200,message:1800});
   if(!sec.validEmail(data.email)){ sec.release('ugc-inquiry-form'); alert('Please enter a valid email address.'); return; }
   var addons = [];
-  e.target.querySelectorAll('input[name="addons"]:checked').forEach(function(input){ addons.push(sec.clean(input.value,80)); });
+  e.target.querySelectorAll('.ugc-addon-item').forEach(function(item){
+    var cb = item.querySelector('input[type="checkbox"]');
+    if(cb && cb.checked){
+      var selEl = item.querySelector('select');
+      var term = (selEl && selEl.value) ? (' - ' + selEl.value) : '';
+      addons.push(sec.clean(cb.value + term, 80));
+    }
+  });
   var addonsText = addons.length > 0 ? addons.join(', ') : 'None selected';
   var orig = btn ? btn.textContent : '';
   if(btn){ btn.textContent = 'Sending...'; btn.disabled = true; }
   sec.postJSON('https://api.web3forms.com/submit', {
     access_key: '43898b71-02c7-419d-8c4b-6ee3b1ca6121',
-    subject: 'UGC Inquiry — ' + (data.brand || data.project_type || 'Inquiry'),
+    subject: 'UGC Inquiry: ' + (data.brand || data.project_type || 'Inquiry'),
     botcheck: data.botcheck||'',
     from_name: data.name,
     email: data.email,
