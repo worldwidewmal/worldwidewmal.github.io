@@ -4,6 +4,15 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
 <script>if(window.top!==window.self){try{window.top.location=window.self.location;}catch(e){document.body.innerHTML='';}}</script>
+<script>
+/* Phones get the published Canva SITE, which serves Canva's responsive
+   mobile layout (fit to screen). The design embed below never reflows for
+   mobile: it only shows the desktop layout scaled down. Runs first so
+   phones navigate before anything else loads. Desktop is unaffected.     */
+if (window.matchMedia && window.matchMedia('(max-width:767px)').matches) {
+  location.replace('https://worldwidewmal.my.canva.site');
+}
+</script>
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; frame-src https://www.canva.com https://canva.link https://*.canva.com; connect-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'; worker-src 'none'; manifest-src 'self'; upgrade-insecure-requests;"/>
 <meta http-equiv="Permissions-Policy" content="accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), usb=(), serial=(), bluetooth=(), browsing-topics=()"/>
 <meta name="referrer" content="strict-origin-when-cross-origin"/>
