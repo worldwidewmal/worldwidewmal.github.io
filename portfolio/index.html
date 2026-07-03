@@ -4,16 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
 <script>if(window.top!==window.self){try{window.top.location=window.self.location;}catch(e){document.body.innerHTML='';}}</script>
-<script>
-/* Phones get the published Canva SITE, which serves Canva's responsive
-   mobile layout (fit to screen). The design embed below never reflows for
-   mobile: it only shows the desktop layout scaled down. Runs first so
-   phones navigate before anything else loads. Desktop is unaffected.     */
-if (window.matchMedia && window.matchMedia('(max-width:767px)').matches) {
-  location.replace('https://worldwidewmal.my.canva.site');
-}
-</script>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; frame-src https://www.canva.com https://canva.link https://*.canva.com; connect-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'; worker-src 'none'; manifest-src 'self'; upgrade-insecure-requests;"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; frame-src https://www.canva.com https://canva.link https://*.canva.com https://*.canva.site; connect-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'; worker-src 'none'; manifest-src 'self'; upgrade-insecure-requests;"/>
 <meta http-equiv="Permissions-Policy" content="accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), usb=(), serial=(), bluetooth=(), browsing-topics=()"/>
 <meta name="referrer" content="strict-origin-when-cross-origin"/>
 <title>Portfolio | Worldwidewmal</title>
@@ -69,12 +60,15 @@ body{
    height is the viewport (not a hard-coded design ratio), it can never clip
    the bottom of the design no matter how tall the design is or how often
    it's edited in Canva.                                                     */
-.pf-embed-outer{flex:1 1 auto;min-height:0;max-width:100%;margin:0;padding:0}
+.pf-embed-outer{position:relative;flex:1 1 auto;min-height:0;max-width:100%;margin:0;padding:0}
 .pf-embed{position:relative;width:100%;height:100%;overflow:hidden;background:#0b0a0d}
 .pf-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0;margin:0;padding:0}
-/* ---- loader — visible immediately, fades out when Canva fires load ---- */
+/* ---- loader — visible immediately, fades out when Canva fires load ----
+   Positioned absolute *inside* pf-embed-outer (not fixed with a hardcoded
+   top offset) so it always covers exactly the embed area regardless of how
+   tall the bar + fallback row above it are.                                */
 .pf-loader{
-  position:fixed;left:0;right:0;top:58px;bottom:0;
+  position:absolute;inset:0;
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;
   background:#0b0a0d;opacity:1;visibility:visible;transition:opacity .4s;z-index:5;
 }
@@ -87,6 +81,13 @@ body{
   .pf-bar{justify-content:center}
   .pf-back{width:100%;justify-content:center}
 }
+/* Escape hatch, mobile only, own row so it can't collide with the bar's
+   existing flex/width rules at any breakpoint. A blocked/failed iframe still
+   fires its 'load' event (no reliable way to detect that in JS), so this
+   stays permanently available rather than conditionally revealed on failure. */
+.pf-fallback-row{display:none;text-align:center;padding:6px 12px;background:#08070a;border-bottom:1px solid rgba(201,160,86,.1)}
+.pf-fallback-row a{font-size:.66rem;color:rgba(201,160,86,.6);text-decoration:underline}
+@media(max-width:767px){.pf-fallback-row{display:block}}
 </style>
 </head>
 <body>
@@ -96,29 +97,42 @@ body{
   <a class="pf-back" href="/#ugc-pricing">&larr; View UGC Packages &amp; Pricing</a>
 </header>
 
-<div class="pf-loader" id="pf-loader">
-  <div class="pf-spin"></div>
-  <div class="pf-loadtxt">Loading portfolio</div>
+<div class="pf-fallback-row">
+  <a href="https://worldwidewmal.my.canva.site" target="_top">Trouble viewing? Open the portfolio directly</a>
 </div>
 
 <div class="pf-embed-outer">
+  <div class="pf-loader" id="pf-loader">
+    <div class="pf-spin"></div>
+    <div class="pf-loadtxt">Loading portfolio</div>
+  </div>
   <div class="pf-embed">
     <!--
-      EDIT THIS src to update the portfolio.
-      Paste the Canva embed link (Share → More → Embed) here.
+      Desktop/tablet: the Canva DESIGN embed (fixed layout, viewport-fill frame).
+      Phones: the published Canva SITE, which is Canva's own responsive mobile
+      build (fit-to-screen text and images) — served inline here so the address
+      bar still reads worldwidewmal.com/portfolio instead of the canva.site URL.
+      EDIT the desktop URL below to update the design embed.
     -->
     <iframe id="pf-frame" title="Worldwidewmal portfolio" loading="eager" fetchpriority="high"
-      src="https://www.canva.com/design/DAHN4eP3wPA/XJKyM5JlWnJ9XhMsBnIVPg/view?embed"
       allow="fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
   </div>
 </div>
 
 <script>
 (function(){
+  var DESKTOP_EMBED_URL = 'https://www.canva.com/design/DAHN4eP3wPA/XJKyM5JlWnJ9XhMsBnIVPg/view?embed';
+  var MOBILE_SITE_URL   = 'https://worldwidewmal.my.canva.site';
+  var isMobile = window.matchMedia && window.matchMedia('(max-width:767px)').matches;
+
   var loader = document.getElementById('pf-loader');
-  document.getElementById('pf-frame').addEventListener('load', function(){
+  var frame  = document.getElementById('pf-frame');
+
+  frame.addEventListener('load', function(){
     loader.classList.add('hide');
   });
+
+  frame.src = isMobile ? MOBILE_SITE_URL : DESKTOP_EMBED_URL;
 })();
 </script>
 
