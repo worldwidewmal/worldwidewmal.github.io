@@ -4,6 +4,17 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
 <script>if(window.top!==window.self){try{window.top.location=window.self.location;}catch(e){document.body.innerHTML='';}}</script>
+<script>
+/* Phones go straight to the published Canva Site, which is Canva's own
+   responsive mobile build (matches the design intent exactly). Canva blocks
+   its Sites from being framed on other domains, so this can't be embedded
+   in-page like the desktop Design embed below — it has to be a real
+   navigation. Runs first, before anything else loads, so it's instant.
+   Desktop is completely unaffected: it never reaches this branch.         */
+if (window.matchMedia && window.matchMedia('(max-width:767px)').matches) {
+  location.replace('https://worldwidewmal.my.canva.site');
+}
+</script>
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; frame-src https://www.canva.com https://canva.link https://*.canva.com; connect-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'; worker-src 'none'; manifest-src 'self'; upgrade-insecure-requests;"/>
 <meta http-equiv="Permissions-Policy" content="accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), usb=(), serial=(), bluetooth=(), browsing-topics=()"/>
 <meta name="referrer" content="strict-origin-when-cross-origin"/>
