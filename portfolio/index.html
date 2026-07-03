@@ -54,14 +54,6 @@ body{
   border-bottom:1px solid rgba(201,160,86,.18);
 }
 .pf-brand{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.05rem;letter-spacing:.06em;color:#c9a056}
-.pf-back{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:11px 22px;border-radius:100px;
-  background:#c9a056;color:#09080a;text-decoration:none;
-  font-size:.74rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;
-  transition:opacity .2s,transform .2s;white-space:nowrap;
-}
-.pf-back:hover{opacity:.9;transform:translateX(-2px)}
 /* ---- embed ---- */
 /* Same Canva design embed on every device, one iframe that fills exactly the
    viewport height left below the bar. The design's real canvas is 1366x10187
@@ -83,18 +75,12 @@ body{
 .pf-spin{width:38px;height:38px;border-radius:50%;border:3px solid rgba(201,160,86,.2);border-top-color:#c9a056;animation:pfspin .8s linear infinite}
 .pf-loadtxt{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(234,229,220,.5)}
 @keyframes pfspin{to{transform:rotate(360deg)}}
-@media(max-width:560px){
-  .pf-brand{display:none}
-  .pf-bar{justify-content:center}
-  .pf-back{width:100%;justify-content:center}
-}
 </style>
 </head>
 <body>
 
 <header class="pf-bar">
   <span class="pf-brand">worldwidewmal</span>
-  <a class="pf-back" href="/#ugc-pricing">&larr; View UGC Packages &amp; Pricing</a>
 </header>
 
 <div class="pf-embed-outer">
