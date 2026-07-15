@@ -1098,6 +1098,14 @@ footer{border-top:1px solid var(--b1);background:var(--s1);padding:26px 52px;mar
 .ugc-price-card:not(.featured) .ugc-price-cta{background:transparent;color:#c9a056;border:1px solid rgba(201,160,86,.35)}
 .ugc-addons{text-align:center;font-size:.72rem;color:#6b6260;margin-top:18px;line-height:1.8}
 .ugc-addons strong{color:rgba(234,229,220,.6)}
+/* ── Service category tabs (Brand Content Services) ───────────────────── */
+.ugc-tabs{display:flex;gap:8px;margin-top:8px;margin-bottom:32px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.ugc-tabs::-webkit-scrollbar{display:none}
+.ugc-tab-btn{flex:0 0 auto;padding:11px 20px;border-radius:100px;background:transparent;border:1px solid rgba(255,255,255,.12);color:rgba(234,229,220,.6);font-family:inherit;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:all .2s}
+.ugc-tab-btn:hover{border-color:rgba(201,160,86,.35);color:rgba(234,229,220,.85)}
+.ugc-tab-btn.is-active{background:#c9a056;border-color:#c9a056;color:#08080a}
+.ugc-tab-btn:focus-visible{outline:2px solid #c9a056;outline-offset:2px}
+.ugc-tab-panel[hidden]{display:none}
 /* in-card add-ons */
 .ugc-price-divider{border:none;border-top:1px solid rgba(255,255,255,.07);margin:18px 0 14px}
 .ugc-price-addons-hdr{font-size:.58rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:rgba(201,160,86,.45);margin-bottom:8px}
