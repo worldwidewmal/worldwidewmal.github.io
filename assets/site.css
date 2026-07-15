@@ -1086,6 +1086,7 @@ footer{border-top:1px solid var(--b1);background:var(--s1);padding:26px 52px;mar
 .ugc-price-card.featured{border-color:rgba(201,160,86,.4);background:rgba(201,160,86,.04)}
 .ugc-price-card.featured::before{content:'MOST POPULAR';position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:#c9a056;color:#08080a;font-size:.52rem;font-weight:800;letter-spacing:.12em;padding:3px 12px;border-radius:0 0 8px 8px}
 .ugc-price-tier{font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#c9a056;margin-bottom:8px}
+.ugc-price-starting{font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(234,229,220,.4);margin-bottom:2px}
 .ugc-price-amount{font-family:Georgia,serif;font-size:2.2rem;font-weight:400;color:#faf8f4;margin-bottom:4px}
 .ugc-price-amount span{font-size:1rem;color:#6b6260}
 .ugc-price-desc{font-size:.72rem;color:#6b6260;line-height:1.5;margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,.07)}
@@ -1101,9 +1102,10 @@ footer{border-top:1px solid var(--b1);background:var(--s1);padding:26px 52px;mar
 /* ── Service category tabs (Brand Content Services) ───────────────────── */
 .ugc-tabs{display:flex;gap:8px;margin-top:8px;margin-bottom:32px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .ugc-tabs::-webkit-scrollbar{display:none}
-.ugc-tab-btn{flex:0 0 auto;padding:11px 20px;border-radius:100px;background:transparent;border:1px solid rgba(255,255,255,.12);color:rgba(234,229,220,.6);font-family:inherit;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:all .2s}
-.ugc-tab-btn:hover{border-color:rgba(201,160,86,.35);color:rgba(234,229,220,.85)}
-.ugc-tab-btn.is-active{background:#c9a056;border-color:#c9a056;color:#08080a}
+.ugc-tab-btn{flex:0 0 auto;padding:13px 24px;border-radius:100px;background:#0f0e12;border:1px solid rgba(255,255,255,.14);color:rgba(234,229,220,.75);font-family:inherit;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:all .2s;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+.ugc-tab-btn:hover{border-color:rgba(201,160,86,.5);color:#faf8f4;background:#151318;transform:translateY(-1px);box-shadow:0 4px 14px rgba(0,0,0,.35)}
+.ugc-tab-btn.is-active{background:#c9a056;border-color:#c9a056;color:#08080a;box-shadow:0 4px 16px rgba(201,160,86,.3)}
+.ugc-tab-btn.is-active:hover{background:#e8c47a;border-color:#e8c47a;color:#08080a;transform:none}
 .ugc-tab-btn:focus-visible{outline:2px solid #c9a056;outline-offset:2px}
 .ugc-tab-panel[hidden]{display:none}
 /* in-card add-ons */
