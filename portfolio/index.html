@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<script>if(window.top!==window.self){try{window.top.location=window.self.location;}catch(e){document.body.innerHTML='';}}</script>
+<script>
+/* Phones go straight to the published Canva Site, which is Canva's own
+   responsive mobile build (matches the design intent exactly). Canva blocks
+   its Sites from being framed on other domains, so this can't be embedded
+   in-page like the desktop Design embed below — it has to be a real
+   navigation. Runs first, before anything else loads, so it's instant.
+   Desktop is completely unaffected: it never reaches this branch.         */
+if (window.matchMedia && window.matchMedia('(max-width:767px)').matches) {
+  location.replace('https://worldwidewmal.my.canva.site');
+}
+</script>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; frame-src https://www.canva.com https://canva.link https://*.canva.com; connect-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'; worker-src 'none'; manifest-src 'self'; upgrade-insecure-requests;"/>
+<meta http-equiv="Permissions-Policy" content="accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), usb=(), serial=(), bluetooth=(), browsing-topics=()"/>
+<meta name="referrer" content="strict-origin-when-cross-origin"/>
+<title>Portfolio | Worldwidewmal</title>
+<meta name="description" content="Selected UGC and travel content work by Worldwidewmal: brand collaborations, short-form video, and creator campaigns for hotels, tourism, restaurants, and experiences."/>
+<link rel="canonical" href="https://worldwidewmal.com/portfolio"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Portfolio | Worldwidewmal"/>
+<meta property="og:description" content="Selected UGC and travel content work by Worldwidewmal: brand collaborations, short-form video, and creator campaigns."/>
+<meta property="og:url" content="https://worldwidewmal.com/portfolio"/>
+<meta property="og:image" content="https://worldwidewmal.com/logo.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Portfolio | Worldwidewmal"/>
+<meta name="twitter:description" content="Selected UGC and travel content work by Worldwidewmal: brand collaborations, short-form video, and creator campaigns."/>
+<meta name="twitter:image" content="https://worldwidewmal.com/logo.png"/>
+<link rel="icon" href="../logo.png"/>
+<!-- DNS + TCP to Canva resolved before iframe starts loading -->
+<link rel="preconnect" href="https://www.canva.com" crossorigin/>
+<link rel="dns-prefetch" href="https://www.canva.com"/>
+<link rel="dns-prefetch" href="https://static.canva.com"/>
+<link rel="dns-prefetch" href="https://media.canva.com"/>
+<style>
+@font-face{font-family:'DM Sans';font-style:normal;font-weight:300 600;font-display:swap;src:url(../assets/fonts/dm-sans-normal-ca72d2bc.woff2) format('woff2')}
+@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:200 600;font-display:swap;src:url(../assets/fonts/cormorant-garamond-normal-d80df8ff.woff2) format('woff2')}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:#09080a;color:#eae5dc;
+  font-family:'DM Sans',system-ui,-apple-system,sans-serif;
+  height:100vh;height:100svh;
+  display:flex;flex-direction:column;overflow:hidden;
+}
+/* ---- sticky top bar ---- */
+.pf-bar{
+  position:relative;z-index:10;flex:0 0 auto;
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding:12px 18px;background:rgba(9,8,10,.96);backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(201,160,86,.18);
+}
+.pf-brand{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.05rem;letter-spacing:.06em;color:#c9a056}
+/* ---- embed ---- */
+/* Same Canva design embed on every device, one iframe that fills exactly the
+   viewport height left below the bar. The design's real canvas is 1366x10187
+   (confirmed via the Canva API) — an extremely tall, narrow strip, already
+   "vertically dominant" at its native size. Canva's own embed player scales
+   it to fit the frame's width and scrolls internally to reveal the rest, so
+   mobile gets a properly sized, vertically-scrollable view with no custom
+   aspect-ratio hack needed.                                                */
+.pf-embed-outer{position:relative;flex:1 1 auto;min-height:0;max-width:100%;margin:0;padding:0}
+.pf-embed{position:relative;width:100%;height:100%;overflow:hidden;background:#0b0a0d}
+.pf-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0;margin:0;padding:0}
+/* ---- loader — visible immediately, fades out when Canva fires load ---- */
+.pf-loader{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;
+  background:#0b0a0d;opacity:1;visibility:visible;transition:opacity .4s;z-index:5;
+}
+.pf-loader.hide{opacity:0;visibility:hidden;pointer-events:none}
+.pf-spin{width:38px;height:38px;border-radius:50%;border:3px solid rgba(201,160,86,.2);border-top-color:#c9a056;animation:pfspin .8s linear infinite}
+.pf-loadtxt{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(234,229,220,.5)}
+@keyframes pfspin{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+
+<header class="pf-bar">
+  <span class="pf-brand">worldwidewmal</span>
+</header>
+
+<div class="pf-embed-outer">
+  <div class="pf-loader" id="pf-loader">
+    <div class="pf-spin"></div>
+    <div class="pf-loadtxt">Loading portfolio</div>
+  </div>
+  <div class="pf-embed">
+    <!--
+      EDIT THIS src to update the portfolio.
+      Paste the Canva embed link (Share → More → Embed) here.
+    -->
+    <iframe id="pf-frame" title="Worldwidewmal portfolio" loading="eager" fetchpriority="high"
+      src="https://www.canva.com/design/DAHN4eP3wPA/XJKyM5JlWnJ9XhMsBnIVPg/view?embed"
+      allow="fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+  </div>
+</div>
+
+<script>
+(function(){
+  var loader = document.getElementById('pf-loader');
+  document.getElementById('pf-frame').addEventListener('load', function(){
+    loader.classList.add('hide');
+  });
+})();
+</script>
+
+</body>
+</html>
