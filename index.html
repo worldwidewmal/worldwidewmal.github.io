@@ -267,7 +267,7 @@
     <div class="hts">
       <span class="hts-i">Plans from $149</span>
       <span class="hts-i">Delivered within 2-7 days</span>
-      <span class="hts-i live" id="hcred">48.5K+ on TikTok</span>
+      <span class="hts-i live" id="hcred">48K+ on TikTok</span>
       <span class="hts-i">No guesswork. No wasted hours.</span>
     </div>
     <div class="hcta">
@@ -1304,10 +1304,10 @@ document.addEventListener('DOMContentLoaded',function(){
   };
 
   /* Follower count */
-  function fmtN(n){ return n>=1e6?(n/1e6).toFixed(1).replace(/\.0$/,'')+'M':n>=1e3?(n/1e3).toFixed(1).replace(/\.0$/,'')+'K':String(n); }
+  function fmtN(n){ return (n>=1e6?(n/1e6).toFixed(1).replace(/\.0$/,'')+'M':n>=1e3?(n/1e3).toFixed(1).replace(/\.0$/,'')+'K':String(n))+'+'; }
   function countUp(e,t){ if(!e) return; var s=Date.now(); (function tick(){ var p=Math.min((Date.now()-s)/1200,1),ease=1-Math.pow(1-p,3); e.textContent=fmtN(Math.round(ease*t)); if(p<1) requestAnimationFrame(tick); else e.textContent=fmtN(t); })(); }
-  countUp(el('pf-f'),48500);
-  var hc=el('hcred'); if(hc) hc.textContent='48.5K+ on TikTok';
+  countUp(el('pf-f'),48000);
+  var hc=el('hcred'); if(hc) hc.textContent='48K+ on TikTok';
 
   /* Intake form */
   var iF=el('intake-form');
@@ -1406,15 +1406,15 @@ document.addEventListener('DOMContentLoaded',function(){
       </div>
       <h1 class="ugc-h1">Cinematic Content That Makes Brands Feel Real</h1>
       <p class="ugc-hero-sub">I create cinematic, first-person content on location for hotels, tours, restaurants, wellness brands, and travel experiences, plus product-focused vertical videos for brands, apps, and software that want polished assets without losing an authentic, creator-led feel.</p>
-      <p style="font-size:.78rem;color:#a49a96;margin-bottom:24px"><span id="proof-line-tt">48.5K+</span> TikTok &middot; <span id="proof-line-ig">9.8K+</span> Instagram &middot; Videos reaching 1.2M+, 500K+, and 570K+ views.</p>
+      <p style="font-size:.78rem;color:#a49a96;margin-bottom:24px"><span id="proof-line-tt">48K+</span> TikTok &middot; <span id="proof-line-ig">10K+</span> Instagram &middot; Videos reaching 1.2M+, 500K+, and 570K+ views.</p>
 
       <div class="ugc-proof-cards">
         <div class="ugc-proof-card">
-          <div class="ugc-proof-num" id="stat-tt-followers">48.5K+</div>
+          <div class="ugc-proof-num" id="stat-tt-followers">48K+</div>
           <div class="ugc-proof-label">TikTok followers</div>
         </div>
         <div class="ugc-proof-card">
-          <div class="ugc-proof-num" id="stat-ig-followers">9.8K+</div>
+          <div class="ugc-proof-num" id="stat-ig-followers">10K+</div>
           <div class="ugc-proof-label">Instagram followers</div>
         </div>
         <div class="ugc-proof-card">
@@ -1583,7 +1583,6 @@ document.addEventListener('DOMContentLoaded',function(){
     </div><!-- end ww-cscroll-wrap -->
 
     <p class="ugc-p" style="margin-top:20px;font-size:.76rem;color:#8a817d">Starting prices apply to straightforward productions using one primary location and the deliverables listed within the selected package. Final pricing may increase based on travel, property or venue size, additional locations, drone requirements, talent, permits, access restrictions, specialty equipment, production complexity, licensing, and other custom requirements.</p>
-    <p class="ugc-p" style="margin-top:8px;font-size:.76rem;color:#8a817d">On-site pricing includes production and delivery of the listed content plus 12 months of organic usage on the brand&rsquo;s owned social-media channels. See the Add-Ons, Usage &amp; Licensing section below for what&rsquo;s priced separately.</p>
 
     <!-- ON-SITE PRODUCTION ADD-ONS -->
     <div style="max-width:760px;margin:40px auto 0">
@@ -1680,8 +1679,6 @@ document.addEventListener('DOMContentLoaded',function(){
     </div>
     </div><!-- end ww-cscroll-inner -->
     </div><!-- end ww-cscroll-wrap -->
-
-    <p class="ugc-p" style="margin-top:20px;font-size:.76rem;color:#8a817d">All Brand Product Video Production packages include 12 months of organic usage on the brand&rsquo;s owned social-media channels. See the Add-Ons, Usage &amp; Licensing section below for what&rsquo;s priced separately.</p>
   </div>
 
   <!-- ADD-ONS, USAGE & LICENSING MENU -->
@@ -1761,10 +1758,6 @@ document.addEventListener('DOMContentLoaded',function(){
 <div style="max-width:1100px;margin:0 auto">
   <p class="ugc-sec-tag">Ongoing Creative Partnerships</p>
   <h2 class="ugc-h2">Monthly Content Retainers</h2>
-  <p class="ugc-p" style="font-size:.95rem;max-width:640px">Consistent creative. Reliable monthly delivery. Built around your brand&rsquo;s ongoing marketing needs.</p>
-  <p class="ugc-p" style="max-width:680px;margin-top:16px">Monthly retainers are designed for brands that need a reliable stream of fresh video content without sourcing a different creator for every campaign.</p>
-  <p class="ugc-p" style="max-width:680px">Each partnership is built around an agreed production schedule, recurring deliverables, creative planning, priority booking, and a consistent visual direction across your brand&rsquo;s content.</p>
-  <p class="ugc-p" style="max-width:680px">Retainers can be structured around Brand Product Video Production, On-Site Media Production, or a combination of both.</p>
 
   <div class="ww-retainer-grid">
     <div class="ww-retainer-card">
@@ -1811,41 +1804,6 @@ document.addEventListener('DOMContentLoaded',function(){
       <div class="ww-retainer-fit">Best for hotels, tourism boards, attractions, restaurants, events, properties, and experience-based businesses.</div>
     </div>
   </div>
-
-  <h3 class="ww-inclusion-heading">What Every Retainer Can Include</h3>
-  <ul class="ww-inclusion-grid">
-    <li>Monthly creative planning</li>
-    <li>Agreed monthly deliverables</li>
-    <li>Recurring concept development</li>
-    <li>Consistent production and editing style</li>
-    <li>Priority scheduling</li>
-    <li>Dedicated partnership communication</li>
-    <li>Organized monthly delivery</li>
-    <li>One revision per approved deliverable</li>
-    <li>Monthly production calendar</li>
-    <li>Creative recommendations based on campaign goals</li>
-    <li>Reliable turnaround expectations</li>
-    <li>A consistent creator and visual identity across campaigns</li>
-  </ul>
-
-  <h3 class="ww-addon-heading">Available as Custom Add-Ons</h3>
-  <p class="ww-addon-sub">Ways to expand your partnership as your monthly needs grow.</p>
-  <ul class="ww-addon-grid">
-    <li>Paid advertising usage rights</li>
-    <li>Extended usage periods</li>
-    <li>Raw footage</li>
-    <li>Personal social media posting</li>
-    <li>Paid social media promotion</li>
-    <li>Travel and accommodation</li>
-    <li>Rush delivery</li>
-    <li>Category exclusivity</li>
-    <li>Additional revisions</li>
-    <li>Additional deliverables</li>
-    <li>Additional hooks or edited variations</li>
-    <li>Whitelisting or allow-listing</li>
-    <li>Additional production locations</li>
-    <li>Talent, props, or location costs</li>
-  </ul>
 
   <div class="ww-retainer-terms">
     <p>Retainers begin with a three-month commitment and are customized according to production needs, deliverable volume, locations, creative complexity, and usage requirements.</p>
