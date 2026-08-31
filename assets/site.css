@@ -779,6 +779,7 @@ footer{border-top:1px solid var(--b1);background:var(--s1);padding:26px 52px;mar
 .ww-ab-card{min-width:300px;max-width:300px;flex:0 0 300px;border-radius:14px;border:1px solid rgba(255,255,255,.08);border-top:2px solid rgba(201,160,86,.35);background:#0f0e12;overflow:hidden;box-sizing:border-box;scroll-snap-align:start;display:flex;flex-direction:column;transition:border-color .22s}
 .ww-ab-card:hover{border-top-color:rgba(201,160,86,.7)}
 .ww-ab-thumb{width:100%;height:178px;object-fit:cover;display:block}
+.ww-ab-thumb-ph{width:100%;height:178px;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at 50% 30%,rgba(201,160,86,.1),transparent 70%),#141218;color:rgba(201,160,86,.55)}
 .ww-ab-body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
 .ww-ab-loc{font-size:.55rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#c9a056}
 .ww-ab-name{font-size:.88rem;font-weight:700;color:#faf8f4;line-height:1.35;flex:1}
